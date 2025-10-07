@@ -3,6 +3,7 @@
 import { useState, useRef } from "react";
 import { motion, useInView } from "framer-motion";
 import RecipeCard from "./RecipeCard";
+import DownloadRecipesButton from "./DownloadRecipesButton";
 import { recipes } from "@/data/recipes";
 import type { Recipe } from "@/data/recipes";
 
@@ -27,7 +28,7 @@ export default function RecipeGrid() {
   });
 
   return (
-    <section ref={ref} className="bg-white py-16 sm:py-20 lg:py-24">
+    <section id="recipes" ref={ref} className="bg-white py-16 sm:py-20 lg:py-24">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <motion.div
@@ -83,6 +84,17 @@ export default function RecipeGrid() {
             <p className="text-xl text-stone-600">
               No recipes found for this filter. Try another wine type.
             </p>
+          </motion.div>
+        )}
+
+        {/* Download Recipes Button */}
+        {filteredRecipes.length > 0 && (
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+            transition={{ duration: 0.8, delay: 0.4 }}
+          >
+            <DownloadRecipesButton />
           </motion.div>
         )}
       </div>

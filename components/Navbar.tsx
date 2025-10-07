@@ -1,0 +1,138 @@
+"use client";
+
+import Image from "next/image";
+import { useState, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { Menu, X } from "lucide-react";
+
+export default function Navbar() {
+  const [isScrolled, setIsScrolled] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 50);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  const scrollToSection = (id: string) => {
+    const element = document.getElementById(id);
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth", block: "start" });
+      setIsMobileMenuOpen(false);
+    }
+  };
+
+  const navLinks = [
+    { label: "Recipes", id: "recipes" },
+    { label: "Giveaway", id: "giveaway" },
+    { label: "Enter Sweepstakes", id: "sweepstakes" },
+  ];
+
+  return (
+    <>
+      <motion.nav
+        initial={{ y: -100 }}
+        animate={{ y: 0 }}
+        transition={{ duration: 0.5 }}
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+          isScrolled
+            ? "bg-white shadow-lg py-3"
+            : "bg-white/95 backdrop-blur-sm py-4"
+        }`}
+      >
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex items-center justify-between">
+            {/* Logo */}
+            <button
+              onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+              className="flex items-center space-x-3 hover:opacity-80 transition-opacity"
+            >
+              <Image
+                src="/images/logos/wine-spectator-logo.png"
+                alt="Wine Spectator"
+                width={150}
+                height={40}
+                className="h-8 sm:h-10 w-auto"
+                priority
+              />
+              <span className="hidden sm:inline-block text-stone-400 text-sm">
+                x Hestan Culinary
+              </span>
+            </button>
+
+            {/* Desktop Navigation */}
+            <div className="hidden md:flex items-center space-x-8">
+              {navLinks.map((link) => (
+                <button
+                  key={link.id}
+                  onClick={() => scrollToSection(link.id)}
+                  className="text-stone-700 hover:text-red-900 transition-colors duration-200 font-medium"
+                >
+                  {link.label}
+                </button>
+              ))}
+              <button
+                onClick={() => scrollToSection("sweepstakes")}
+                className="bg-red-900 text-white px-6 py-2 rounded-md hover:bg-red-950 transition-all duration-300 font-semibold shadow-md hover:shadow-lg"
+              >
+                Enter Now
+              </button>
+            </div>
+
+            {/* Mobile Menu Button */}
+            <button
+              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+              className="md:hidden p-2 text-stone-700 hover:text-red-900 transition-colors"
+              aria-label="Toggle menu"
+            >
+              {isMobileMenuOpen ? (
+                <X className="h-6 w-6" />
+              ) : (
+                <Menu className="h-6 w-6" />
+              )}
+            </button>
+          </div>
+        </div>
+      </motion.nav>
+
+      {/* Mobile Menu */}
+      <AnimatePresence>
+        {isMobileMenuOpen && (
+          <motion.div
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: "auto" }}
+            exit={{ opacity: 0, height: 0 }}
+            transition={{ duration: 0.3 }}
+            className="fixed top-[72px] left-0 right-0 z-40 bg-white shadow-lg md:hidden overflow-hidden"
+          >
+            <div className="px-4 py-6 space-y-4">
+              {navLinks.map((link) => (
+                <button
+                  key={link.id}
+                  onClick={() => scrollToSection(link.id)}
+                  className="block w-full text-left px-4 py-3 text-stone-700 hover:bg-stone-50 hover:text-red-900 transition-colors rounded-md font-medium"
+                >
+                  {link.label}
+                </button>
+              ))}
+              <button
+                onClick={() => scrollToSection("sweepstakes")}
+                className="w-full bg-red-900 text-white px-6 py-3 rounded-md hover:bg-red-950 transition-all duration-300 font-semibold"
+              >
+                Enter Now
+              </button>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      {/* Spacer to prevent content from hiding under navbar */}
+      <div className="h-[72px]" />
+    </>
+  );
+}
+

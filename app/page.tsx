@@ -1,3 +1,4 @@
+import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import IntroSection from "@/components/IntroSection";
 import RecipeGrid from "@/components/RecipeGrid";
@@ -7,13 +8,16 @@ import Footer from "@/components/Footer";
 
 export default function Home() {
   return (
-    <main>
-      <Hero />
-      <IntroSection />
-      <RecipeGrid />
-      <GiveawaySection />
-      <SweepstakesSection />
-      <Footer />
-    </main>
+    <>
+      <Navbar />
+      <main>
+        <Hero />
+        <IntroSection />
+        <RecipeGrid />
+        <GiveawaySection />
+        <SweepstakesSection />
+        <Footer />
+      </main>
+    </>
   );
 }

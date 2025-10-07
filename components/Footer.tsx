@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
+import SocialShare from "./SocialShare";
 
 export default function Footer() {
   const ref = useRef(null);
@@ -94,6 +95,18 @@ export default function Footer() {
               />
             </div>
           </div>
+        </div>
+      </motion.div>
+
+      {/* Social Share Section */}
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+        transition={{ duration: 0.8, delay: 0.3 }}
+        className="py-12 border-b border-stone-700"
+      >
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <SocialShare />
         </div>
       </motion.div>
 
