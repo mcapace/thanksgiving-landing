@@ -21,13 +21,14 @@ export default function RecipeCard({ recipe, index }: RecipeCardProps) {
     e.stopPropagation();
     
     const subject = encodeURIComponent(`${recipe.dishName} paired with ${recipe.wineName}`);
+    const pdfLink = recipe.pdfPath ? `Download recipe card: ${window.location.origin}${recipe.pdfPath}\n\n` : '';
     const body = encodeURIComponent(
       `Check out this amazing wine pairing for Thanksgiving!\n\n` +
       `🍷 Wine: ${recipe.wineName}\n` +
       `🏛️ Winery: ${recipe.winery}\n` +
       `🍽️ Dish: ${recipe.dishName}\n\n` +
       `View the full recipe: ${recipe.url}\n\n` +
-      ${recipe.pdfPath ? `Download recipe card: ${window.location.origin}${recipe.pdfPath}\n\n` : ''} +
+      pdfLink +
       `Discover more wine pairings: ${window.location.origin}\n\n` +
       `Wine Spectator x Hestan Culinary`
     );
