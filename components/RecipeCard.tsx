@@ -28,27 +28,35 @@ export default function RecipeCard({ recipe, index }: RecipeCardProps) {
       className="group bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition-all duration-300 hover:-translate-y-2 flex flex-col"
     >
       {/* Winery Logo Section */}
-      <div className="bg-stone-100 h-20 flex items-center justify-center p-4">
+      <div className="bg-white h-20 flex items-center justify-center p-4">
         <div className="relative w-full max-w-[128px] h-12">
           <Image
             src={recipe.logoPath}
             alt={`${recipe.winery} logo`}
             fill
-            className="object-contain"
+            className={`object-contain ${
+              recipe.logoPath.endsWith('.jpg') || recipe.logoPath.endsWith('.jpeg')
+                ? 'logo-blend'
+                : ''
+            }`}
             sizes="128px"
           />
         </div>
       </div>
 
       {/* Wine Bottle Section */}
-      <div className="relative h-80 bg-gradient-to-b from-stone-100 to-amber-50 overflow-hidden">
+      <div className="relative h-80 bg-gradient-to-b from-white to-stone-50 overflow-hidden">
         <div className="absolute inset-0 flex items-center justify-center p-6">
           <div className="relative w-full h-full transition-transform duration-500 group-hover:scale-105">
             <Image
               src={recipe.bottlePath}
               alt={`${recipe.wineName} bottle`}
               fill
-              className="object-contain"
+              className={`object-contain ${
+                recipe.bottlePath.endsWith('.jpg') || recipe.bottlePath.endsWith('.jpeg')
+                  ? 'wine-bottle-blend'
+                  : ''
+              }`}
               sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
             />
           </div>
