@@ -19,26 +19,41 @@ export default function EmailCollectionForm() {
 
     setStatus("submitting");
 
-    // Simulate API call - replace with your actual email service integration
-    // Options: Mailchimp, ConvertKit, SendGrid, your own API endpoint
     try {
-      // Example: await fetch('/api/subscribe', { method: 'POST', body: JSON.stringify({ email }) });
+      const response = await fetch('/api/subscribe', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ email }),
+      });
       
-      // For now, we'll simulate success
-      setTimeout(() => {
+      const data = await response.json();
+      
+      if (response.ok) {
         setStatus("success");
-        setMessage("Success! Check your email for the complete recipe book.");
+        setMessage("✅ Success! Check your email to confirm and get all 9 recipes.");
         setEmail("");
         
-        // Reset after 5 seconds
+        // Reset after 7 seconds
         setTimeout(() => {
           setStatus("idle");
           setMessage("");
-        }, 5000);
-      }, 1000);
+        }, 7000);
+      } else {
+        throw new Error(data.error || 'Failed to subscribe');
+      }
+      
     } catch (error) {
+      console.error('Subscription error:', error);
       setStatus("error");
       setMessage("Something went wrong. Please try again.");
+      
+      // Reset error after 5 seconds
+      setTimeout(() => {
+        setStatus("idle");
+        setMessage("");
+      }, 5000);
     }
   };
 

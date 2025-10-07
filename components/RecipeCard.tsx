@@ -28,24 +28,66 @@ export default function RecipeCard({ recipe, index }: RecipeCardProps) {
     return () => clearInterval(interval);
   }, [recipe.recipePath]);
 
-  const handleEmailRecipe = (e: React.MouseEvent) => {
+  const handleEmailRecipe = async (e: React.MouseEvent) => {
     e.preventDefault();
     e.stopPropagation();
     
-    const subject = encodeURIComponent(`${recipe.dishName} paired with ${recipe.wineName}`);
-    const pdfLink = recipe.pdfPath ? `Download recipe card: ${window.location.origin}${recipe.pdfPath}\n\n` : '';
-    const body = encodeURIComponent(
-      `Check out this amazing wine pairing for Thanksgiving!\n\n` +
-      `🍷 Wine: ${recipe.wineName}\n` +
-      `🏛️ Winery: ${recipe.winery}\n` +
-      `🍽️ Dish: ${recipe.dishName}\n\n` +
-      `View the full recipe: ${recipe.url}\n\n` +
-      pdfLink +
-      `Discover more wine pairings: ${window.location.origin}\n\n` +
-      `Wine Spectator x Hestan Culinary`
-    );
+    // Prompt user for their email
+    const userEmail = prompt('Enter your email address to receive this recipe:');
     
-    window.location.href = `mailto:?subject=${subject}&body=${body}`;
+    if (!userEmail) return; // User cancelled
+    
+    // Validate email format
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(userEmail)) {
+      alert('Please enter a valid email address.');
+      return;
+    }
+    
+    try {
+      // Show loading state (you could use a toast notification here)
+      const button = e.currentTarget as HTMLButtonElement;
+      const originalText = button.textContent;
+      button.disabled = true;
+      button.textContent = 'Sending...';
+      
+      // Call API to send recipe email
+      const response = await fetch('/api/send-recipe', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          email: userEmail,
+          winery: recipe.winery,
+          wineName: recipe.wineName,
+          dishName: recipe.dishName,
+          recipeUrl: recipe.url,
+          pdfUrl: recipe.pdfPath,
+        }),
+      });
+      
+      const data = await response.json();
+      
+      if (response.ok) {
+        alert(`Recipe sent to ${userEmail}! Check your inbox.`);
+      } else {
+        throw new Error(data.error || 'Failed to send email');
+      }
+      
+      // Reset button
+      button.disabled = false;
+      button.textContent = originalText;
+      
+    } catch (error) {
+      console.error('Failed to send recipe email:', error);
+      alert('Failed to send email. Please try again.');
+      
+      // Reset button
+      const button = e.currentTarget as HTMLButtonElement;
+      button.disabled = false;
+      button.textContent = 'Email Recipe';
+    }
   };
 
   return (
