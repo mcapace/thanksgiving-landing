@@ -1,10 +1,10 @@
 "use client";
 
 import Image from "next/image";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { useInView } from "framer-motion";
-import { useRef } from "react";
-import { ExternalLink, Download, Mail, Share2 } from "lucide-react";
+import { useRef, useState, useEffect } from "react";
+import { ExternalLink, Download, Mail } from "lucide-react";
 import type { Recipe } from "@/data/recipes";
 
 interface RecipeCardProps {
@@ -15,6 +15,18 @@ interface RecipeCardProps {
 export default function RecipeCard({ recipe, index }: RecipeCardProps) {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
+  const [showRecipe, setShowRecipe] = useState(false);
+
+  // Auto-rotate between wine bottle and recipe image every 4 seconds
+  useEffect(() => {
+    if (!recipe.recipePath) return; // Only rotate if recipe image exists
+    
+    const interval = setInterval(() => {
+      setShowRecipe(prev => !prev);
+    }, 4000); // Flip every 4 seconds
+
+    return () => clearInterval(interval);
+  }, [recipe.recipePath]);
 
   const handleEmailRecipe = (e: React.MouseEvent) => {
     e.preventDefault();
@@ -61,7 +73,7 @@ export default function RecipeCard({ recipe, index }: RecipeCardProps) {
         </div>
       </div>
 
-      {/* Wine Bottle Hero Section - Creative Design */}
+      {/* Wine Bottle / Recipe Flip Section */}
       <div className="relative h-96 overflow-hidden bg-gradient-to-br from-amber-50/50 via-stone-50 to-red-50/30">
         {/* Artistic Background Elements */}
         <div className="absolute inset-0">
@@ -76,30 +88,60 @@ export default function RecipeCard({ recipe, index }: RecipeCardProps) {
           }} />
         </div>
 
-        {/* Wine Bottle */}
+        {/* Rotating Images Container */}
         <div className="absolute inset-0 flex items-center justify-center p-6">
-          {/* Glow effect behind bottle */}
+          {/* Glow effect behind images */}
           <div className="absolute inset-0 flex items-center justify-center">
             <div className="w-32 h-full bg-gradient-to-b from-transparent via-white/40 to-transparent blur-xl" />
           </div>
           
-          <div className="relative w-full h-full transition-all duration-700 group-hover:scale-110 group-hover:rotate-1">
-            <Image
-              src={recipe.bottlePath}
-              alt={`${recipe.wineName} bottle`}
-              fill
-              className={`object-contain drop-shadow-[0_20px_40px_rgba(0,0,0,0.25)] ${
-                recipe.bottlePath.endsWith('.jpg') || recipe.bottlePath.endsWith('.jpeg')
-                  ? 'wine-bottle-blend'
-                  : ''
-              }`}
-              sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
-            />
-          </div>
+          <AnimatePresence mode="wait">
+            {!showRecipe || !recipe.recipePath ? (
+              // Wine Bottle
+              <motion.div
+                key="bottle"
+                initial={{ rotateY: -90, opacity: 0 }}
+                animate={{ rotateY: 0, opacity: 1 }}
+                exit={{ rotateY: 90, opacity: 0 }}
+                transition={{ duration: 0.6, ease: "easeInOut" }}
+                className="relative w-full h-full"
+              >
+                <Image
+                  src={recipe.bottlePath}
+                  alt={`${recipe.wineName} bottle`}
+                  fill
+                  className={`object-contain drop-shadow-[0_20px_40px_rgba(0,0,0,0.25)] ${
+                    recipe.bottlePath.endsWith('.jpg') || recipe.bottlePath.endsWith('.jpeg')
+                      ? 'wine-bottle-blend'
+                      : ''
+                  }`}
+                  sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                />
+              </motion.div>
+            ) : (
+              // Recipe Dish
+              <motion.div
+                key="recipe"
+                initial={{ rotateY: -90, opacity: 0 }}
+                animate={{ rotateY: 0, opacity: 1 }}
+                exit={{ rotateY: 90, opacity: 0 }}
+                transition={{ duration: 0.6, ease: "easeInOut" }}
+                className="relative w-full h-full"
+              >
+                <Image
+                  src={recipe.recipePath!}
+                  alt={`${recipe.dishName} dish`}
+                  fill
+                  className="object-cover rounded-lg shadow-2xl"
+                  sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                />
+              </motion.div>
+            )}
+          </AnimatePresence>
         </div>
         
         {/* Elegant Category Badge */}
-        <div className="absolute top-4 left-4">
+        <div className="absolute top-4 left-4 z-10">
           <div className="relative">
             <div className="absolute inset-0 bg-wine-red/20 blur-sm rounded-full" />
             <span className="relative inline-block bg-wine-red/95 text-white px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider backdrop-blur-sm border border-white/20">
@@ -108,11 +150,13 @@ export default function RecipeCard({ recipe, index }: RecipeCardProps) {
           </div>
         </div>
 
-        {/* Wine Type Indicator */}
-        <div className="absolute bottom-4 right-4">
+        {/* View Indicator */}
+        <div className="absolute bottom-4 right-4 z-10">
           <div className="flex items-center gap-2 bg-white/90 backdrop-blur-sm px-3 py-1.5 rounded-full border border-stone-200 shadow-lg">
-            <div className="w-2 h-2 rounded-full bg-amber-600 animate-pulse" />
-            <span className="text-xs font-semibold text-stone-800">{recipe.wineType}</span>
+            <div className={`w-2 h-2 rounded-full ${showRecipe && recipe.recipePath ? 'bg-green-600' : 'bg-amber-600'} animate-pulse`} />
+            <span className="text-xs font-semibold text-stone-800">
+              {showRecipe && recipe.recipePath ? 'Dish' : recipe.wineType}
+            </span>
           </div>
         </div>
       </div>

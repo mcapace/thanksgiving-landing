@@ -7,6 +7,7 @@ export interface Recipe {
   url: string;
   logoPath: string;
   bottlePath: string;
+  recipePath?: string; // Recipe dish image path
   category: 'appetizer' | 'main' | 'side' | 'dessert';
   wineType: 'Pinot Noir' | 'Pinot Gris' | 'Chardonnay' | 'Cabernet' | 'Other';
   pdfPath?: string; // Optional PDF download path
@@ -22,6 +23,7 @@ export const recipes: Recipe[] = [
     url: "https://kingestate.com/recipe-for-roasted-estate-squash-and-apple-soup/",
     logoPath: "/images/logos/king-estate-logo.png",
     bottlePath: "/images/wines/king-estate-pinot-noir.png",
+    recipePath: "/images/recipes-food/King Estate Recipe.jpg",
     category: "appetizer",
     wineType: "Pinot Noir",
     pdfPath: "/recipes/KingEstatev1.pdf"
@@ -35,6 +37,7 @@ export const recipes: Recipe[] = [
     url: "https://example.com/recipe", // Update from RECIPE CARDS/Thanksgiving URLs.docx
     logoPath: "/images/logos/calcareous-logo.png",
     bottlePath: "/images/wines/calcareous-pinot-noir.png",
+    recipePath: "/images/recipes-food/Calcareous Recipe.jpg",
     category: "main",
     wineType: "Pinot Noir",
     pdfPath: "/recipes/Calcareousv2.pdf"
@@ -48,6 +51,7 @@ export const recipes: Recipe[] = [
     url: "https://example.com/recipe", // Update from RECIPE CARDS/Thanksgiving URLs.docx
     logoPath: "/images/logos/gloria-ferrer-logo.png",
     bottlePath: "/images/wines/gloria-ferrer-sparkling.jpg",
+    recipePath: "/images/recipes-food/Gloria Ferrer Recipe.png",
     category: "side",
     wineType: "Other",
     pdfPath: "/recipes/GloriaFerrerv1.pdf"
@@ -61,6 +65,7 @@ export const recipes: Recipe[] = [
     url: "https://example.com/recipe", // Update from Hestan url + email subject line.docx
     logoPath: "/images/logos/hestan-vineyards-logo.jpg",
     bottlePath: "/images/wines/hestan-cabernet.jpg",
+    recipePath: "/images/recipes-food/Hestan Recipe.png",
     category: "main",
     wineType: "Cabernet"
     // No PDF available
@@ -74,6 +79,7 @@ export const recipes: Recipe[] = [
     url: "https://example.com/recipe", // Update from RECIPE CARDS/Thanksgiving URLs.docx
     logoPath: "/images/logos/marimar-estate-logo.jpg",
     bottlePath: "/images/wines/marimar-estate-pinot-noir.png",
+    recipePath: "/images/recipes-food/Marimar Estate Recipe.jpg",
     category: "appetizer",
     wineType: "Pinot Noir"
     // No PDF available
@@ -87,6 +93,7 @@ export const recipes: Recipe[] = [
     url: "https://example.com/recipe", // Update from RECIPE CARDS/Thanksgiving URLs.docx
     logoPath: "/images/logos/mcintyre-logo.jpg",
     bottlePath: "/images/wines/mcintyre-pinot-gris.png",
+    recipePath: "/images/recipes-food/McIntyre Recipe.png",
     category: "side",
     wineType: "Pinot Gris",
     pdfPath: "/recipes/McIntyrev3.pdf"
@@ -100,6 +107,7 @@ export const recipes: Recipe[] = [
     url: "https://example.com/recipe", // Update from RECIPE CARDS/Thanksgiving URLs.docx
     logoPath: "/images/logos/pine-ridge-logo.jpeg",
     bottlePath: "/images/wines/pine-ridge-cabernet.png",
+    // No recipe image available
     category: "main",
     wineType: "Cabernet",
     pdfPath: "/recipes/PineRidgev2.pdf"
@@ -113,6 +121,7 @@ export const recipes: Recipe[] = [
     url: "https://example.com/recipe", // Update from RECIPE CARDS/Thanksgiving URLs.docx
     logoPath: "/images/logos/st-supery-logo.png",
     bottlePath: "/images/wines/st-supery-sauvignon-blanc.png",
+    recipePath: "/images/recipes-food/St Supery Recipe.jpg",
     category: "side",
     wineType: "Other",
     pdfPath: "/recipes/StSuperyv2.pdf"
@@ -126,6 +135,7 @@ export const recipes: Recipe[] = [
     url: "https://example.com/recipe", // Update from RECIPE CARDS/Thanksgiving URLs.docx or Vicev2.pdf
     logoPath: "/images/logos/the-vice-logo.png",
     bottlePath: "/images/wines/the-vice-pinot-noir.jpg",
+    recipePath: "/images/recipes-food/The Vice Recipe.jpg",
     category: "side",
     wineType: "Pinot Noir",
     pdfPath: "/recipes/Vicev2.pdf"
