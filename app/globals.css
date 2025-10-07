@@ -65,9 +65,17 @@ body {
 /* Fix for logos with white backgrounds */
 .logo-blend {
   mix-blend-mode: multiply;
+  filter: contrast(1.1) brightness(0.95);
 }
 
-/* Better rendering for wine bottles with backgrounds */
+/* Better rendering for wine bottles with backgrounds - more aggressive */
 .wine-bottle-blend {
-  mix-blend-mode: darken;
+  mix-blend-mode: multiply;
+  filter: contrast(1.15) brightness(0.98);
+}
+
+/* Alternative: Screen mode for very light backgrounds */
+.wine-bottle-screen {
+  mix-blend-mode: screen;
+  filter: contrast(1.1);
 }

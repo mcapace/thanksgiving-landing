@@ -49,7 +49,7 @@ export default function Navbar() {
             {/* Logo */}
             <button
               onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-              className="flex items-center space-x-3 hover:opacity-80 transition-opacity"
+              className="flex items-center hover:opacity-80 transition-opacity"
             >
               <Image
                 src="/images/logos/wine-spectator-logo.png"
@@ -59,9 +59,6 @@ export default function Navbar() {
                 className="h-8 sm:h-10 w-auto"
                 priority
               />
-              <span className="hidden sm:inline-block text-stone-400 text-sm">
-                x Hestan Culinary
-              </span>
             </button>
 
             {/* Desktop Navigation */}

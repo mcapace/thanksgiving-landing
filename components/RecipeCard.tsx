@@ -61,19 +61,34 @@ export default function RecipeCard({ recipe, index }: RecipeCardProps) {
         </div>
       </div>
 
-      {/* Wine Bottle Hero Section */}
-      <div className="relative h-96 bg-gradient-to-br from-stone-50 via-white to-amber-50/30 overflow-hidden">
-        {/* Decorative Elements */}
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_50%,rgba(251,191,36,0.1),transparent_50%)]" />
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_50%,rgba(139,35,50,0.05),transparent_50%)]" />
-        
-        <div className="absolute inset-0 flex items-center justify-center p-8">
-          <div className="relative w-full h-full transition-all duration-500 group-hover:scale-105">
+      {/* Wine Bottle Hero Section - Creative Design */}
+      <div className="relative h-96 overflow-hidden bg-gradient-to-br from-amber-50/50 via-stone-50 to-red-50/30">
+        {/* Artistic Background Elements */}
+        <div className="absolute inset-0">
+          {/* Soft radial glows */}
+          <div className="absolute top-0 left-1/4 w-64 h-64 bg-amber-300/20 rounded-full blur-3xl" />
+          <div className="absolute bottom-0 right-1/4 w-64 h-64 bg-red-900/10 rounded-full blur-3xl" />
+          
+          {/* Subtle pattern overlay */}
+          <div className="absolute inset-0 opacity-[0.03]" style={{
+            backgroundImage: 'radial-gradient(circle at 2px 2px, rgba(0,0,0,0.15) 1px, transparent 0)',
+            backgroundSize: '32px 32px'
+          }} />
+        </div>
+
+        {/* Wine Bottle */}
+        <div className="absolute inset-0 flex items-center justify-center p-6">
+          {/* Glow effect behind bottle */}
+          <div className="absolute inset-0 flex items-center justify-center">
+            <div className="w-32 h-full bg-gradient-to-b from-transparent via-white/40 to-transparent blur-xl" />
+          </div>
+          
+          <div className="relative w-full h-full transition-all duration-700 group-hover:scale-110 group-hover:rotate-1">
             <Image
               src={recipe.bottlePath}
               alt={`${recipe.wineName} bottle`}
               fill
-              className={`object-contain drop-shadow-2xl ${
+              className={`object-contain drop-shadow-[0_20px_40px_rgba(0,0,0,0.25)] ${
                 recipe.bottlePath.endsWith('.jpg') || recipe.bottlePath.endsWith('.jpeg')
                   ? 'wine-bottle-blend'
                   : ''
@@ -83,11 +98,22 @@ export default function RecipeCard({ recipe, index }: RecipeCardProps) {
           </div>
         </div>
         
-        {/* Category Badge */}
-        <div className="absolute top-4 right-4">
-          <span className="inline-block bg-wine-red/90 text-white px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-wide backdrop-blur-sm">
-            {recipe.category}
-          </span>
+        {/* Elegant Category Badge */}
+        <div className="absolute top-4 left-4">
+          <div className="relative">
+            <div className="absolute inset-0 bg-wine-red/20 blur-sm rounded-full" />
+            <span className="relative inline-block bg-wine-red/95 text-white px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider backdrop-blur-sm border border-white/20">
+              {recipe.category}
+            </span>
+          </div>
+        </div>
+
+        {/* Wine Type Indicator */}
+        <div className="absolute bottom-4 right-4">
+          <div className="flex items-center gap-2 bg-white/90 backdrop-blur-sm px-3 py-1.5 rounded-full border border-stone-200 shadow-lg">
+            <div className="w-2 h-2 rounded-full bg-amber-600 animate-pulse" />
+            <span className="text-xs font-semibold text-stone-800">{recipe.wineType}</span>
+          </div>
         </div>
       </div>
 
