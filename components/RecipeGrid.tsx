@@ -3,7 +3,6 @@
 import { useState, useRef } from "react";
 import { motion, useInView } from "framer-motion";
 import RecipeCard from "./RecipeCard";
-import DownloadRecipesButton from "./DownloadRecipesButton";
 import { recipes } from "@/data/recipes";
 import type { Recipe } from "@/data/recipes";
 
@@ -68,7 +67,7 @@ export default function RecipeGrid() {
         </motion.div>
 
         {/* Recipe Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
           {filteredRecipes.map((recipe, index) => (
             <RecipeCard key={recipe.id} recipe={recipe} index={index} />
           ))}
@@ -84,17 +83,6 @@ export default function RecipeGrid() {
             <p className="text-xl text-stone-600">
               No recipes found for this filter. Try another wine type.
             </p>
-          </motion.div>
-        )}
-
-        {/* Download Recipes Button */}
-        {filteredRecipes.length > 0 && (
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-            transition={{ duration: 0.8, delay: 0.4 }}
-          >
-            <DownloadRecipesButton />
           </motion.div>
         )}
       </div>
