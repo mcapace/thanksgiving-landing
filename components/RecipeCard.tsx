@@ -4,7 +4,7 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef } from "react";
-import { ExternalLink } from "lucide-react";
+import { ExternalLink, Download } from "lucide-react";
 import type { Recipe } from "@/data/recipes";
 
 interface RecipeCardProps {
@@ -61,10 +61,24 @@ export default function RecipeCard({ recipe, index }: RecipeCardProps) {
           {recipe.description}
         </p>
         
-        <button className="mt-auto inline-flex items-center justify-center gap-2 bg-red-900 text-white px-6 py-3 rounded-md hover:bg-red-950 transition-all duration-300 group-hover:gap-3">
-          Get the Recipe
-          <ExternalLink className="w-4 h-4" />
-        </button>
+        <div className="mt-auto space-y-2">
+          <button className="w-full inline-flex items-center justify-center gap-2 bg-red-900 text-white px-6 py-3 rounded-md hover:bg-red-950 transition-all duration-300 group-hover:gap-3">
+            View Recipe
+            <ExternalLink className="w-4 h-4" />
+          </button>
+          
+          {recipe.pdfPath && (
+            <a
+              href={recipe.pdfPath}
+              download
+              onClick={(e) => e.stopPropagation()}
+              className="w-full inline-flex items-center justify-center gap-2 bg-stone-900 text-white px-6 py-3 rounded-md hover:bg-stone-800 transition-all duration-300"
+            >
+              <Download className="w-4 h-4" />
+              Download PDF
+            </a>
+          )}
+        </div>
       </div>
     </motion.a>
   );

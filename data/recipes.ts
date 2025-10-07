@@ -9,6 +9,7 @@ export interface Recipe {
   bottlePath: string;
   category: 'appetizer' | 'main' | 'side' | 'dessert';
   wineType: 'Pinot Noir' | 'Pinot Gris' | 'Chardonnay' | 'Cabernet' | 'Other';
+  pdfPath?: string; // Optional PDF download path
 }
 
 export const recipes: Recipe[] = [
@@ -22,7 +23,8 @@ export const recipes: Recipe[] = [
     logoPath: "/images/logos/king-estate-logo.png",
     bottlePath: "/images/wines/king-estate-pinot-noir.png",
     category: "appetizer",
-    wineType: "Pinot Noir"
+    wineType: "Pinot Noir",
+    pdfPath: "/recipes/KingEstatev1.pdf"
   },
   {
     id: 2,
@@ -34,7 +36,8 @@ export const recipes: Recipe[] = [
     logoPath: "/images/logos/calcareous-logo.png",
     bottlePath: "/images/wines/calcareous-pinot-noir.png",
     category: "main",
-    wineType: "Pinot Noir"
+    wineType: "Pinot Noir",
+    pdfPath: "/recipes/Calcareousv2.pdf"
   },
   {
     id: 3,
@@ -46,7 +49,8 @@ export const recipes: Recipe[] = [
     logoPath: "/images/logos/gloria-ferrer-logo.png",
     bottlePath: "/images/wines/gloria-ferrer-sparkling.jpg",
     category: "side",
-    wineType: "Other"
+    wineType: "Other",
+    pdfPath: "/recipes/GloriaFerrerv1.pdf"
   },
   {
     id: 4,
@@ -59,6 +63,7 @@ export const recipes: Recipe[] = [
     bottlePath: "/images/wines/hestan-cabernet.jpg",
     category: "main",
     wineType: "Cabernet"
+    // No PDF available
   },
   {
     id: 5,
@@ -71,6 +76,7 @@ export const recipes: Recipe[] = [
     bottlePath: "/images/wines/marimar-estate-pinot-noir.png",
     category: "appetizer",
     wineType: "Pinot Noir"
+    // No PDF available
   },
   {
     id: 6,
@@ -82,7 +88,8 @@ export const recipes: Recipe[] = [
     logoPath: "/images/logos/mcintyre-logo.jpg",
     bottlePath: "/images/wines/mcintyre-pinot-gris.png",
     category: "side",
-    wineType: "Pinot Gris"
+    wineType: "Pinot Gris",
+    pdfPath: "/recipes/McIntyrev3.pdf"
   },
   {
     id: 7,
@@ -94,7 +101,8 @@ export const recipes: Recipe[] = [
     logoPath: "/images/logos/pine-ridge-logo.jpeg",
     bottlePath: "/images/wines/pine-ridge-cabernet.png",
     category: "main",
-    wineType: "Cabernet"
+    wineType: "Cabernet",
+    pdfPath: "/recipes/PineRidgev2.pdf"
   },
   {
     id: 8,
@@ -106,7 +114,8 @@ export const recipes: Recipe[] = [
     logoPath: "/images/logos/st-supery-logo.png",
     bottlePath: "/images/wines/st-supery-sauvignon-blanc.png",
     category: "side",
-    wineType: "Other"
+    wineType: "Other",
+    pdfPath: "/recipes/StSuperyv2.pdf"
   },
   {
     id: 9,
@@ -118,7 +127,8 @@ export const recipes: Recipe[] = [
     logoPath: "/images/logos/the-vice-logo.png",
     bottlePath: "/images/wines/the-vice-pinot-noir.jpg",
     category: "side",
-    wineType: "Pinot Noir"
+    wineType: "Pinot Noir",
+    pdfPath: "/recipes/Vicev2.pdf"
   }
 ];
 
