@@ -54,9 +54,9 @@ export default function Navbar() {
               <Image
                 src="/images/logos/wine-spectator-logo.png"
                 alt="Wine Spectator"
-                width={150}
-                height={40}
-                className="h-8 sm:h-10 w-auto"
+                width={200}
+                height={55}
+                className="h-10 sm:h-12 md:h-14 w-auto"
                 priority
               />
             </button>

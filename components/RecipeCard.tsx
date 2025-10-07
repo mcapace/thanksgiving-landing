@@ -185,36 +185,35 @@ export default function RecipeCard({ recipe, index }: RecipeCardProps) {
         
         {/* Action Buttons */}
         <div className="mt-auto grid grid-cols-2 gap-2">
-          <a
-            href={recipe.url}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center justify-center gap-2 bg-red-900 text-white px-4 py-3 rounded-lg hover:bg-red-950 transition-all duration-300 font-semibold text-sm hover:gap-3 shadow-md hover:shadow-lg"
-          >
-            View Recipe
-            <ExternalLink className="w-4 h-4" />
-          </a>
+          {recipe.pdfPath ? (
+            <a
+              href={recipe.pdfPath}
+              download
+              className="inline-flex items-center justify-center gap-2 bg-red-900 text-white px-4 py-3 rounded-lg hover:bg-red-950 transition-all duration-300 font-semibold text-sm hover:gap-3 shadow-md hover:shadow-lg"
+            >
+              <Download className="w-4 h-4" />
+              Download Recipe
+            </a>
+          ) : (
+            <a
+              href={recipe.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center justify-center gap-2 bg-red-900 text-white px-4 py-3 rounded-lg hover:bg-red-950 transition-all duration-300 font-semibold text-sm hover:gap-3 shadow-md hover:shadow-lg"
+            >
+              View Recipe
+              <ExternalLink className="w-4 h-4" />
+            </a>
+          )}
           
           <button
             onClick={handleEmailRecipe}
             className="inline-flex items-center justify-center gap-2 bg-amber-600 text-white px-4 py-3 rounded-lg hover:bg-amber-700 transition-all duration-300 font-semibold text-sm shadow-md hover:shadow-lg"
           >
             <Mail className="w-4 h-4" />
-            Email
+            Email Recipe
           </button>
         </div>
-        
-        {/* PDF Download Link */}
-        {recipe.pdfPath && (
-          <a
-            href={recipe.pdfPath}
-            download
-            className="mt-2 inline-flex items-center justify-center gap-2 text-stone-700 hover:text-red-900 transition-colors text-sm font-medium py-2"
-          >
-            <Download className="w-4 h-4" />
-            Download Recipe Card
-          </a>
-        )}
       </div>
     </motion.div>
   );

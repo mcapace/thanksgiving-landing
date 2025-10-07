@@ -14,7 +14,7 @@ export default function Hero() {
           alt="Wine Country Thanksgiving"
           fill
           priority
-          className="object-cover"
+          className="object-cover object-[center_65%]"
           sizes="100vw"
         />
         {/* Dark gradient overlay */}
