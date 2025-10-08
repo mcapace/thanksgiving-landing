@@ -92,8 +92,8 @@ export const recipes: Recipe[] = [
     description: "Pinot Gris with Your Dish Name",
     url: "https://example.com/recipe", // Update from RECIPE CARDS/Thanksgiving URLs.docx
     logoPath: "/images/logos/mcintyre-logo.jpg",
-    bottlePath: "/images/wines/mcintyre-pinot-gris.png",
-    recipePath: "/images/recipes-food/McIntyre Recipe.png",
+    bottlePath: "/images/wines/DSC_1014.jpeg",
+    recipePath: "/images/recipes-food/McIntyre.png",
     category: "side",
     wineType: "Pinot Gris",
     pdfPath: "/recipes/McIntyrev3.pdf"
