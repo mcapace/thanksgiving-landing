@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef } from "react";
+import { useRef, useMemo } from "react";
 import { motion, useInView } from "framer-motion";
 import RecipeCard from "./RecipeCard";
 import { recipes } from "@/data/recipes";
@@ -8,6 +8,11 @@ import { recipes } from "@/data/recipes";
 export default function RecipeGrid() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
+
+  // Randomize recipe order on each page load
+  const shuffledRecipes = useMemo(() => {
+    return [...recipes].sort(() => Math.random() - 0.5);
+  }, []);
 
   return (
     <section id="recipes" ref={ref} className="bg-white py-16 sm:py-20 lg:py-24">
@@ -27,12 +32,12 @@ export default function RecipeGrid() {
           </p>
         </motion.div>
 
-        {/* Recipe Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
-          {recipes.map((recipe, index) => (
-            <RecipeCard key={recipe.id} recipe={recipe} index={index} />
-          ))}
-        </div>
+            {/* Recipe Grid */}
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+              {shuffledRecipes.map((recipe, index) => (
+                <RecipeCard key={recipe.id} recipe={recipe} index={index} />
+              ))}
+            </div>
       </div>
     </section>
   );
