@@ -54,7 +54,7 @@ export default function GiveawaySection() {
                 src="/images/giveaway/prize-package.jpg"
                 alt="Hestan Holiday Prize Package"
                 fill
-                className="object-cover object-[center_65%]"
+                className="object-cover object-[55%_62%]"
                 sizes="(max-width: 1024px) 100vw, 50vw"
                 priority
               />
