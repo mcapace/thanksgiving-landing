@@ -134,7 +134,7 @@ export const recipes: Recipe[] = [
     description: "Pinot Noir with Truffle Gemelli",
     url: "https://example.com/recipe", // Update from RECIPE CARDS/Thanksgiving URLs.docx or Vicev2.pdf
     logoPath: "/images/logos/the-vice-logo.png",
-    bottlePath: "/images/wines/the-vice-pinot-noir.jpg",
+    bottlePath: "/images/wines/Vice.png",
     recipePath: "/images/recipes-food/The Vice Recipe.jpg",
     category: "side",
     wineType: "Pinot Noir",
