@@ -15,8 +15,11 @@ export default function SweepstakesSection() {
     if (scriptLoaded) {
       console.log('Viral Sweeps script loaded');
       // Try to reinitialize if needed
-      if (typeof window !== 'undefined' && (window as any).vrlswp) {
-        (window as any).vrlswp.init();
+      if (typeof window !== 'undefined') {
+        const win = window as typeof window & { vrlswp?: { init: () => void } };
+        if (win.vrlswp) {
+          win.vrlswp.init();
+        }
       }
     }
   }, [scriptLoaded]);
