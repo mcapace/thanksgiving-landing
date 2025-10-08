@@ -1,12 +1,23 @@
 "use client";
 
 import { motion, useInView } from "framer-motion";
-import { useRef } from "react";
+import { useRef, useEffect } from "react";
 import Link from "next/link";
+import Script from "next/script";
 
 export default function SweepstakesSection() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
+
+  useEffect(() => {
+    // Cleanup function to remove old script if it exists
+    return () => {
+      const oldScript = document.querySelector('script[src*="vsa-widget-a1781e-216011"]');
+      if (oldScript) {
+        oldScript.remove();
+      }
+    };
+  }, []);
 
   return (
     <section id="sweepstakes" ref={ref} className="bg-white py-12 sm:py-16 lg:py-20">
@@ -31,25 +42,19 @@ export default function SweepstakesSection() {
             {/* Inner White Container */}
             <div className="bg-white rounded-lg p-4 sm:p-6">
               {/* ============================================ */}
-              {/* VIRAL SWEEPS IFRAME EMBED                    */}
+              {/* VIRAL SWEEPS WIDGET EMBED                    */}
               {/* ============================================ */}
               
-              {/* Viral Sweeps iframe - Promotion ID: 216011 */}
-              <div className="w-full">
-                <iframe
-                  src="https://app.viralsweep.com/promotions/full/216011"
-                  frameBorder="0"
-                  scrolling="auto"
-                  className="w-full min-h-[800px] border-0 rounded-lg"
-                  title="Wine Spectator x Hestan Thanksgiving Sweepstakes"
-                  loading="lazy"
-                  style={{
-                    border: 'none',
-                    overflow: 'hidden',
-                    width: '100%',
-                  }}
-                />
-              </div>
+              {/* Viral Sweeps Widget Container */}
+              <div id="vsscript_216011_961681" className="w-full min-h-[600px]"></div>
+              
+              {/* Load Viral Sweeps Script */}
+              <Script
+                id="viral-sweeps-widget"
+                src="https://app.viralsweep.com/vsa-widget-a1781e-216011.js?sid=216011_961681"
+                strategy="afterInteractive"
+                async
+              />
               
               {/* ============================================ */}
               {/* END OF VIRAL SWEEPS EMBED SECTION           */}
