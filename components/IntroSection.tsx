@@ -56,12 +56,12 @@ export default function IntroSection() {
             className="bg-white rounded-lg shadow-lg overflow-hidden"
           >
             {/* Image */}
-            <div className="aspect-square relative">
+            <div className="relative h-[400px] sm:h-[450px] lg:h-[400px] overflow-hidden rounded-t-lg">
               <Image
                 src="/images/giveaway/prize-package.jpg"
                 alt="Hestan Culinary Prize Package"
                 fill
-                className="object-cover"
+                className="object-cover object-center"
                 sizes="(max-width: 1024px) 100vw, 50vw"
               />
             </div>
