@@ -50,7 +50,7 @@ export const recipes: Recipe[] = [
     description: "Sparkling Wine with Autumn Harvest Purple Rice Pilaf",
     url: "https://example.com/recipe", // Update from RECIPE CARDS/Thanksgiving URLs.docx
     logoPath: "/images/logos/gloria-ferrer-logo.png",
-    bottlePath: "/images/wines/gloria-ferrer-sparkling.jpg",
+    bottlePath: "/images/wines/gloria-ferrer-sparkling.png",
     recipePath: "/images/recipes-food/Gloria Ferrer Recipe.png",
     category: "side",
     wineType: "Other",
