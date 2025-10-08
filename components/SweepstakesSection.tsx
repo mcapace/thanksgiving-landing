@@ -46,7 +46,7 @@ export default function SweepstakesSection() {
               {/* ============================================ */}
               
               {/* Viral Sweeps Widget Container */}
-              <div id="vsscript_216011_961681" className="w-full min-h-[600px]"></div>
+              <div id="vsscript_216011_961681" className="w-full min-h-[600px] viral-sweeps-custom"></div>
               
               {/* Load Viral Sweeps Script */}
               <Script
@@ -55,6 +55,92 @@ export default function SweepstakesSection() {
                 strategy="afterInteractive"
                 async
               />
+              
+              {/* Custom CSS to streamline widget */}
+              <style jsx global>{`
+                /* Hide unnecessary Viral Sweeps elements */
+                #vsscript_216011_961681 .vs-header-image,
+                #vsscript_216011_961681 .vs-promo-image,
+                #vsscript_216011_961681 .vs-banner-image,
+                #vsscript_216011_961681 .vs-hero-image {
+                  display: none !important;
+                }
+                
+                /* Hide social proof/counters if not needed */
+                #vsscript_216011_961681 .vs-social-proof,
+                #vsscript_216011_961681 .vs-entry-count {
+                  display: none !important;
+                }
+                
+                /* Simplify header */
+                #vsscript_216011_961681 .vs-header {
+                  padding: 1rem 0 !important;
+                  text-align: center !important;
+                }
+                
+                /* Style form inputs to match site */
+                #vsscript_216011_961681 input[type="text"],
+                #vsscript_216011_961681 input[type="email"],
+                #vsscript_216011_961681 select {
+                  border: 2px solid #D6D3D1 !important;
+                  border-radius: 0.5rem !important;
+                  padding: 0.75rem 1rem !important;
+                  font-family: 'Inter', sans-serif !important;
+                }
+                
+                #vsscript_216011_961681 input:focus,
+                #vsscript_216011_961681 select:focus {
+                  border-color: #8B2332 !important;
+                  outline: none !important;
+                  box-shadow: 0 0 0 3px rgba(139, 35, 50, 0.1) !important;
+                }
+                
+                /* Style submit button */
+                #vsscript_216011_961681 button[type="submit"],
+                #vsscript_216011_961681 .vs-submit-button {
+                  background: #8B2332 !important;
+                  color: white !important;
+                  border: none !important;
+                  border-radius: 0.5rem !important;
+                  padding: 1rem 2rem !important;
+                  font-size: 1.125rem !important;
+                  font-weight: 600 !important;
+                  cursor: pointer !important;
+                  transition: all 0.3s !important;
+                  font-family: 'Inter', sans-serif !important;
+                }
+                
+                #vsscript_216011_961681 button[type="submit"]:hover,
+                #vsscript_216011_961681 .vs-submit-button:hover {
+                  background: #7A1F2B !important;
+                  transform: translateY(-2px) !important;
+                  box-shadow: 0 10px 25px rgba(139, 35, 50, 0.3) !important;
+                }
+                
+                /* Clean up spacing */
+                #vsscript_216011_961681 {
+                  padding: 0 !important;
+                }
+                
+                #vsscript_216011_961681 .vs-form-container {
+                  background: white !important;
+                  padding: 1.5rem !important;
+                }
+                
+                /* Style headings */
+                #vsscript_216011_961681 h1,
+                #vsscript_216011_961681 h2,
+                #vsscript_216011_961681 h3 {
+                  font-family: 'Cormorant Garamond', Georgia, serif !important;
+                  color: #1C1917 !important;
+                }
+                
+                /* Hide powered by (if applicable) */
+                #vsscript_216011_961681 .vs-powered-by,
+                #vsscript_216011_961681 .vs-branding {
+                  display: none !important;
+                }
+              `}</style>
               
               {/* ============================================ */}
               {/* END OF VIRAL SWEEPS EMBED SECTION           */}
