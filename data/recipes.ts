@@ -32,13 +32,13 @@ export const recipes: Recipe[] = [
     id: 2,
     winery: "Calcareous Vineyard",
     wineName: "2023 Tres Violet Pinot Noir",
-    dishName: "Your Dish Name", // Update from Calcareousv2.pdf
-    description: "Pinot Noir with Your Dish Name",
+    dishName: "Mushroom and Leek Stuffing",
+    description: "Pinot Noir with Mushroom and Leek Stuffing",
     url: "https://example.com/recipe", // Update from RECIPE CARDS/Thanksgiving URLs.docx
     logoPath: "/images/logos/calcareous-logo.png",
     bottlePath: "/images/wines/Calcareous.png",
     recipePath: "/images/recipes-food/Calcareous Recipe.jpg",
-    category: "main",
+    category: "side",
     wineType: "Pinot Noir",
     pdfPath: "/recipes/Calcareousv2.pdf"
   },
@@ -46,8 +46,8 @@ export const recipes: Recipe[] = [
     id: 3,
     winery: "Gloria Ferrer Winery",
     wineName: "2018 Royal Cuvée",
-    dishName: "Purple Rice Pilaf", // Based on file name
-    description: "Sparkling Wine with Purple Rice Pilaf",
+    dishName: "Autumn Harvest Purple Rice Pilaf",
+    description: "Sparkling Wine with Autumn Harvest Purple Rice Pilaf",
     url: "https://example.com/recipe", // Update from RECIPE CARDS/Thanksgiving URLs.docx
     logoPath: "/images/logos/gloria-ferrer-logo.png",
     bottlePath: "/images/wines/gloria-ferrer-sparkling.jpg",
@@ -74,27 +74,27 @@ export const recipes: Recipe[] = [
     id: 5,
     winery: "Marimar Estate",
     wineName: "Pinot Noir",
-    dishName: "Seared Scallops", // Based on scallops image files
-    description: "Pinot Noir with Seared Scallops",
+    dishName: "Scallops with Caramelized Onions (Petxina de Pelegrí)",
+    description: "Pinot Noir with Scallops with Caramelized Onions",
     url: "https://example.com/recipe", // Update from RECIPE CARDS/Thanksgiving URLs.docx
     logoPath: "/images/logos/marimar-estate-logo.jpg",
     bottlePath: "/images/wines/marimar-estate-pinot-noir.png",
     recipePath: "/images/recipes-food/Marimar Estate Recipe.jpg",
     category: "appetizer",
-    wineType: "Pinot Noir"
-    // No PDF available
+    wineType: "Pinot Noir",
+    pdfPath: "/recipes/Marimarv2.pdf"
   },
   {
     id: 6,
     winery: "McIntyre Vineyards",
     wineName: "Pinot Gris",
-    dishName: "Your Dish Name", // Update from McIntyrev3.pdf
-    description: "Pinot Gris with Your Dish Name",
+    dishName: "Herb Marinated Lamb Chops: 'Scott Chops'",
+    description: "Pinot Gris with Herb Marinated Lamb Chops",
     url: "https://example.com/recipe", // Update from RECIPE CARDS/Thanksgiving URLs.docx
     logoPath: "/images/logos/mcintyre-logo.jpg",
     bottlePath: "/images/wines/mcintyre-pinot-gris.jpeg",
     recipePath: "/images/recipes-food/McIntyre Recipe.png",
-    category: "side",
+    category: "main",
     wineType: "Pinot Gris",
     pdfPath: "/recipes/McIntyrev3.pdf"
   },
@@ -102,13 +102,13 @@ export const recipes: Recipe[] = [
     id: 7,
     winery: "Pine Ridge Vineyards",
     wineName: "Cabernet Sauvignon NV",
-    dishName: "Your Dish Name", // Update from PineRidgev2.pdf
-    description: "Cabernet with Your Dish Name",
+    dishName: "Cranberry Fig Chutney",
+    description: "Cabernet with Cranberry Fig Chutney",
     url: "https://example.com/recipe", // Update from RECIPE CARDS/Thanksgiving URLs.docx
     logoPath: "/images/logos/pine-ridge-logo.jpeg",
     bottlePath: "/images/wines/pine-ridge-cabernet.png",
     // No recipe image available
-    category: "main",
+    category: "side",
     wineType: "Cabernet",
     pdfPath: "/recipes/PineRidgev2.pdf"
   },
@@ -116,8 +116,8 @@ export const recipes: Recipe[] = [
     id: 8,
     winery: "St. Supéry Estate",
     wineName: "2023 Dollarhide Sauvignon Blanc",
-    dishName: "Your Dish Name", // Update from StSuperyv2.pdf
-    description: "Sauvignon Blanc with Your Dish Name",
+    dishName: "Potato Pavé",
+    description: "Sauvignon Blanc with Potato Pavé",
     url: "https://example.com/recipe", // Update from RECIPE CARDS/Thanksgiving URLs.docx
     logoPath: "/images/logos/st-supery-logo.png",
     bottlePath: "/images/wines/St Supery Bottle.png",
@@ -130,7 +130,7 @@ export const recipes: Recipe[] = [
     id: 9,
     winery: "The Vice Napa Valley",
     wineName: "2022 Carneros Pinot Noir",
-    dishName: "Truffle Gemelli", // Based on docx file name
+    dishName: "Truffle Gemelli with Parmesan & Corn Béchamel",
     description: "Pinot Noir with Truffle Gemelli",
     url: "https://example.com/recipe", // Update from RECIPE CARDS/Thanksgiving URLs.docx or Vicev2.pdf
     logoPath: "/images/logos/the-vice-logo.png",
