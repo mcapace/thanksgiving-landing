@@ -61,7 +61,7 @@ export default function IntroSection() {
                 src="/images/giveaway/prize-package.jpg"
                 alt="Hestan Culinary Prize Package"
                 fill
-                className="object-cover object-[center_65%]"
+                className="object-cover object-[58%_60%]"
                 sizes="(max-width: 1024px) 100vw, 50vw"
               />
             </div>
