@@ -1,41 +1,16 @@
 "use client";
 
 import { motion, useInView } from "framer-motion";
-import { useRef, useEffect, useState } from "react";
+import { useRef } from "react";
 import Link from "next/link";
-import Script from "next/script";
 
 export default function SweepstakesSection() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
-  const [scriptLoaded, setScriptLoaded] = useState(false);
-
-  useEffect(() => {
-    // Check if widget loaded after script loads
-    if (scriptLoaded) {
-      console.log('Viral Sweeps script loaded');
-      // Try to reinitialize if needed
-      if (typeof window !== 'undefined') {
-        const win = window as typeof window & { vrlswp?: { init: () => void } };
-        if (win.vrlswp) {
-          win.vrlswp.init();
-        }
-      }
-    }
-  }, [scriptLoaded]);
 
   return (
-    <>
-      {/* Load Viral Sweeps Script */}
-      <Script
-        src="https://app.viralsweep.com/vrlswp.js"
-        strategy="lazyOnload"
-        onLoad={() => setScriptLoaded(true)}
-        onError={(e) => console.error('Failed to load Viral Sweeps script:', e)}
-      />
-      
-      <section id="sweepstakes" ref={ref} className="bg-white py-12 sm:py-16 lg:py-20">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="sweepstakes" ref={ref} className="bg-white py-12 sm:py-16 lg:py-20">
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
@@ -56,29 +31,24 @@ export default function SweepstakesSection() {
             {/* Inner White Container */}
             <div className="bg-white rounded-lg p-4 sm:p-6">
               {/* ============================================ */}
-              {/* VIRAL SWEEPS EMBED - REPLACE PROMOTION ID    */}
+              {/* VIRAL SWEEPS IFRAME EMBED                    */}
               {/* ============================================ */}
               
-              {/* Viral Sweeps Widget - Promotion ID: 216011 */}
-              <div 
-                className="vrlps-container" 
-                data-promotion-id="216011"
-                data-background-color="#ffffff"
-                data-text-color="#1c1917"
-                data-primary-color="#8B2332"
-                data-button-color="#8B2332"
-                data-button-text-color="#ffffff"
-              >
-                {/* Fallback content while widget loads */}
-                <div className="min-h-[500px] flex items-center justify-center">
-                  <div className="text-center space-y-4">
-                    <div className="animate-pulse space-y-3">
-                      <div className="h-8 bg-stone-200 rounded w-3/4 mx-auto"></div>
-                      <div className="h-4 bg-stone-200 rounded w-1/2 mx-auto"></div>
-                    </div>
-                    <p className="text-stone-500 text-sm mt-6">Loading sweepstakes entry form...</p>
-                  </div>
-                </div>
+              {/* Viral Sweeps iframe - Promotion ID: 216011 */}
+              <div className="w-full">
+                <iframe
+                  src="https://app.viralsweep.com/promotions/full/216011"
+                  frameBorder="0"
+                  scrolling="auto"
+                  className="w-full min-h-[800px] border-0 rounded-lg"
+                  title="Wine Spectator x Hestan Thanksgiving Sweepstakes"
+                  loading="lazy"
+                  style={{
+                    border: 'none',
+                    overflow: 'hidden',
+                    width: '100%',
+                  }}
+                />
               </div>
               
               {/* ============================================ */}
@@ -102,7 +72,6 @@ export default function SweepstakesSection() {
         </motion.div>
       </div>
     </section>
-    </>
   );
 }
 
