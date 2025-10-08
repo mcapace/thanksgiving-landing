@@ -8,7 +8,7 @@ export default function SweepstakesSection() {
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <section id="sweepstakes" ref={ref} className="bg-white py-16 sm:py-20 lg:py-24">
+    <section id="sweepstakes" ref={ref} className="bg-white py-12 sm:py-16 lg:py-20">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -16,7 +16,7 @@ export default function SweepstakesSection() {
           transition={{ duration: 0.8 }}
         >
           {/* Section Title */}
-          <h2 className="font-serif text-4xl sm:text-5xl font-light text-stone-900 text-center mb-8">
+          <h2 className="font-serif text-3xl sm:text-4xl font-light text-stone-900 text-center mb-6 tracking-tight">
             Enter the Sweepstakes
           </h2>
 

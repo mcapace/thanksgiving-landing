@@ -11,16 +11,16 @@ export default function IntroSection() {
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <section ref={ref} className="bg-stone-50 py-16 sm:py-20 lg:py-24">
+    <section ref={ref} className="bg-stone-50 py-12 sm:py-16 lg:py-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Headline */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
           transition={{ duration: 0.8 }}
-          className="text-center mb-12"
+          className="text-center mb-10"
         >
-          <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-light text-stone-900">
+          <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-light text-stone-900 tracking-tight">
             Recipes & Pairings from Renowned Wineries
           </h2>
         </motion.div>
@@ -33,12 +33,12 @@ export default function IntroSection() {
             transition={{ duration: 0.8 }}
             className="space-y-6"
           >
-            <p className="text-lg sm:text-xl text-stone-800 leading-relaxed">
-              From turkey to sides and festive favorites, these <strong className="font-semibold">recipes and wine pairings</strong> are curated to complement one another. Inspire tradition, spark conversation, 
+            <p className="text-base sm:text-lg text-stone-700 leading-relaxed">
+              From turkey to sides and festive favorites, these <strong className="font-semibold text-stone-900">recipes and wine pairings</strong> are curated to complement one another. Inspire tradition, spark conversation, 
               and make your Thanksgiving unforgettable by bringing the flavors of wine 
               country straight to your table.
             </p>
-            <p className="text-lg sm:text-xl text-stone-800 leading-relaxed">
+            <p className="text-base sm:text-lg text-stone-700 leading-relaxed">
               Save and share recipes individually, or drop your email below to receive 
               the complete recipe book and be automatically entered to win a Hestan 
               Culinary Cookware Set including:

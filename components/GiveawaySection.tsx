@@ -16,7 +16,7 @@ export default function GiveawaySection() {
   };
 
   return (
-    <section id="giveaway" ref={ref} className="bg-stone-50 py-16 sm:py-20 lg:py-24">
+    <section id="giveaway" ref={ref} className="bg-stone-50 py-12 sm:py-16 lg:py-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
           {/* Left Column - Text Content */}
@@ -26,10 +26,10 @@ export default function GiveawaySection() {
             transition={{ duration: 0.8 }}
             className="space-y-6 lg:order-1"
           >
-            <h2 className="font-serif text-4xl sm:text-5xl lg:text-5xl font-light text-stone-900 leading-tight">
+            <h2 className="font-serif text-3xl sm:text-4xl lg:text-4xl font-light text-stone-900 leading-tight tracking-tight">
               Enter to Win a Hestan Holiday Prize Package
             </h2>
-            <p className="text-lg sm:text-xl text-stone-700 leading-relaxed">
+            <p className="text-base sm:text-lg text-stone-700 leading-relaxed">
               Elevate your holiday cooking with professional-grade tools from Hestan. 
               Enter for a chance to win a Polished Roaster, a Hedley & Bennett Chef Apron, 
               and a 3-Piece Mixing Bowl Set—a prize package valued at over $460.

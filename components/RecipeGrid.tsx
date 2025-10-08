@@ -15,19 +15,19 @@ export default function RecipeGrid() {
   }, []);
 
   return (
-    <section id="recipes" ref={ref} className="bg-white py-16 sm:py-20 lg:py-24">
+    <section id="recipes" ref={ref} className="bg-white py-12 sm:py-16 lg:py-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
           transition={{ duration: 0.8 }}
-          className="text-center mb-16"
+          className="text-center mb-12"
         >
-          <h2 className="font-serif text-4xl sm:text-5xl lg:text-6xl font-light text-stone-900 mb-4">
+          <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-light text-stone-900 mb-3 tracking-tight">
             Wine Country Recipes
           </h2>
-          <p className="text-xl sm:text-2xl text-stone-600 font-light max-w-3xl mx-auto">
+          <p className="text-lg sm:text-xl text-stone-600 font-light max-w-3xl mx-auto">
             Nine curated pairings to elevate your Thanksgiving table—each wine perfectly matched with a festive dish
           </p>
         </motion.div>

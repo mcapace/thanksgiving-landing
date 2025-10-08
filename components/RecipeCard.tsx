@@ -37,8 +37,8 @@ export default function RecipeCard({ recipe, index }: RecipeCardProps) {
       className="group bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-300 hover:-translate-y-1 flex flex-col"
     >
       {/* Header with Logo */}
-      <div className="bg-gradient-to-br from-stone-50 to-white p-4 border-b border-stone-100">
-        <div className="relative w-full max-w-[140px] h-14 mx-auto">
+      <div className="bg-gradient-to-br from-stone-50 to-white p-3 border-b border-stone-100">
+        <div className="relative w-full max-w-[140px] h-12 mx-auto">
           <Image
             src={recipe.logoPath}
             alt={`${recipe.winery} logo`}
@@ -54,7 +54,7 @@ export default function RecipeCard({ recipe, index }: RecipeCardProps) {
       </div>
 
       {/* Wine Bottle / Recipe Flip Section */}
-      <div className="relative h-96 overflow-hidden bg-gradient-to-br from-amber-50/50 via-stone-50 to-red-50/30">
+      <div className="relative h-80 overflow-hidden bg-gradient-to-br from-amber-50/50 via-stone-50 to-red-50/30">
         {/* Artistic Background Elements */}
         <div className="absolute inset-0">
           {/* Soft radial glows */}
@@ -133,13 +133,13 @@ export default function RecipeCard({ recipe, index }: RecipeCardProps) {
       </div>
 
       {/* Content Section */}
-      <div className="p-6 flex-1 flex flex-col bg-gradient-to-b from-white to-stone-50/30">
+      <div className="p-5 flex-1 flex flex-col bg-gradient-to-b from-white to-stone-50/30">
         {/* Wine Info */}
-        <div className="mb-6">
-          <h3 className="font-serif text-2xl font-semibold text-stone-900 mb-1 leading-tight">
+        <div className="mb-4">
+          <h3 className="font-serif text-xl font-semibold text-stone-900 mb-1 leading-tight">
             {recipe.dishName}
           </h3>
-          <p className="text-sm text-stone-600 font-medium">
+          <p className="text-sm text-stone-600 font-medium leading-snug">
             {recipe.wineName}
           </p>
         </div>
@@ -169,12 +169,12 @@ export default function RecipeCard({ recipe, index }: RecipeCardProps) {
           )}
           
           {/* Winery Website Link */}
-          <div className="mt-3 text-center">
+          <div className="mt-2.5 text-center">
             <a
               href={recipe.url}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-xs text-stone-600 hover:text-red-900 transition-colors underline decoration-stone-300 hover:decoration-red-900"
+              className="text-xs text-stone-600 hover:text-red-900 transition-colors underline decoration-stone-300 hover:decoration-red-900 font-medium"
             >
               Visit {recipe.winery}
             </a>
