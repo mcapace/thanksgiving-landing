@@ -26,7 +26,7 @@ export const recipes: Recipe[] = [
     recipePath: "/images/recipes-food/King Estate Recipe.jpg",
     category: "appetizer",
     wineType: "Pinot Noir",
-    pdfPath: "/recipes/KingEstatev1.pdf"
+    pdfPath: "/recipes/KingEstatev1-fullclick.pdf"
   },
   {
     id: 2,
@@ -40,7 +40,7 @@ export const recipes: Recipe[] = [
     recipePath: "/images/recipes-food/Calcareous Recipe.jpg",
     category: "side",
     wineType: "Pinot Noir",
-    pdfPath: "/recipes/Calcareousv2.pdf"
+    pdfPath: "/recipes/Calcareousv2-fullclick.pdf"
   },
   {
     id: 3,
@@ -54,7 +54,7 @@ export const recipes: Recipe[] = [
     recipePath: "/images/recipes-food/Gloria Ferrer Recipe.png",
     category: "side",
     wineType: "Other",
-    pdfPath: "/recipes/GloriaFerrerv1.pdf"
+    pdfPath: "/recipes/GloriaFerrerv1-fullclick.pdf"
   },
   {
     id: 4,
@@ -82,7 +82,7 @@ export const recipes: Recipe[] = [
     recipePath: "/images/recipes-food/Marimar Estate Recipe.jpg",
     category: "appetizer",
     wineType: "Pinot Noir",
-    pdfPath: "/recipes/Marimarv2.pdf"
+    pdfPath: "/recipes/Marimarv2-fullclick.pdf"
   },
   {
     id: 6,
@@ -96,7 +96,7 @@ export const recipes: Recipe[] = [
     recipePath: "/images/recipes-food/McIntyre Recipe.png",
     category: "main",
     wineType: "Pinot Gris",
-    pdfPath: "/recipes/McIntyrev3.pdf"
+    pdfPath: "/recipes/McIntyrev3-fullclick.pdf"
   },
   {
     id: 7,
@@ -110,7 +110,7 @@ export const recipes: Recipe[] = [
     recipePath: "/images/recipes-food/Pine Ridge Recipe.jpg",
     category: "side",
     wineType: "Cabernet",
-    pdfPath: "/recipes/PineRidgev2.pdf"
+    pdfPath: "/recipes/PineRidgev2-fullclick.pdf"
   },
   {
     id: 8,
@@ -124,7 +124,7 @@ export const recipes: Recipe[] = [
     recipePath: "/images/recipes-food/St Supery Recipe.jpg",
     category: "side",
     wineType: "Other",
-    pdfPath: "/recipes/StSuperyv2.pdf"
+    pdfPath: "/recipes/StSuperyv2-fullclick.pdf"
   },
   {
     id: 9,
@@ -138,7 +138,7 @@ export const recipes: Recipe[] = [
     recipePath: "/images/recipes-food/The Vice Recipe.jpg",
     category: "side",
     wineType: "Pinot Noir",
-    pdfPath: "/recipes/Vicev2.pdf"
+    pdfPath: "/recipes/Vicev2-fullclick.pdf"
   }
 ];
 
