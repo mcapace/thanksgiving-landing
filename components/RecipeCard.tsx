@@ -94,7 +94,7 @@ export default function RecipeCard({ recipe, index }: RecipeCardProps) {
                     recipe.bottlePath.endsWith('.jpg') || recipe.bottlePath.endsWith('.jpeg')
                       ? 'wine-bottle-blend'
                       : ''
-                  } ${recipe.winery === 'The Vice Napa Valley' ? 'scale-150' : ''}`}
+                  } ${recipe.winery === 'The Vice Napa Valley' ? 'scale-150' : ''} ${recipe.winery === 'Hestan Vineyards' ? 'scale-125' : ''}`}
                   sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
                 />
               </motion.div>
