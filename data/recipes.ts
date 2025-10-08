@@ -120,7 +120,7 @@ export const recipes: Recipe[] = [
     description: "Sauvignon Blanc with Your Dish Name",
     url: "https://example.com/recipe", // Update from RECIPE CARDS/Thanksgiving URLs.docx
     logoPath: "/images/logos/st-supery-logo.png",
-    bottlePath: "/images/wines/st-supery-sauvignon-blanc.png",
+    bottlePath: "/images/wines/St Supery Bottle.png",
     recipePath: "/images/recipes-food/St Supery Recipe.jpg",
     category: "side",
     wineType: "Other",
