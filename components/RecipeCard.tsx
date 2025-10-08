@@ -231,17 +231,17 @@ export default function RecipeCard({ recipe, index }: RecipeCardProps) {
             <a
               href={recipe.pdfPath}
               download
-              className="inline-flex items-center justify-center gap-2 bg-red-900 text-white px-4 py-3 rounded-lg hover:bg-red-950 transition-all duration-300 font-semibold text-sm hover:gap-3 shadow-md hover:shadow-lg"
+              className="inline-flex items-center justify-center gap-2 bg-red-900 text-white px-3 py-3 rounded-lg hover:bg-red-950 transition-all duration-300 font-semibold text-xs hover:gap-3 shadow-md hover:shadow-lg whitespace-nowrap"
             >
               <Download className="w-4 h-4" />
-              Download Recipe
+              Download
             </a>
           ) : (
             <a
               href={recipe.url}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center justify-center gap-2 bg-red-900 text-white px-4 py-3 rounded-lg hover:bg-red-950 transition-all duration-300 font-semibold text-sm hover:gap-3 shadow-md hover:shadow-lg"
+              className="inline-flex items-center justify-center gap-2 bg-red-900 text-white px-3 py-3 rounded-lg hover:bg-red-950 transition-all duration-300 font-semibold text-xs hover:gap-3 shadow-md hover:shadow-lg whitespace-nowrap"
             >
               View Recipe
               <ExternalLink className="w-4 h-4" />
@@ -250,7 +250,7 @@ export default function RecipeCard({ recipe, index }: RecipeCardProps) {
           
           <button
             onClick={handleEmailRecipe}
-            className="inline-flex items-center justify-center gap-2 bg-amber-600 text-white px-4 py-3 rounded-lg hover:bg-amber-700 transition-all duration-300 font-semibold text-sm shadow-md hover:shadow-lg"
+            className="inline-flex items-center justify-center gap-2 bg-amber-600 text-white px-3 py-3 rounded-lg hover:bg-amber-700 transition-all duration-300 font-semibold text-xs shadow-md hover:shadow-lg whitespace-nowrap"
           >
             <Mail className="w-4 h-4" />
             Email Recipe
