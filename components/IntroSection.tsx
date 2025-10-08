@@ -33,6 +33,9 @@ export default function IntroSection() {
             transition={{ duration: 0.8 }}
             className="space-y-6"
           >
+            <h3 className="font-sans text-xl sm:text-2xl font-bold text-stone-900 tracking-tight">
+              Your Holiday Feast Begins with a Chance to Win
+            </h3>
             <p className="text-base sm:text-lg text-stone-700 leading-relaxed">
               From turkey to sides and festive favorites, these <strong className="font-semibold text-stone-900">recipes and wine pairings</strong> are curated to complement one another. Inspire tradition, spark conversation, 
               and make your Thanksgiving unforgettable by bringing the flavors of wine 
