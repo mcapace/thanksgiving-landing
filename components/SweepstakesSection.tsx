@@ -45,10 +45,10 @@ export default function SweepstakesSection() {
               {/* VIRAL SWEEPS EMBED - REPLACE PROMOTION ID    */}
               {/* ============================================ */}
               
-              {/* Replace 'YOUR_PROMOTION_ID' below with your actual Viral Sweeps promotion ID */}
+              {/* Viral Sweeps Widget - Promotion ID: 216011 */}
               <div 
                 className="vrlps-container" 
-                data-promotion-id="YOUR_PROMOTION_ID"
+                data-promotion-id="216011"
                 data-background-color="#ffffff"
                 data-text-color="#1c1917"
                 data-primary-color="#8B2332"
