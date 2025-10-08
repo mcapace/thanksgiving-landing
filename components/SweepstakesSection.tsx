@@ -1,11 +1,23 @@
 "use client";
 
 import { motion, useInView } from "framer-motion";
-import { useRef } from "react";
+import { useRef, useEffect } from "react";
+import Link from "next/link";
 
 export default function SweepstakesSection() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
+
+  // Load Viral Sweeps script
+  useEffect(() => {
+    // Add Viral Sweeps script if it doesn't exist
+    if (!document.querySelector('script[src*="viralsweep"]')) {
+      const script = document.createElement('script');
+      script.src = 'https://app.viralsweep.com/vrlswp.js';
+      script.async = true;
+      document.body.appendChild(script);
+    }
+  }, []);
 
   return (
     <section id="sweepstakes" ref={ref} className="bg-white py-12 sm:py-16 lg:py-20">
@@ -17,27 +29,41 @@ export default function SweepstakesSection() {
         >
           {/* Section Title */}
           <h2 className="font-serif text-3xl sm:text-4xl font-light text-stone-900 text-center mb-6 tracking-tight">
-            Enter the Sweepstakes
+            Enter to Win
           </h2>
+
+          {/* Subtitle */}
+          <p className="text-center text-stone-600 mb-8 text-lg">
+            Enter for your chance to win a Hestan Culinary Holiday Prize Package valued at $464.90
+          </p>
 
           {/* Card Container */}
           <div className="bg-stone-50 rounded-xl shadow-lg p-6 sm:p-8">
             {/* Inner White Container */}
-            <div className="bg-white rounded-lg p-8">
-              {/* Placeholder for Viral Sweeps Embed */}
+            <div className="bg-white rounded-lg p-4 sm:p-6">
               {/* ============================================ */}
-              {/* PASTE YOUR VIRAL SWEEPS EMBED CODE BELOW    */}
+              {/* VIRAL SWEEPS EMBED - REPLACE PROMOTION ID    */}
               {/* ============================================ */}
               
-              <div className="min-h-[500px] border-2 border-dashed border-stone-300 rounded-lg flex flex-col items-center justify-center text-center p-8">
-                <div className="space-y-4">
-                  <p className="text-xl font-semibold text-stone-700">
-                    Viral Sweeps Embed Code Goes Here
-                  </p>
-                  <p className="text-sm text-stone-500 max-w-md">
-                    Replace this div with your actual Viral Sweeps embed code. 
-                    Remove the placeholder div and paste your embed script directly in this location.
-                  </p>
+              {/* Replace 'YOUR_PROMOTION_ID' below with your actual Viral Sweeps promotion ID */}
+              <div 
+                className="vrlps-container" 
+                data-promotion-id="YOUR_PROMOTION_ID"
+                data-background-color="#ffffff"
+                data-text-color="#1c1917"
+                data-primary-color="#8B2332"
+                data-button-color="#8B2332"
+                data-button-text-color="#ffffff"
+              >
+                {/* Fallback content while widget loads */}
+                <div className="min-h-[500px] flex items-center justify-center">
+                  <div className="text-center space-y-4">
+                    <div className="animate-pulse space-y-3">
+                      <div className="h-8 bg-stone-200 rounded w-3/4 mx-auto"></div>
+                      <div className="h-4 bg-stone-200 rounded w-1/2 mx-auto"></div>
+                    </div>
+                    <p className="text-stone-500 text-sm mt-6">Loading sweepstakes entry form...</p>
+                  </div>
                 </div>
               </div>
               
@@ -46,14 +72,17 @@ export default function SweepstakesSection() {
               {/* ============================================ */}
             </div>
 
-            {/* Footer Link */}
-            <div className="mt-6 text-center">
-              <a
-                href="#"
-                className="text-sm text-stone-600 hover:text-stone-900 underline transition-colors duration-200"
+            {/* Campaign Info */}
+            <div className="mt-6 text-center space-y-2">
+              <p className="text-sm text-stone-600">
+                Campaign runs from <strong>October 14 - December 14, 2025</strong>
+              </p>
+              <Link
+                href="/official-rules"
+                className="inline-block text-sm text-wine-red hover:text-red-900 underline transition-colors duration-200 font-medium"
               >
-                Official Rules & Terms
-              </a>
+                View Official Rules & Terms
+              </Link>
             </div>
           </div>
         </motion.div>
