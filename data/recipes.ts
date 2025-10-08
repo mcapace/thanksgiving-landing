@@ -92,7 +92,7 @@ export const recipes: Recipe[] = [
     description: "McIntyre Family Pinot Noir with Herb Marinated Lamb Chops",
     url: "https://www.mcintyrevineyards.com/",
     logoPath: "/images/logos/mcintyre-logo.jpg",
-    bottlePath: "/images/wines/mcintyre-pinot-gris.jpeg",
+    bottlePath: "/images/wines/McIntyre_bottle-1.png",
     recipePath: "/images/recipes-food/McIntyre Recipe.png",
     category: "main",
     wineType: "Pinot Gris",
