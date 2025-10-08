@@ -64,7 +64,7 @@ export const recipes: Recipe[] = [
     description: "Cabernet with Roasted Turkey",
     url: "https://www.hestanvineyards.com/",
     logoPath: "/images/logos/hestan-vineyards-logo.jpg",
-    bottlePath: "/images/wines/hestan-cabernet.jpg",
+    bottlePath: "/images/wines/hestan-cabernet-transparent.png",
     recipePath: "/images/recipes-food/Hestan Recipe.png",
     category: "main",
     wineType: "Cabernet"
