@@ -60,23 +60,23 @@ def create_link_overlay(url, winery_name, page_width, page_height):
     packet = BytesIO()
     can = canvas.Canvas(packet, pagesize=(page_width, page_height))
     
-    # Button positioning (bottom center of page)
-    button_width = 300
-    button_height = 40
-    button_x = (page_width - button_width) / 2
-    button_y = 30  # 30 points from bottom
+    # Button positioning (top right corner, away from logos)
+    button_width = 180
+    button_height = 35
+    button_x = page_width - button_width - 20  # 20 points from right edge
+    button_y = page_height - button_height - 20  # 20 points from top
     
-    # Draw button background (wine red color)
+    # Draw button background (wine red color with slight transparency effect)
     can.setFillColor(HexColor('#8B2332'))
-    can.roundRect(button_x, button_y, button_width, button_height, 8, fill=1, stroke=0)
+    can.roundRect(button_x, button_y, button_width, button_height, 6, fill=1, stroke=0)
     
     # Add text
     can.setFillColor(HexColor('#FFFFFF'))
-    can.setFont("Helvetica-Bold", 12)
-    text = f"Visit {winery_name} Website"
-    text_width = can.stringWidth(text, "Helvetica-Bold", 12)
+    can.setFont("Helvetica-Bold", 10)
+    text = f"Visit Winery →"
+    text_width = can.stringWidth(text, "Helvetica-Bold", 10)
     text_x = button_x + (button_width - text_width) / 2
-    text_y = button_y + (button_height - 12) / 2 + 2
+    text_y = button_y + (button_height - 10) / 2 + 2
     can.drawString(text_x, text_y, text)
     
     # Add clickable link

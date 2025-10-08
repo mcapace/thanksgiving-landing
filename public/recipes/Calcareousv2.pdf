@@ -39,14 +39,29 @@ endobj
 /T1_4 25 0 R
 /F1 29 0 R
 /F2 30 0 R
+/F179e80ac4-5f0d-4138-b2e7-300c642605ca <<
+/BaseFont /Helvetica
+/Encoding /WinAnsiEncoding
+/Name /F1
+/Subtype /Type1
+/Type /Font
+>>
+/F254c26db5-9861-48ba-92c4-432f02cb2af3 <<
+/BaseFont /Helvetica-Bold
+/Encoding /WinAnsiEncoding
+/Name /F2
+/Subtype /Type1
+/Type /Font
+>>
+/F3 33 0 R
 >>
 /XObject <<
-/Im0 31 0 R
-/Im1 33 0 R
-/Im2 35 0 R
-/Im3 37 0 R
+/Im0 34 0 R
+/Im1 36 0 R
+/Im2 38 0 R
+/Im3 40 0 R
 >>
-/ProcSet [ /Text /ImageC /ImageB /ImageI /PDF ]
+/ProcSet [ /ImageB /PDF /Text /ImageI /ImageC ]
 >>
 /Rotate 0
 /TrimBox [ 0 0 612 792 ]
@@ -107,15 +122,16 @@ endobj
 >>
 >>
 >>
-/Annots [ 41 0 R ]
+/Annots [ 44 0 R 45 0 R ]
 /Parent 1 0 R
 >>
 endobj
 5 0 obj
 <<
-/Length 21634
+/Length 22171
 >>
 stream
+q
 q
 /Artifact <<
 /BBox [ 400.5 75 401.5 731.5 ]
@@ -1476,6 +1492,45 @@ BT
 T*
 ET
 Q
+Q
+q
+0 0 612 792 re
+W
+n
+1 0 0 1 0 0 cm
+BT
+/F179e80ac4-5f0d-4138-b2e7-300c642605ca 12 Tf
+14.4 TL
+ET
+0.545098 0.137255 0.196078 rg
+n
+418 737 m
+586 737 l
+589.3168 737 592 739.6832 592 743 c
+592 766 l
+592 769.3168 589.3168 772 586 772 c
+418 772 l
+414.6832 772 412 769.3168 412 766 c
+412 743 l
+412 739.6832 414.6832 737 418 737 c
+h
+f*
+1 1 1 rg
+BT
+/F254c26db5-9861-48ba-92c4-432f02cb2af3 10 Tf
+12 TL
+ET
+BT
+1 0 0 1 467.055 751.5 Tm
+(Visit\040Winery\040) Tj
+/F3 10 Tf
+12 TL
+(\256) Tj
+/F254c26db5-9861-48ba-92c4-432f02cb2af3 10 Tf
+12 TL
+T*
+ET
+Q
 
 endstream
 endobj
@@ -1915,12 +1970,38 @@ endobj
 endobj
 31 0 obj
 <<
+/BaseFont /Helvetica
+/Encoding /WinAnsiEncoding
+/Name /F1
+/Subtype /Type1
+/Type /Font
+>>
+endobj
+32 0 obj
+<<
+/BaseFont /Helvetica-Bold
+/Encoding /WinAnsiEncoding
+/Name /F2
+/Subtype /Type1
+/Type /Font
+>>
+endobj
+33 0 obj
+<<
+/BaseFont /Symbol
+/Name /F3
+/Subtype /Type1
+/Type /Font
+>>
+endobj
+34 0 obj
+<<
 /BitsPerComponent 8
 /ColorSpace /DeviceRGB
 /Filter /DCTDecode
 /Height 779
 /Intent /RelativeColorimetric
-/Metadata 32 0 R
+/Metadata 35 0 R
 /Name /X
 /Subtype /Image
 /Type /XObject
@@ -2918,7 +2999,7 @@ cRµ50C.@<£f^ıµf¨€¢¥ºÕÒ b’?DBp9_çÕ59YòÒÓµT`Æ›
 ñ°SSË· †X–H¶»ô|k½ ‘+’ò&êìÆ«DG€ƒ*˜ıPª1Ù«$(AÊÇØò:×îJPäÓEuòÒ&<•W,(9ÇluMåL°.¡¤8¾D .ÓöëÈ^£V±™OåunCØã®õÙ^¨B"ÕTMOQÊh¤İ‰\O¦~ jR2£mmqGl«ğTÈP= Ç°ô÷×µÿÙ
 endstream
 endobj
-32 0 obj
+35 0 obj
 <<
 /Subtype /XML
 /Type /Metadata
@@ -2942,7 +3023,7 @@ stream
 
 endstream
 endobj
-33 0 obj
+36 0 obj
 <<
 /BitsPerComponent 8
 /ColorSpace /DeviceRGB
@@ -2950,7 +3031,7 @@ endobj
 /Height 957
 /Intent /RelativeColorimetric
 /Name /X
-/SMask 34 0 R
+/SMask 37 0 R
 /Subtype /Image
 /Type /XObject
 /Width 295
@@ -3075,7 +3156,7 @@ qpÌ×¿y¨)Ğ]´\Ş„_Üç`NôÛû"l¸Ú™ ‰¿šƒ«x—\ ÿ B•ÅG2×mfİ¬ºPu#Í>İsı—
 ı;Äªyö)ü"D¸,<'­©šBev1Vá¿ŞS£À.èµğN¶Sşo|¬ÕN¹ª¬|··AK¢æÑ¾£Hh«špıYà­‘»Ÿ%$wšàUK|`:£º,ĞÜ#£¡ [Ş=;#Ëá +§dZÖË™ØÈ?@²ÔÿÖÏ¾=^»ıe´3ÎìSÜª	ãÕë¿Ö[C<îÅ=Ê =^»ıe´3ÎìSÜª	ãÕë¿Ö[C<îÅ=Ê =^»ıe´3ÎìSÜªzõZî;ôWC<îÅ=Ê =V»ıet3ÎüSÜªÁ×©×p$ĞÌşÉØ§¹TÇ©×w¬®†yİŠ{•Aøzõî&şí]ó»÷*ƒ÷Ç©×w¬®†yßŠ{•A^§]ÄÜè®†Àv)îUçQ®ïY]ó»÷*jş¼z­wúËhgØ§¹Tpüñêußë-¡wâåR"½V»ÏÂ[C<ïÅ=Ê®( ëÕk¼|%´7ÎüSÜªP~øõzïõ–ĞÏ;±Or©A<z½wúËhgØ§¹T =V»ıe´3ÎüSÜªPO«]ş²Úç~)îU('W®ÿ Ymó¿÷*”Çª×¬¶†yİŠ{•J	ãÕk¿Ö[C<îÅ=Ê¥ñêµßë-¡wb~åW0=N»ÂWC<îÄıÊ =V»ıe´3ÎìSÜªÓ×ª×qß¢ºçv)îUò:õîmí¢Úç~)îUñê5ßÇE´4şñOr«šß«]Ãá+¡wbåW÷Çª×}ïîÕĞÏ;ñOr¨'U®ÿ Ymó»÷*‚xõzïõ–ĞÏ;±Or¨'W®ÿ Ymó»÷*‚xõzïõ–ĞÏ;±Or¨'W®ÿ Ymó»÷*ƒÿÙ
 endstream
 endobj
-34 0 obj
+37 0 obj
 <<
 /BitsPerComponent 8
 /ColorSpace /DeviceGray
@@ -3097,7 +3178,7 @@ stream
 H‰ìÁ1   õ/íJø	$                                                                                                                                                                                                                                                                                À¤ƒš` à—p¼
 endstream
 endobj
-35 0 obj
+38 0 obj
 <<
 /BitsPerComponent 8
 /ColorSpace /DeviceRGB
@@ -3105,7 +3186,7 @@ endobj
 /Height 130
 /Intent /RelativeColorimetric
 /Name /X
-/SMask 36 0 R
+/SMask 39 0 R
 /Subtype /Image
 /Type /XObject
 /Width 328
@@ -3186,7 +3267,7 @@ RæB€ GqêÏ­S–9 € € € € € € €4Ö !ˆbHJ'¨O.úÅZ0>·V^ZùE62¦@¤WÀ¤Ÿ´"fÁŸ-
 p ß#1_<e©Í-™1\»i™è–D[wè¥7š¶<Ù"Me„.Êˆ…sÅL(¥ª¶ı©öòÎh`´¤Î·N=“³m«T–kg¥•ÀM&ˆÛéHÊ*HÊY!™…Â^«SÚ[5=ï¤ ) PÌ…>,Ye'!ÔmUPÈæGy( #r­!ºÁÌ	8ÄF¡82³”ä”‡2%…BÔtcÈL†ÜÓZd3t‚P!LÄ€€ € € € € € € € € €\ñ«J$Ôâ5qÉ¡X`q…GR”ÔŠpiUë^ÁjŠÌ[ª#´Ò!¸Påz²êYÙzÜ”TİÔ¶I°Bºh…%w\†e–ÖD%ZV¨©ÚÈò!ÄÿÙ
 endstream
 endobj
-36 0 obj
+39 0 obj
 <<
 /BitsPerComponent 8
 /ColorSpace /DeviceGray
@@ -3213,7 +3294,7 @@ stream
 Ù5ZjZùVÉªÓR×ÈØ‚¶MVš–¾FÄ²j´Ôµò6 ­“U¦¥¯‘±lš­5-|ˆ+dÕi©kälA[&«MK_#b2B›&¬æF’R×ÈØÿÙ
 endstream
 endobj
-37 0 obj
+40 0 obj
 <<
 /BitsPerComponent 8
 /ColorSpace /DeviceRGB
@@ -3225,9 +3306,9 @@ endobj
 /Filter /FlateDecode
 /Height 95
 /Intent /RelativeColorimetric
-/Metadata 38 0 R
+/Metadata 41 0 R
 /Name /X
-/SMask 39 0 R
+/SMask 42 0 R
 /Subtype /Image
 /Type /XObject
 /Width 419
@@ -3266,7 +3347,7 @@ Gì?o™Ú§EÛèNşñúµûèˆ=mâ™A¿£Ø >şõwØ4W´&²-ßdJâ¥êì c¿zu„Gê•7udéó¼”šR:|·x›
 åo‚Í)ñÎl@. #ÎÍMƒütú.øœ_Å]Ÿf‹/±VqÇï,¥µºp%%¥'­±ÿ%jŞ›eß¤‡ß A†°44“Å)•™‰W(WQ½¦—m4Øni÷5à–ÅÄ4È›Y/¶‰sz$2#×7Vˆ=3{®€VD‹r‡EÂ“/ıĞ·]‹’’ÒÁŠƒ-—fÙÔÑ«ï›ù/)ú¥ÛÊuÜÒÀ™í„d½ˆ«úT–ékI{9)¢^‘€œ[ˆâzá³ºõ·­H«¤¤tÈJOOQÇİI„%ÜU~×`Â…	Ä…6ûq[Ä-$æU$xøìíç÷d/A6Ä”¾´ÖŠ¦=ãF¢o×Å())°BÛˆ3‚ˆ E `â‘ï";40Á„ÈÓy÷u#C/ˆ	'‹¸F#1CçMääî.hÂ˜9–¶‚q¬#â¯h9ºpå””¿~¤*’à Àeİed#îÙzä0@)òÌ‘ıªÁq¹­¢‰G†ŠwXƒ‘S¿•;&Ä±XVµ³ê•ªT‹\ıÚ×mÚJJJOEWÁ­vDG–{fh±±ÃÒ÷í}'ÎMî°[T6lmC¤Ã¼±…’ÖÄŠä¢4¬ñ?Ã?ïc8%%%¥¥CˆCı¢†<öt””””š×Ÿ`ê€¸ïÚ­?ö\””””ö%İÇBNIIéù*põôŸÇÍ{"JJJJûİôÂî{"JJJJûÒ§®&lÚÚcODIIIi_–Ğ	åè”””¯ÒáËÀÑÇİÖcODIIIi_JO„­öØQRRzÂúŸ  8J8)
 endstream
 endobj
-38 0 obj
+41 0 obj
 <<
 /Subtype /XML
 /Type /Metadata
@@ -3305,7 +3386,7 @@ stream
 
 endstream
 endobj
-39 0 obj
+42 0 obj
 <<
 /BitsPerComponent 8
 /ColorSpace /DeviceGray
@@ -3317,7 +3398,7 @@ endobj
 /Filter /FlateDecode
 /Height 95
 /Intent /RelativeColorimetric
-/Metadata 40 0 R
+/Metadata 43 0 R
 /Name /X
 /Subtype /Image
 /Type /XObject
@@ -3344,7 +3425,7 @@ LQ¿2¾s]ÉÉ9y–"áïV³òXDüIxïeÑ”ó_1’D©U¾Ì.‰ÃÈºÂğ ÚÚ-<”R.©ãRjr¬ÄÛ~íöÔS¢ûnÆ?
 (r{cmÇğ-AÌÑº¿W§ğR;,TáF$Œ#¾?Û{«¦ìµ¾\» îÛ¹jÜ”Š× —ÆÓå“xeÖÑVXÓ:œ³–Qº¸»j˜zå^işÛàtËYpÜî thb¨w:´±|îth£,w:´1Lw:´Ñ¯¥ Ü!èĞÆã.ıBú?G;gn¸CĞ¡ãÎ¬p‡AøW€ ò†ä
 endstream
 endobj
-40 0 obj
+43 0 obj
 <<
 /Subtype /XML
 /Type /Metadata
@@ -3383,7 +3464,7 @@ stream
 
 endstream
 endobj
-41 0 obj
+44 0 obj
 <<
 /A <<
 /S /URI
@@ -3396,56 +3477,73 @@ endobj
 /Type /Annot
 >>
 endobj
+45 0 obj
+<<
+/A <<
+/S /URI
+/Type /Action
+/URI (https\072\057\057www\056calcareous\056com\057thanksgiving\055wine\057\077utm\137source\075winespectator\046utm\137medium\075email\046utm\137campaign\075thanksgiving)
+>>
+/Border [ 0 0 0 ]
+/Rect [ 412 737 592 772 ]
+/Subtype /Link
+/Type /Annot
+>>
+endobj
 xref
-0 42
+0 46
 0000000000 65535 f 
 0000000015 00000 n 
 0000000074 00000 n 
 0000000114 00000 n 
 0000000163 00000 n 
-0000003598 00000 n 
-0000025285 00000 n 
-0000025352 00000 n 
-0000025474 00000 n 
-0000025594 00000 n 
-0000026018 00000 n 
-0000026441 00000 n 
-0000046750 00000 n 
-0000047167 00000 n 
-0000047593 00000 n 
-0000048078 00000 n 
-0000050242 00000 n 
-0000050675 00000 n 
-0000051267 00000 n 
-0000051834 00000 n 
-0000054850 00000 n 
-0000055329 00000 n 
-0000056035 00000 n 
-0000056679 00000 n 
-0000060302 00000 n 
-0000060844 00000 n 
-0000061245 00000 n 
-0000061627 00000 n 
-0000062664 00000 n 
-0000063015 00000 n 
-0000063123 00000 n 
-0000063236 00000 n 
-0000318395 00000 n 
-0000319129 00000 n 
-0000362637 00000 n 
-0000363210 00000 n 
-0000378358 00000 n 
-0000379559 00000 n 
-0000388938 00000 n 
-0000390288 00000 n 
-0000395242 00000 n 
-0000396592 00000 n 
+0000003885 00000 n 
+0000026109 00000 n 
+0000026176 00000 n 
+0000026298 00000 n 
+0000026418 00000 n 
+0000026842 00000 n 
+0000027265 00000 n 
+0000047574 00000 n 
+0000047991 00000 n 
+0000048417 00000 n 
+0000048902 00000 n 
+0000051066 00000 n 
+0000051499 00000 n 
+0000052091 00000 n 
+0000052658 00000 n 
+0000055674 00000 n 
+0000056153 00000 n 
+0000056859 00000 n 
+0000057503 00000 n 
+0000061126 00000 n 
+0000061668 00000 n 
+0000062069 00000 n 
+0000062451 00000 n 
+0000063488 00000 n 
+0000063839 00000 n 
+0000063947 00000 n 
+0000064060 00000 n 
+0000064168 00000 n 
+0000064281 00000 n 
+0000064359 00000 n 
+0000319518 00000 n 
+0000320252 00000 n 
+0000363760 00000 n 
+0000364333 00000 n 
+0000379481 00000 n 
+0000380682 00000 n 
+0000390061 00000 n 
+0000391411 00000 n 
+0000396365 00000 n 
+0000397715 00000 n 
+0000398010 00000 n 
 trailer
 <<
-/Size 42
+/Size 46
 /Root 3 0 R
 /Info 2 0 R
 >>
 startxref
-396887
+398307
 %%EOF
