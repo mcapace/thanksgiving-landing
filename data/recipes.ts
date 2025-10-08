@@ -36,7 +36,7 @@ export const recipes: Recipe[] = [
     description: "Pinot Noir with Your Dish Name",
     url: "https://example.com/recipe", // Update from RECIPE CARDS/Thanksgiving URLs.docx
     logoPath: "/images/logos/calcareous-logo.png",
-    bottlePath: "/images/wines/calcareous-pinot-noir.png",
+    bottlePath: "/images/wines/Calcareous.png",
     recipePath: "/images/recipes-food/Calcareous Recipe.jpg",
     category: "main",
     wineType: "Pinot Noir",
