@@ -13,7 +13,7 @@ export default function SponsoredBar() {
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-center gap-2 sm:gap-3 py-2">
-          <p className="text-xs sm:text-sm text-stone-300">
+          <p className="text-xs sm:text-sm text-stone-300 font-sans">
             <span className="text-amber-50 font-medium">Sponsored by</span>
           </p>
           <a

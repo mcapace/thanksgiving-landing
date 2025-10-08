@@ -67,14 +67,14 @@ export default function Navbar() {
                 <button
                   key={link.id}
                   onClick={() => scrollToSection(link.id)}
-                  className="text-stone-700 hover:text-red-900 transition-colors duration-200 font-medium"
+                  className="text-stone-700 hover:text-red-900 transition-colors duration-200 font-sans font-medium text-sm tracking-wide"
                 >
                   {link.label}
                 </button>
               ))}
               <button
                 onClick={() => scrollToSection("sweepstakes")}
-                className="bg-red-900 text-white px-6 py-2 rounded-md hover:bg-red-950 transition-all duration-300 font-semibold shadow-md hover:shadow-lg"
+                className="bg-red-900 text-white px-6 py-2.5 rounded-md hover:bg-red-950 transition-all duration-300 font-sans font-semibold text-sm shadow-md hover:shadow-lg"
               >
                 Enter Now
               </button>
@@ -111,14 +111,14 @@ export default function Navbar() {
                 <button
                   key={link.id}
                   onClick={() => scrollToSection(link.id)}
-                  className="block w-full text-left px-4 py-3 text-stone-700 hover:bg-stone-50 hover:text-red-900 transition-colors rounded-md font-medium"
+                  className="block w-full text-left px-4 py-3 text-stone-700 hover:bg-stone-50 hover:text-red-900 transition-colors rounded-md font-sans font-medium text-sm"
                 >
                   {link.label}
                 </button>
               ))}
               <button
                 onClick={() => scrollToSection("sweepstakes")}
-                className="w-full bg-red-900 text-white px-6 py-3 rounded-md hover:bg-red-950 transition-all duration-300 font-semibold"
+                className="w-full bg-red-900 text-white px-6 py-3 rounded-md hover:bg-red-950 transition-all duration-300 font-sans font-semibold text-sm"
               >
                 Enter Now
               </button>
