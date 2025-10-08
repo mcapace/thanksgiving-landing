@@ -17,7 +17,7 @@ export const recipes: Recipe[] = [
   {
     id: 1,
     winery: "King Estate",
-    wineName: "2023 Pinot Noir",
+    wineName: "Estate Pinot Noir",
     dishName: "Roasted Squash & Apple Soup",
     description: "Pinot Noir with Roasted Squash & Apple Soup",
     url: "https://kingestate.com/recipe-for-roasted-estate-squash-and-apple-soup/",
@@ -59,7 +59,7 @@ export const recipes: Recipe[] = [
   {
     id: 4,
     winery: "Hestan Vineyards",
-    wineName: "Cabernet Sauvignon",
+    wineName: "Thomas Rivers Brown Cabernet Sauvignon",
     dishName: "Roasted Turkey",
     description: "Cabernet with Roasted Turkey",
     url: "https://www.hestanvineyards.com/",
@@ -129,7 +129,7 @@ export const recipes: Recipe[] = [
   {
     id: 9,
     winery: "The Vice Napa Valley",
-    wineName: "2022 Carneros Pinot Noir",
+    wineName: "2022 'Torie's Vineyard' Los Carneros Pinot Noir",
     dishName: "Truffle Gemelli with Parmesan & Corn Béchamel",
     description: "Pinot Noir with Truffle Gemelli",
     url: "https://www.thevicenapavalley.com/",
