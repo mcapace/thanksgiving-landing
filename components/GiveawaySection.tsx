@@ -49,12 +49,12 @@ export default function GiveawaySection() {
             transition={{ duration: 0.8, delay: 0.2 }}
             className="lg:order-2"
           >
-            <div className="relative h-[400px] sm:h-[500px] lg:h-[550px] rounded-2xl overflow-hidden shadow-2xl bg-stone-50">
+            <div className="relative h-[350px] sm:h-[400px] lg:h-[420px] rounded-2xl overflow-hidden shadow-2xl">
               <Image
                 src="/images/giveaway/prize-package.jpg"
                 alt="Hestan Holiday Prize Package"
                 fill
-                className="object-contain object-center"
+                className="object-cover object-center"
                 sizes="(max-width: 1024px) 100vw, 50vw"
                 priority
               />
