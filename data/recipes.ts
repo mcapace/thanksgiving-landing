@@ -34,7 +34,7 @@ export const recipes: Recipe[] = [
     wineName: "2023 Tres Violet Pinot Noir",
     dishName: "Mushroom and Leek Stuffing",
     description: "Pinot Noir with Mushroom and Leek Stuffing",
-    url: "https://example.com/recipe", // Update from RECIPE CARDS/Thanksgiving URLs.docx
+    url: "https://www.calcareous.com/thanksgiving-wine/?utm_source=winespectator&utm_medium=email&utm_campaign=thanksgiving",
     logoPath: "/images/logos/calcareous-logo.png",
     bottlePath: "/images/wines/Calcareous.png",
     recipePath: "/images/recipes-food/Calcareous Recipe.jpg",
@@ -48,7 +48,7 @@ export const recipes: Recipe[] = [
     wineName: "2018 Royal Cuvée",
     dishName: "Autumn Harvest Purple Rice Pilaf",
     description: "Sparkling Wine with Autumn Harvest Purple Rice Pilaf",
-    url: "https://example.com/recipe", // Update from RECIPE CARDS/Thanksgiving URLs.docx
+    url: "https://www.gloriaferrer.com/fall-recipe-with-the-2018-royal-cuvee/",
     logoPath: "/images/logos/gloria-ferrer-logo.png",
     bottlePath: "/images/wines/gloria-ferrer-sparkling.png",
     recipePath: "/images/recipes-food/Gloria Ferrer Recipe.png",
@@ -60,9 +60,9 @@ export const recipes: Recipe[] = [
     id: 4,
     winery: "Hestan Vineyards",
     wineName: "Cabernet Sauvignon",
-    dishName: "Roasted Turkey", // Based on Hestan turkey recipe.docx
+    dishName: "Roasted Turkey",
     description: "Cabernet with Roasted Turkey",
-    url: "https://example.com/recipe", // Update from Hestan url + email subject line.docx
+    url: "https://www.hestanvineyards.com/",
     logoPath: "/images/logos/hestan-vineyards-logo.jpg",
     bottlePath: "/images/wines/hestan-cabernet.jpg",
     recipePath: "/images/recipes-food/Hestan Recipe.png",
@@ -76,7 +76,7 @@ export const recipes: Recipe[] = [
     wineName: "Pinot Noir",
     dishName: "Scallops with Caramelized Onions (Petxina de Pelegrí)",
     description: "Pinot Noir with Scallops with Caramelized Onions",
-    url: "https://example.com/recipe", // Update from RECIPE CARDS/Thanksgiving URLs.docx
+    url: "https://www.marimarestate.com/Wines/Current-Releases",
     logoPath: "/images/logos/marimar-estate-logo.jpg",
     bottlePath: "/images/wines/marimar-estate-pinot-noir.png",
     recipePath: "/images/recipes-food/Marimar Estate Recipe.jpg",
@@ -90,7 +90,7 @@ export const recipes: Recipe[] = [
     wineName: "Pinot Gris",
     dishName: "Herb Marinated Lamb Chops: 'Scott Chops'",
     description: "Pinot Gris with Herb Marinated Lamb Chops",
-    url: "https://example.com/recipe", // Update from RECIPE CARDS/Thanksgiving URLs.docx
+    url: "https://www.mcintyrevineyards.com/",
     logoPath: "/images/logos/mcintyre-logo.jpg",
     bottlePath: "/images/wines/mcintyre-pinot-gris.jpeg",
     recipePath: "/images/recipes-food/McIntyre Recipe.png",
@@ -104,10 +104,10 @@ export const recipes: Recipe[] = [
     wineName: "Cabernet Sauvignon NV",
     dishName: "Cranberry Fig Chutney",
     description: "Cabernet with Cranberry Fig Chutney",
-    url: "https://example.com/recipe", // Update from RECIPE CARDS/Thanksgiving URLs.docx
+    url: "https://www.pineridgevineyards.com/wine/2023-napa-valley-cabernet-sauvignon/",
     logoPath: "/images/logos/pine-ridge-logo.jpeg",
     bottlePath: "/images/wines/pine-ridge-cabernet.png",
-    // No recipe image available
+    recipePath: "/images/recipes-food/Pine Ridge Recipe.jpg",
     category: "side",
     wineType: "Cabernet",
     pdfPath: "/recipes/PineRidgev2.pdf"
@@ -118,7 +118,7 @@ export const recipes: Recipe[] = [
     wineName: "2023 Dollarhide Sauvignon Blanc",
     dishName: "Potato Pavé",
     description: "Sauvignon Blanc with Potato Pavé",
-    url: "https://example.com/recipe", // Update from RECIPE CARDS/Thanksgiving URLs.docx
+    url: "https://www.stsupery.com/thanksgiving-checklist-enjoyment/",
     logoPath: "/images/logos/st-supery-logo.png",
     bottlePath: "/images/wines/St Supery Bottle.png",
     recipePath: "/images/recipes-food/St Supery Recipe.jpg",
@@ -132,7 +132,7 @@ export const recipes: Recipe[] = [
     wineName: "2022 Carneros Pinot Noir",
     dishName: "Truffle Gemelli with Parmesan & Corn Béchamel",
     description: "Pinot Noir with Truffle Gemelli",
-    url: "https://example.com/recipe", // Update from RECIPE CARDS/Thanksgiving URLs.docx or Vicev2.pdf
+    url: "https://www.thevicenapavalley.com/",
     logoPath: "/images/logos/the-vice-logo.png",
     bottlePath: "/images/wines/Vice.png",
     recipePath: "/images/recipes-food/The Vice Recipe.jpg",
