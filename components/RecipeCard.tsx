@@ -4,7 +4,7 @@ import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef, useState, useEffect } from "react";
-import { ExternalLink, Download, Mail } from "lucide-react";
+import { Download } from "lucide-react";
 import type { Recipe } from "@/data/recipes";
 
 interface RecipeCardProps {
@@ -27,68 +27,6 @@ export default function RecipeCard({ recipe, index }: RecipeCardProps) {
 
     return () => clearInterval(interval);
   }, [recipe.recipePath]);
-
-  const handleEmailRecipe = async (e: React.MouseEvent) => {
-    e.preventDefault();
-    e.stopPropagation();
-    
-    // Prompt user for their email
-    const userEmail = prompt('Enter your email address to receive this recipe:');
-    
-    if (!userEmail) return; // User cancelled
-    
-    // Validate email format
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailRegex.test(userEmail)) {
-      alert('Please enter a valid email address.');
-      return;
-    }
-    
-    try {
-      // Show loading state (you could use a toast notification here)
-      const button = e.currentTarget as HTMLButtonElement;
-      const originalText = button.textContent;
-      button.disabled = true;
-      button.textContent = 'Sending...';
-      
-      // Call API to send recipe email
-      const response = await fetch('/api/send-recipe', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          email: userEmail,
-          winery: recipe.winery,
-          wineName: recipe.wineName,
-          dishName: recipe.dishName,
-          recipeUrl: recipe.url,
-          pdfUrl: recipe.pdfPath,
-        }),
-      });
-      
-      const data = await response.json();
-      
-      if (response.ok) {
-        alert(`Recipe sent to ${userEmail}! Check your inbox.`);
-      } else {
-        throw new Error(data.error || 'Failed to send email');
-      }
-      
-      // Reset button
-      button.disabled = false;
-      button.textContent = originalText;
-      
-    } catch (error) {
-      console.error('Failed to send recipe email:', error);
-      alert('Failed to send email. Please try again.');
-      
-      // Reset button
-      const button = e.currentTarget as HTMLButtonElement;
-      button.disabled = false;
-      button.textContent = 'Email Recipe';
-    }
-  };
 
   return (
     <motion.div
@@ -192,21 +130,12 @@ export default function RecipeCard({ recipe, index }: RecipeCardProps) {
           </div>
         </div>
 
-        {/* View Indicator */}
-        <div className="absolute bottom-4 right-4 z-10">
-          <div className="flex items-center gap-2 bg-white/90 backdrop-blur-sm px-3 py-1.5 rounded-full border border-stone-200 shadow-lg">
-            <div className={`w-2 h-2 rounded-full ${showRecipe && recipe.recipePath ? 'bg-green-600' : 'bg-amber-600'} animate-pulse`} />
-            <span className="text-xs font-semibold text-stone-800">
-              {showRecipe && recipe.recipePath ? 'Dish' : recipe.wineType}
-            </span>
-          </div>
-        </div>
       </div>
 
       {/* Content Section */}
       <div className="p-6 flex-1 flex flex-col bg-gradient-to-b from-white to-stone-50/30">
         {/* Wine Info */}
-        <div className="mb-4">
+        <div className="mb-6">
           <h3 className="font-serif text-2xl font-semibold text-stone-900 mb-1 leading-tight">
             {recipe.dishName}
           </h3>
@@ -215,47 +144,41 @@ export default function RecipeCard({ recipe, index }: RecipeCardProps) {
           </p>
         </div>
         
-        {/* Pairing Tag */}
-        <div className="mb-6 flex items-center gap-2 text-sm text-stone-700">
-          <div className="flex items-center gap-1.5">
-            <div className="w-2 h-2 rounded-full bg-amber-600"></div>
-            <span className="font-medium">{recipe.wineType}</span>
-          </div>
-          <span className="text-stone-400">•</span>
-          <span>Perfect Pairing</span>
-        </div>
-        
-        {/* Action Buttons */}
-        <div className="mt-auto grid grid-cols-2 gap-2">
+        {/* Action Button */}
+        <div className="mt-auto">
           {recipe.pdfPath ? (
             <a
               href={recipe.pdfPath}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center justify-center gap-2 bg-red-900 text-white px-3 py-3 rounded-lg hover:bg-red-950 transition-all duration-300 font-semibold text-xs hover:gap-3 shadow-md hover:shadow-lg whitespace-nowrap"
+              className="w-full inline-flex items-center justify-center gap-2 bg-red-900 text-white px-4 py-3 rounded-lg hover:bg-red-950 transition-all duration-300 font-semibold text-sm hover:gap-3 shadow-md hover:shadow-lg"
             >
               <Download className="w-4 h-4" />
-              View PDF
+              View Recipe
             </a>
           ) : (
             <a
               href={recipe.url}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center justify-center gap-2 bg-red-900 text-white px-3 py-3 rounded-lg hover:bg-red-950 transition-all duration-300 font-semibold text-xs hover:gap-3 shadow-md hover:shadow-lg whitespace-nowrap"
+              className="w-full inline-flex items-center justify-center gap-2 bg-red-900 text-white px-4 py-3 rounded-lg hover:bg-red-950 transition-all duration-300 font-semibold text-sm hover:gap-3 shadow-md hover:shadow-lg"
             >
+              <Download className="w-4 h-4" />
               View Recipe
-              <ExternalLink className="w-4 h-4" />
             </a>
           )}
           
-          <button
-            onClick={handleEmailRecipe}
-            className="inline-flex items-center justify-center gap-2 bg-amber-600 text-white px-3 py-3 rounded-lg hover:bg-amber-700 transition-all duration-300 font-semibold text-xs shadow-md hover:shadow-lg whitespace-nowrap"
-          >
-            <Mail className="w-4 h-4" />
-            Email Recipe
-          </button>
+          {/* Winery Website Link */}
+          <div className="mt-3 text-center">
+            <a
+              href={recipe.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-xs text-stone-600 hover:text-red-900 transition-colors underline decoration-stone-300 hover:decoration-red-900"
+            >
+              Visit {recipe.winery}
+            </a>
+          </div>
         </div>
       </div>
     </motion.div>
