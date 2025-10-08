@@ -230,11 +230,12 @@ export default function RecipeCard({ recipe, index }: RecipeCardProps) {
           {recipe.pdfPath ? (
             <a
               href={recipe.pdfPath}
-              download
+              target="_blank"
+              rel="noopener noreferrer"
               className="inline-flex items-center justify-center gap-2 bg-red-900 text-white px-3 py-3 rounded-lg hover:bg-red-950 transition-all duration-300 font-semibold text-xs hover:gap-3 shadow-md hover:shadow-lg whitespace-nowrap"
             >
               <Download className="w-4 h-4" />
-              Download
+              View PDF
             </a>
           ) : (
             <a
