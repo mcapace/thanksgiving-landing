@@ -40,19 +40,9 @@ export default function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.4 }}
-          className="font-serif font-light text-amber-50 text-xl sm:text-2xl md:text-3xl text-center mb-3"
+          className="font-serif font-light text-amber-50 text-xl sm:text-2xl md:text-3xl text-center"
         >
           presented by <span className="text-amber-600 font-normal">Hestan Culinary</span>
-        </motion.p>
-
-        {/* Additional Header Text */}
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.5 }}
-          className="font-serif font-light text-amber-50/90 text-lg sm:text-xl text-center"
-        >
-          Recipes & Pairings from Renowned Wineries
         </motion.p>
 
         {/* Animated Chevron */}

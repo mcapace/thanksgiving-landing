@@ -13,6 +13,18 @@ export default function IntroSection() {
   return (
     <section ref={ref} className="bg-stone-50 py-16 sm:py-20 lg:py-24">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Section Headline */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+          transition={{ duration: 0.8 }}
+          className="text-center mb-12"
+        >
+          <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-light text-stone-900">
+            Recipes & Pairings from Renowned Wineries
+          </h2>
+        </motion.div>
+
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
           {/* Left Column - Text Content */}
           <motion.div
@@ -22,8 +34,7 @@ export default function IntroSection() {
             className="space-y-6"
           >
             <p className="text-lg sm:text-xl text-stone-800 leading-relaxed">
-              From turkey to sides and festive favorites, these recipes and wine pairings 
-              are curated to complement one another. Inspire tradition, spark conversation, 
+              From turkey to sides and festive favorites, these <strong className="font-semibold">recipes and wine pairings</strong> are curated to complement one another. Inspire tradition, spark conversation, 
               and make your Thanksgiving unforgettable by bringing the flavors of wine 
               country straight to your table.
             </p>
