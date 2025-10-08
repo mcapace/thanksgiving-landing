@@ -52,7 +52,7 @@ export default function Navbar() {
               className="flex items-center hover:opacity-80 transition-opacity"
             >
               <Image
-                src="/images/logos/wine-spectator-logo.png"
+                src="/images/logos/WS logo black.png"
                 alt="Wine Spectator"
                 width={200}
                 height={55}

@@ -28,7 +28,7 @@ export default function Footer() {
               className="transition-opacity hover:opacity-80 duration-300"
             >
               <Image
-                src="/images/logos/wine-spectator-logo-white.png"
+                src="/images/logos/WS logo white.png"
                 alt="Wine Spectator"
                 width={180}
                 height={60}
