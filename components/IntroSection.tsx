@@ -56,7 +56,7 @@ export default function IntroSection() {
             className="bg-white rounded-lg shadow-lg overflow-hidden"
           >
             {/* Image */}
-            <div className="relative h-[400px] sm:h-[450px] lg:h-[400px] overflow-hidden rounded-t-lg">
+            <div className="relative h-[300px] sm:h-[350px] lg:h-[320px] overflow-hidden rounded-t-lg">
               <Image
                 src="/images/giveaway/prize-package.jpg"
                 alt="Hestan Culinary Prize Package"
@@ -67,25 +67,25 @@ export default function IntroSection() {
             </div>
 
             {/* Content */}
-            <div className="p-6">
-              <h3 className="font-serif text-2xl sm:text-3xl font-semibold text-stone-900 mb-4">
+            <div className="p-4 sm:p-5">
+              <h3 className="font-serif text-xl sm:text-2xl font-semibold text-stone-900 mb-3">
                 Hestan Culinary Prize Package
               </h3>
-              <ul className="space-y-2 mb-4">
+              <ul className="space-y-1.5 mb-3">
                 <li className="flex items-start">
-                  <span className="text-red-900 mr-2 mt-1.5">•</span>
-                  <span className="text-stone-700">Small Polished Roaster</span>
+                  <span className="text-red-900 mr-2 mt-1">•</span>
+                  <span className="text-stone-700 text-sm sm:text-base">Small Polished Roaster</span>
                 </li>
                 <li className="flex items-start">
-                  <span className="text-red-900 mr-2 mt-1.5">•</span>
-                  <span className="text-stone-700">Hedley & Bennett Chef Apron</span>
+                  <span className="text-red-900 mr-2 mt-1">•</span>
+                  <span className="text-stone-700 text-sm sm:text-base">Hedley & Bennett Chef Apron</span>
                 </li>
                 <li className="flex items-start">
-                  <span className="text-red-900 mr-2 mt-1.5">•</span>
-                  <span className="text-stone-700">3-Piece Mixing Bowl Set</span>
+                  <span className="text-red-900 mr-2 mt-1">•</span>
+                  <span className="text-stone-700 text-sm sm:text-base">3-Piece Mixing Bowl Set</span>
                 </li>
               </ul>
-              <p className="text-stone-900 font-semibold text-lg">
+              <p className="text-stone-900 font-semibold text-base sm:text-lg">
                 Valued at $464.90
               </p>
             </div>
