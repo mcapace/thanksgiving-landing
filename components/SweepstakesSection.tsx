@@ -1,27 +1,38 @@
 "use client";
 
 import { motion, useInView } from "framer-motion";
-import { useRef, useEffect } from "react";
+import { useRef, useEffect, useState } from "react";
 import Link from "next/link";
+import Script from "next/script";
 
 export default function SweepstakesSection() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
+  const [scriptLoaded, setScriptLoaded] = useState(false);
 
-  // Load Viral Sweeps script
   useEffect(() => {
-    // Add Viral Sweeps script if it doesn't exist
-    if (!document.querySelector('script[src*="viralsweep"]')) {
-      const script = document.createElement('script');
-      script.src = 'https://app.viralsweep.com/vrlswp.js';
-      script.async = true;
-      document.body.appendChild(script);
+    // Check if widget loaded after script loads
+    if (scriptLoaded) {
+      console.log('Viral Sweeps script loaded');
+      // Try to reinitialize if needed
+      if (typeof window !== 'undefined' && (window as any).vrlswp) {
+        (window as any).vrlswp.init();
+      }
     }
-  }, []);
+  }, [scriptLoaded]);
 
   return (
-    <section id="sweepstakes" ref={ref} className="bg-white py-12 sm:py-16 lg:py-20">
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+    <>
+      {/* Load Viral Sweeps Script */}
+      <Script
+        src="https://app.viralsweep.com/vrlswp.js"
+        strategy="lazyOnload"
+        onLoad={() => setScriptLoaded(true)}
+        onError={(e) => console.error('Failed to load Viral Sweeps script:', e)}
+      />
+      
+      <section id="sweepstakes" ref={ref} className="bg-white py-12 sm:py-16 lg:py-20">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
@@ -88,6 +99,7 @@ export default function SweepstakesSection() {
         </motion.div>
       </div>
     </section>
+    </>
   );
 }
 
