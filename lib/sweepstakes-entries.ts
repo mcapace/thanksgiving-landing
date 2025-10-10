@@ -1,5 +1,9 @@
 // Sweepstakes entry management
-// In production, this should use a real database (Postgres, MongoDB, etc.)
+// Using file-based storage for persistence on Vercel
+
+import { readFile, writeFile, mkdir } from 'fs/promises';
+import { existsSync } from 'fs';
+import { join } from 'path';
 
 export interface SweepstakesEntry {
   id: string;
@@ -18,14 +22,53 @@ export interface SweepstakesEntry {
   ipAddress?: string;
 }
 
-// In-memory storage (for development)
-// In production, replace with actual database
-const entries: SweepstakesEntry[] = [];
+// File path for entries storage
+const ENTRIES_DIR = join(process.cwd(), 'data');
+const ENTRIES_FILE = join(ENTRIES_DIR, 'entries.json');
+
+// Ensure data directory exists
+async function ensureDataDir() {
+  if (!existsSync(ENTRIES_DIR)) {
+    await mkdir(ENTRIES_DIR, { recursive: true });
+  }
+}
+
+// Load entries from file
+async function loadEntries(): Promise<SweepstakesEntry[]> {
+  try {
+    await ensureDataDir();
+    if (existsSync(ENTRIES_FILE)) {
+      const data = await readFile(ENTRIES_FILE, 'utf-8');
+      const parsed = JSON.parse(data);
+      // Convert date strings back to Date objects
+      return parsed.map((entry: any) => ({
+        ...entry,
+        entryDate: new Date(entry.entryDate)
+      }));
+    }
+  } catch (error) {
+    console.error('Error loading entries:', error);
+  }
+  return [];
+}
+
+// Save entries to file
+async function saveEntries(entries: SweepstakesEntry[]): Promise<void> {
+  try {
+    await ensureDataDir();
+    await writeFile(ENTRIES_FILE, JSON.stringify(entries, null, 2), 'utf-8');
+  } catch (error) {
+    console.error('Error saving entries:', error);
+    throw error;
+  }
+}
 
 /**
  * Add a new sweepstakes entry
  */
-export function addEntry(entry: Omit<SweepstakesEntry, 'id' | 'entryDate'>): SweepstakesEntry {
+export async function addEntry(entry: Omit<SweepstakesEntry, 'id' | 'entryDate'>): Promise<SweepstakesEntry> {
+  const entries = await loadEntries();
+  
   const newEntry: SweepstakesEntry = {
     ...entry,
     id: generateEntryId(),
@@ -33,8 +76,9 @@ export function addEntry(entry: Omit<SweepstakesEntry, 'id' | 'entryDate'>): Swe
   };
   
   entries.push(newEntry);
+  await saveEntries(entries);
   
-  // Log entry (in production, save to database)
+  // Log entry
   console.log('New sweepstakes entry:', {
     id: newEntry.id,
     email: newEntry.email,
@@ -48,21 +92,24 @@ export function addEntry(entry: Omit<SweepstakesEntry, 'id' | 'entryDate'>): Swe
 /**
  * Get total entry count
  */
-export function getEntryCount(): number {
+export async function getEntryCount(): Promise<number> {
+  const entries = await loadEntries();
   return entries.length;
 }
 
 /**
  * Check if email has already entered
  */
-export function hasEmailEntered(email: string): boolean {
+export async function hasEmailEntered(email: string): Promise<boolean> {
+  const entries = await loadEntries();
   return entries.some(entry => entry.email.toLowerCase() === email.toLowerCase());
 }
 
 /**
  * Get all entries (for admin/export)
  */
-export function getAllEntries(): SweepstakesEntry[] {
+export async function getAllEntries(): Promise<SweepstakesEntry[]> {
+  const entries = await loadEntries();
   return [...entries];
 }
 
@@ -78,7 +125,9 @@ function generateEntryId(): string {
 /**
  * Export entries to CSV format
  */
-export function exportEntriesToCSV(): string {
+export async function exportEntriesToCSV(): Promise<string> {
+  const entries = await loadEntries();
+  
   const headers = [
     'ID',
     'First Name',

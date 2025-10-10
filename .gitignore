@@ -45,3 +45,6 @@ pdf-venv/
 *.pyc
 __pycache__/
 *.py[cod]
+
+# sweepstakes data
+/data/entries.json

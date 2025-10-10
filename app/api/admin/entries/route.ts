@@ -21,7 +21,7 @@ export async function GET(request: NextRequest) {
   try {
     // Return CSV format
     if (format === 'csv') {
-      const csv = exportEntriesToCSV();
+      const csv = await exportEntriesToCSV();
       
       return new NextResponse(csv, {
         status: 200,
@@ -33,8 +33,8 @@ export async function GET(request: NextRequest) {
     }
 
     // Return JSON format (default)
-    const entries = getAllEntries();
-    const count = getEntryCount();
+    const entries = await getAllEntries();
+    const count = await getEntryCount();
 
     return NextResponse.json({
       success: true,

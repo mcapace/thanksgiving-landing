@@ -27,7 +27,8 @@ export async function POST(request: NextRequest) {
     const validatedData = sweepstakesEntrySchema.parse(body);
 
     // Check if email already entered
-    if (hasEmailEntered(validatedData.email)) {
+    const emailExists = await hasEmailEntered(validatedData.email);
+    if (emailExists) {
       return NextResponse.json(
         { 
           error: 'Already entered',
@@ -59,7 +60,7 @@ export async function POST(request: NextRequest) {
                      'unknown';
 
     // Add entry to storage
-    const entry = addEntry({
+    const entry = await addEntry({
       ...validatedData,
       ipAddress,
     });
