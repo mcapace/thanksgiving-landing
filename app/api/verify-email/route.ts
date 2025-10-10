@@ -3,6 +3,7 @@ import { resend, EMAIL_CONFIG } from '@/lib/resend';
 import { WelcomeEmail } from '@/lib/email-templates';
 import { verifyToken, markEmailAsVerified } from '@/lib/email-verification';
 import { generateDownloadToken } from '@/lib/download-tokens';
+import { getEntryByEmail } from '@/lib/sweepstakes-entries';
 
 export async function GET(request: NextRequest) {
   try {
@@ -27,6 +28,15 @@ export async function GET(request: NextRequest) {
 
     // Mark email as verified
     markEmailAsVerified(payload.email);
+
+    // Get sweepstakes entry
+    const entry = await getEntryByEmail(payload.email);
+    
+    if (!entry) {
+      return NextResponse.redirect(
+        new URL('/verification-failed?reason=entry-not-found', request.url)
+      );
+    }
 
     // Generate secure download token (one-time use, expires in 7 days)
     const downloadToken = await generateDownloadToken(payload.email);
@@ -123,10 +133,13 @@ export async function GET(request: NextRequest) {
       // Don't fail the verification if welcome email fails
     }
 
-    // Redirect to success page
-    return NextResponse.redirect(
-      new URL('/verification-success?email=' + encodeURIComponent(payload.email), request.url)
-    );
+    // Redirect to success page with entry ID and download token
+    const successUrl = new URL('/verification-success', request.url);
+    successUrl.searchParams.set('email', payload.email);
+    successUrl.searchParams.set('entryId', entry.id);
+    successUrl.searchParams.set('token', downloadToken);
+    
+    return NextResponse.redirect(successUrl);
 
   } catch (error) {
     console.error('Email verification error:', error);

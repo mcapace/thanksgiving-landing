@@ -105,6 +105,14 @@ export async function hasEmailEntered(email: string): Promise<boolean> {
 }
 
 /**
+ * Get entry by email
+ */
+export async function getEntryByEmail(email: string): Promise<SweepstakesEntry | null> {
+  const entries = await loadEntries();
+  return entries.find(entry => entry.email.toLowerCase() === email.toLowerCase()) || null;
+}
+
+/**
  * Get all entries (for admin/export)
  */
 export async function getAllEntries(): Promise<SweepstakesEntry[]> {
