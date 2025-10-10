@@ -29,16 +29,21 @@ export async function POST(request: NextRequest) {
     const body = await request.json();
     const validatedData = sweepstakesEntrySchema.parse(body);
 
-    // Check if email already entered
-    const emailExists = await hasEmailEntered(validatedData.email);
-    if (emailExists) {
-      return NextResponse.json(
-        { 
-          error: 'Already entered',
-          message: 'This email address has already been entered in the sweepstakes. Only one entry per person is allowed.'
-        },
-        { status: 400 }
-      );
+    // Check if email already entered (skip for test email)
+    const TEST_EMAIL = process.env.TEST_EMAIL || 'mcapace@mshanken.com';
+    const isTestEmail = validatedData.email.toLowerCase() === TEST_EMAIL.toLowerCase();
+    
+    if (!isTestEmail) {
+      const emailExists = await hasEmailEntered(validatedData.email);
+      if (emailExists) {
+        return NextResponse.json(
+          { 
+            error: 'Already entered',
+            message: 'This email address has already been entered in the sweepstakes. Only one entry per person is allowed.'
+          },
+          { status: 400 }
+        );
+      }
     }
 
     // Validate age (must be 21+)
