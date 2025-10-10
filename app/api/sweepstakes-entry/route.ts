@@ -85,7 +85,7 @@ export async function POST(request: NextRequest) {
               <div style="max-width: 600px; margin: 0 auto; background: #ffffff; border-radius: 12px; overflow: hidden; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);">
                 
                 <div style="background: linear-gradient(135deg, #8B2332 0%, #7A1F2B 100%); padding: 50px 30px; text-align: center;">
-                  <div style="font-size: 60px; margin-bottom: 16px;">🎉</div>
+                  <img src="${origin}/images/logos/WS%20logo%20white.png" alt="Wine Spectator" style="height: 50px; margin-bottom: 20px;" />
                   <h1 style="color: #ffffff; font-size: 32px; font-weight: 300; margin: 0; letter-spacing: -0.5px;">You're Entered!</h1>
                   <p style="color: rgba(255, 255, 255, 0.9); font-size: 16px; margin: 8px 0 0 0;">Good luck in the sweepstakes</p>
                 </div>

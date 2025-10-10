@@ -49,6 +49,10 @@ export function RecipeEmail({
             padding: 40px 30px;
             text-align: center;
           }
+          .header-logo {
+            height: 45px;
+            margin-bottom: 20px;
+          }
           .header h1 {
             color: #ffffff;
             font-size: 32px;
@@ -139,7 +143,8 @@ export function RecipeEmail({
     <body>
       <div className="email-container">
         <div className="header">
-          <h1>🍷 Your Wine Pairing</h1>
+          <img src="https://thanksgiving.winespectator.com/images/logos/WS%20logo%20white.png" alt="Wine Spectator" className="header-logo" />
+          <h1>Your Wine Pairing</h1>
           <p>Expert pairing for Thanksgiving</p>
         </div>
         
@@ -218,6 +223,10 @@ export function VerificationEmail({
             background: linear-gradient(135deg, #8B2332 0%, #7A1F2B 100%);
             padding: 50px 30px;
             text-align: center;
+          }
+          .header-logo {
+            height: 45px;
+            margin-bottom: 20px;
           }
           .header-icon {
             font-size: 60px;
@@ -300,7 +309,7 @@ export function VerificationEmail({
     <body>
       <div className="email-container">
         <div className="header">
-          <div className="header-icon">📧</div>
+          <img src="https://thanksgiving.winespectator.com/images/logos/WS%20logo%20white.png" alt="Wine Spectator" className="header-logo" />
           <h1>Confirm Your Email</h1>
         </div>
         
@@ -374,6 +383,10 @@ export function WelcomeEmail({
             background: linear-gradient(135deg, #8B2332 0%, #7A1F2B 100%);
             padding: 50px 30px;
             text-align: center;
+          }
+          .header-logo {
+            height: 45px;
+            margin-bottom: 20px;
           }
           .header-icon {
             font-size: 60px;
@@ -492,7 +505,7 @@ export function WelcomeEmail({
     <body>
       <div className="email-container">
         <div className="header">
-          <div className="header-icon">🎉</div>
+          <img src="https://thanksgiving.winespectator.com/images/logos/WS%20logo%20white.png" alt="Wine Spectator" className="header-logo" />
           <h1>Welcome!</h1>
           <p>Your recipes are ready to download</p>
         </div>

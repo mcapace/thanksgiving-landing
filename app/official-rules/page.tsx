@@ -1,5 +1,6 @@
 /* eslint-disable react/no-unescaped-entities */
 import Link from "next/link";
+import Image from "next/image";
 import { ChevronLeft, Gift, Calendar, Users } from "lucide-react";
 
 export const metadata = {
@@ -20,6 +21,19 @@ export default function OfficialRulesPage() {
             <ChevronLeft className="w-5 h-5 group-hover:-translate-x-1 transition-transform" />
             Back to Sweepstakes
           </Link>
+          
+          {/* Wine Spectator Logo */}
+          <div className="mb-6">
+            <Image
+              src="/images/logos/WS logo black.png"
+              alt="Wine Spectator"
+              width={180}
+              height={49}
+              className="h-10"
+              priority
+            />
+          </div>
+          
           <h1 className="font-serif text-3xl sm:text-4xl font-light text-stone-900">
             Official Rules & Regulations
           </h1>
@@ -453,6 +467,17 @@ export default function OfficialRulesPage() {
 
         {/* Footer Section */}
         <div className="mt-12 bg-stone-100 rounded-xl p-8 text-center border border-stone-200">
+          {/* Wine Spectator Logo */}
+          <div className="mb-6 flex justify-center">
+            <Image
+              src="/images/logos/WS logo black.png"
+              alt="Wine Spectator"
+              width={150}
+              height={41}
+              className="h-8 opacity-60"
+            />
+          </div>
+          
           <p className="text-sm text-stone-600 mb-4">
             © 2025 M. Shanken Communications, Inc. All rights reserved.
           </p>
