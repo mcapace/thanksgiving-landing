@@ -32,8 +32,8 @@ export async function GET(request: NextRequest) {
     const pdfPath = join(process.cwd(), 'public', 'recipes', 'thanksgiving-recipes-full.pdf');
     const pdfBuffer = await readFile(pdfPath);
 
-    // Return the PDF with proper headers
-    return new NextResponse(pdfBuffer, {
+    // Return the PDF with proper headers (convert Buffer to Uint8Array for Next.js 15)
+    return new NextResponse(new Uint8Array(pdfBuffer), {
       status: 200,
       headers: {
         'Content-Type': 'application/pdf',
