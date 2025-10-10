@@ -39,9 +39,9 @@ async function loadEntries(): Promise<SweepstakesEntry[]> {
     await ensureDataDir();
     if (existsSync(ENTRIES_FILE)) {
       const data = await readFile(ENTRIES_FILE, 'utf-8');
-      const parsed = JSON.parse(data);
+      const parsed = JSON.parse(data) as Array<Omit<SweepstakesEntry, 'entryDate'> & { entryDate: string }>;
       // Convert date strings back to Date objects
-      return parsed.map((entry: any) => ({
+      return parsed.map((entry) => ({
         ...entry,
         entryDate: new Date(entry.entryDate)
       }));
