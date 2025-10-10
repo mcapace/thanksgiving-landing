@@ -1,63 +1,40 @@
 "use client";
 
-import { Facebook, Twitter, Linkedin, Link2, Mail } from "lucide-react";
+import { Facebook, Linkedin, Instagram } from "lucide-react";
 
-interface SocialShareProps {
-  url?: string;
-  title?: string;
-  description?: string;
-}
-
-export default function SocialShare({
-  url = typeof window !== "undefined" ? window.location.href : "",
-  title = "Wine Spectator x Hestan Thanksgiving Recipes",
-  description = "Discover 9 curated wine and recipe pairings for your Thanksgiving table",
-}: SocialShareProps) {
-  const shareUrl = encodeURIComponent(url);
-  const shareTitle = encodeURIComponent(title);
-  const shareDescription = encodeURIComponent(description);
-
-  const handleCopyLink = async () => {
-    try {
-      await navigator.clipboard.writeText(url);
-      alert("Link copied to clipboard!");
-    } catch (err) {
-      console.error("Failed to copy link:", err);
-    }
-  };
-
-  const shareLinks = [
+export default function SocialShare() {
+  const socialLinks = [
+    {
+      name: "Instagram",
+      icon: Instagram,
+      url: "https://www.instagram.com/explore/locations/239570573/wine-spectator/?hl=en",
+      color: "hover:bg-gradient-to-br hover:from-purple-600 hover:via-pink-600 hover:to-yellow-500",
+    },
     {
       name: "Facebook",
       icon: Facebook,
-      url: `https://www.facebook.com/sharer/sharer.php?u=${shareUrl}`,
+      url: "https://www.facebook.com/WineSpectator",
       color: "hover:bg-blue-600",
     },
     {
-      name: "Twitter",
-      icon: Twitter,
-      url: `https://twitter.com/intent/tweet?url=${shareUrl}&text=${shareTitle}`,
-      color: "hover:bg-sky-500",
+      name: "X",
+      icon: XIcon,
+      url: "https://x.com/winespectator?lang=en",
+      color: "hover:bg-black",
     },
     {
       name: "LinkedIn",
       icon: Linkedin,
-      url: `https://www.linkedin.com/sharing/share-offsite/?url=${shareUrl}`,
+      url: "https://www.linkedin.com/company/wine-spectator/",
       color: "hover:bg-blue-700",
-    },
-    {
-      name: "Email",
-      icon: Mail,
-      url: `mailto:?subject=${shareTitle}&body=${shareDescription}%0A%0A${shareUrl}`,
-      color: "hover:bg-stone-600",
     },
   ];
 
   return (
     <div className="flex flex-col items-center gap-4">
-      <p className="text-stone-600 font-medium">Share these recipes:</p>
+      <p className="text-stone-400 font-medium">Follow Wine Spectator:</p>
       <div className="flex gap-3">
-        {shareLinks.map((link) => {
+        {socialLinks.map((link) => {
           const Icon = link.icon;
           return (
             <a
@@ -65,22 +42,28 @@ export default function SocialShare({
               href={link.url}
               target="_blank"
               rel="noopener noreferrer"
-              className={`p-3 rounded-full bg-stone-100 text-stone-700 transition-all duration-300 ${link.color} hover:text-white shadow-md hover:shadow-lg hover:scale-110`}
-              aria-label={`Share on ${link.name}`}
+              className={`p-3 rounded-full bg-stone-800 text-stone-300 transition-all duration-300 ${link.color} hover:text-white shadow-md hover:shadow-lg hover:scale-110`}
+              aria-label={`Follow us on ${link.name}`}
             >
               <Icon className="w-5 h-5" />
             </a>
           );
         })}
-        <button
-          onClick={handleCopyLink}
-          className="p-3 rounded-full bg-stone-100 text-stone-700 hover:bg-amber-600 hover:text-white transition-all duration-300 shadow-md hover:shadow-lg hover:scale-110"
-          aria-label="Copy link"
-        >
-          <Link2 className="w-5 h-5" />
-        </button>
       </div>
     </div>
   );
 }
 
+// Custom X (Twitter) Icon component
+function XIcon({ className }: { className?: string }) {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      className={className}
+      fill="currentColor"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+    </svg>
+  );
+}
