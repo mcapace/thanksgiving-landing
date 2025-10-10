@@ -1,9 +1,7 @@
 // Sweepstakes entry management
-// Using file-based storage for persistence on Vercel
+// Using Vercel KV for persistence (Redis-based)
 
-import { readFile, writeFile, mkdir } from 'fs/promises';
-import { existsSync } from 'fs';
-import { join } from 'path';
+import { kv } from '@vercel/kv';
 
 export interface SweepstakesEntry {
   id: string;
@@ -22,43 +20,38 @@ export interface SweepstakesEntry {
   ipAddress?: string;
 }
 
-// File path for entries storage
-const ENTRIES_DIR = join(process.cwd(), 'data');
-const ENTRIES_FILE = join(ENTRIES_DIR, 'entries.json');
+const ENTRIES_KEY = 'sweepstakes:entries';
 
-// Ensure data directory exists
-async function ensureDataDir() {
-  if (!existsSync(ENTRIES_DIR)) {
-    await mkdir(ENTRIES_DIR, { recursive: true });
-  }
-}
-
-// Load entries from file
+/**
+ * Load all entries from KV store
+ */
 async function loadEntries(): Promise<SweepstakesEntry[]> {
   try {
-    await ensureDataDir();
-    if (existsSync(ENTRIES_FILE)) {
-      const data = await readFile(ENTRIES_FILE, 'utf-8');
-      const parsed = JSON.parse(data) as Array<Omit<SweepstakesEntry, 'entryDate'> & { entryDate: string }>;
-      // Convert date strings back to Date objects
-      return parsed.map((entry) => ({
-        ...entry,
-        entryDate: new Date(entry.entryDate)
-      }));
+    const entries = await kv.get<Array<Omit<SweepstakesEntry, 'entryDate'> & { entryDate: string }>>(ENTRIES_KEY);
+    
+    if (!entries) {
+      return [];
     }
+    
+    // Convert date strings back to Date objects
+    return entries.map((entry) => ({
+      ...entry,
+      entryDate: new Date(entry.entryDate)
+    }));
   } catch (error) {
-    console.error('Error loading entries:', error);
+    console.error('Error loading entries from KV:', error);
+    return [];
   }
-  return [];
 }
 
-// Save entries to file
+/**
+ * Save all entries to KV store
+ */
 async function saveEntries(entries: SweepstakesEntry[]): Promise<void> {
   try {
-    await ensureDataDir();
-    await writeFile(ENTRIES_FILE, JSON.stringify(entries, null, 2), 'utf-8');
+    await kv.set(ENTRIES_KEY, entries);
   } catch (error) {
-    console.error('Error saving entries:', error);
+    console.error('Error saving entries to KV:', error);
     throw error;
   }
 }
@@ -165,4 +158,3 @@ export async function exportEntriesToCSV(): Promise<string> {
   
   return csvContent;
 }
-
