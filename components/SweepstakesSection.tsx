@@ -111,7 +111,7 @@ export default function SweepstakesSection() {
 
       if (response.ok) {
         setStatus('success');
-        setMessage('🎉 Success! Your entry has been submitted. Check your email for confirmation.');
+        setMessage('🎉 Success! Your entry has been submitted. Check your email for your confirmation and recipe book download link!');
         // Reset form
         setFormData({
           firstName: '',
@@ -261,7 +261,10 @@ export default function SweepstakesSection() {
                       <h4 className="text-lg font-semibold text-green-900 mb-2">Entry Confirmed!</h4>
                       <p className="text-green-800 text-sm leading-relaxed">{message}</p>
                       <p className="text-green-700 text-sm mt-3">
-                        Good luck! We'll notify the winner by email after the contest ends.
+                        <strong>Good luck in the sweepstakes!</strong> We'll notify the winner by email after the contest ends.
+                      </p>
+                      <p className="text-green-700 text-sm mt-2">
+                        <strong>Bonus:</strong> Your email includes a download link for the complete recipe book with all 9 wine pairings!
                       </p>
                     </div>
                   </div>

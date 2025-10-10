@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import { z } from 'zod';
 import { addEntry, hasEmailEntered } from '@/lib/sweepstakes-entries';
 import { resend, EMAIL_CONFIG } from '@/lib/resend';
+import { generateDownloadToken } from '@/lib/download-tokens';
 
 // Validation schema
 const sweepstakesEntrySchema = z.object({
@@ -65,10 +66,13 @@ export async function POST(request: NextRequest) {
       ipAddress,
     });
 
+    // Generate secure download token for recipe book
+    const downloadToken = await generateDownloadToken(validatedData.email);
+    const origin = request.headers.get('origin') || request.nextUrl.origin;
+    const downloadUrl = `${origin}/api/download-recipes?token=${encodeURIComponent(downloadToken)}`;
+
     // Send confirmation email
     try {
-      const origin = request.headers.get('origin') || request.nextUrl.origin;
-      
       await resend.emails.send({
         from: EMAIL_CONFIG.from,
         to: validatedData.email,
@@ -121,8 +125,23 @@ export async function POST(request: NextRequest) {
                     The winner will be randomly selected and notified by email within 5 business days after the sweepstakes ends on December 14, 2025.
                   </p>
                   
+                  <hr style="border: 0; border-top: 2px solid #e5e7eb; margin: 30px 0;" />
+                  
+                  <div style="background: linear-gradient(135deg, #fef3c7 0%, #fef0e8 100%); border-left: 4px solid #8B2332; padding: 24px; border-radius: 8px; margin: 24px 0;">
+                    <h3 style="color: #8B2332; font-size: 20px; font-weight: 600; margin: 0 0 12px 0;">🍷 Bonus: Your Complete Recipe Book!</h3>
+                    <p style="color: #78350f; font-size: 15px; margin: 0 0 16px 0;">
+                      As a thank you for entering, download our complete collection of 9 expert wine pairings and Thanksgiving recipes!
+                    </p>
+                    <div style="text-align: center; margin: 20px 0;">
+                      <a href="${downloadUrl}" style="display: inline-block; background: #8B2332; color: #ffffff; padding: 16px 32px; text-decoration: none; border-radius: 8px; font-weight: 600; font-size: 16px; box-shadow: 0 4px 12px rgba(139, 35, 50, 0.3);">📥 Download Full Recipe Book</a>
+                    </div>
+                    <p style="color: #78350f; font-size: 13px; margin: 12px 0 0 0; text-align: center;">
+                      This is your personal download link. It can only be used once and expires in 7 days.
+                    </p>
+                  </div>
+                  
                   <div style="text-align: center; margin: 30px 0;">
-                    <a href="${origin}/official-rules" style="display: inline-block; background: #8B2332; color: #ffffff; padding: 14px 32px; text-decoration: none; border-radius: 8px; font-weight: 600; font-size: 15px;">View Official Rules</a>
+                    <a href="${origin}/official-rules" style="display: inline-block; background: transparent; color: #8B2332; padding: 12px 28px; text-decoration: none; border-radius: 8px; font-weight: 600; font-size: 15px; border: 2px solid #8B2332;">View Official Rules</a>
                   </div>
                 </div>
                 
