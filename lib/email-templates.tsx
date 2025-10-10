@@ -316,20 +316,20 @@ export function VerificationEmail({
         <div className="content">
           <h2>One More Step...</h2>
           
-          <p>Thank you for requesting the complete Wine Country Thanksgiving recipe collection!</p>
+          <p>Thank you for entering the Wine Spectator x Hestan Culinary Holiday Prize Package Sweepstakes!</p>
           
-          <p>To receive your 9 curated wine pairings and recipes, please confirm your email address:</p>
+          <p>To confirm your entry and receive your bonus recipe book, please verify your email address:</p>
           
           <div className="email-display">
             <strong>{recipientEmail}</strong>
           </div>
           
           <div className="cta-container">
-            <a href={verificationUrl} className="verify-button">Confirm Email & Get Recipes →</a>
+            <a href={verificationUrl} className="verify-button">Confirm Email & Enter Sweepstakes →</a>
           </div>
           
           <div className="note">
-            <p><strong>⏰ Quick action needed:</strong> This link will expire in 24 hours. If you didn't request this, you can safely ignore this email.</p>
+            <p><strong>⏰ Important:</strong> This link expires in 24 hours. Click now to confirm your sweepstakes entry and get your recipe book download link!</p>
           </div>
         </div>
         
