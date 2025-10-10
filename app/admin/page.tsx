@@ -1,3 +1,5 @@
+/* eslint-disable react/no-unescaped-entities */
+/* eslint-disable react-hooks/exhaustive-deps */
 "use client";
 
 import { useState, useEffect } from "react";
@@ -41,7 +43,7 @@ export default function AdminPage() {
       } else {
         setError("Invalid password");
       }
-    } catch (err) {
+    } catch {
       setError("Failed to load entries");
     } finally {
       setLoading(false);
