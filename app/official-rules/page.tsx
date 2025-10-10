@@ -1,5 +1,6 @@
+/* eslint-disable react/no-unescaped-entities */
 import Link from "next/link";
-import { ChevronLeft, Gift, Calendar, Users, Award, FileText, Scale } from "lucide-react";
+import { ChevronLeft, Gift, Calendar, Users } from "lucide-react";
 
 export const metadata = {
   title: 'Official Rules - Wine Spectator x Hestan Sweepstakes',
