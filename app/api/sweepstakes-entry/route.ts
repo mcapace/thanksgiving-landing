@@ -2,7 +2,9 @@ import { NextRequest, NextResponse } from 'next/server';
 import { z } from 'zod';
 import { addEntry, hasEmailEntered } from '@/lib/sweepstakes-entries';
 import { resend, EMAIL_CONFIG } from '@/lib/resend';
-import { generateDownloadToken } from '@/lib/download-tokens';
+import { generateVerificationToken } from '@/lib/email-verification';
+import { VerificationEmail } from '@/lib/email-templates';
+import { render } from '@react-email/render';
 
 // Validation schema
 const sweepstakesEntrySchema = z.object({
@@ -66,94 +68,22 @@ export async function POST(request: NextRequest) {
       ipAddress,
     });
 
-    // Generate secure download token for recipe book
-    const downloadToken = await generateDownloadToken(validatedData.email);
+    // Generate email verification token
+    const verificationToken = await generateVerificationToken(validatedData.email);
     const origin = request.headers.get('origin') || request.nextUrl.origin;
-    const downloadUrl = `${origin}/api/download-recipes?token=${encodeURIComponent(downloadToken)}`;
+    const verificationUrl = `${origin}/api/verify-email?token=${encodeURIComponent(verificationToken)}`;
 
-    // Send confirmation email
+    // Send verification email
     try {
       await resend.emails.send({
         from: EMAIL_CONFIG.from,
         to: validatedData.email,
         replyTo: EMAIL_CONFIG.replyTo,
-        subject: '🎉 Sweepstakes Entry Confirmed - Wine Spectator x Hestan',
-        html: `
-          <!DOCTYPE html>
-          <html>
-            <head>
-              <meta charset="utf-8">
-              <meta name="viewport" content="width=device-width, initial-scale=1.0">
-            </head>
-            <body style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #1c1917; background: #f5f5f4; padding: 20px; margin: 0;">
-              <div style="max-width: 600px; margin: 0 auto; background: #ffffff; border-radius: 12px; overflow: hidden; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);">
-                
-                <div style="background: linear-gradient(135deg, #8B2332 0%, #7A1F2B 100%); padding: 50px 30px; text-align: center;">
-                  <img src="${origin}/images/logos/WS%20logo%20white.png" alt="Wine Spectator" style="height: 50px; margin-bottom: 20px;" />
-                  <h1 style="color: #ffffff; font-size: 32px; font-weight: 300; margin: 0; letter-spacing: -0.5px;">You're Entered!</h1>
-                  <p style="color: rgba(255, 255, 255, 0.9); font-size: 16px; margin: 8px 0 0 0;">Good luck in the sweepstakes</p>
-                </div>
-                
-                <div style="padding: 40px 30px;">
-                  <h2 style="color: #8B2332; font-size: 24px; font-weight: 600; margin: 0 0 20px 0;">Thank You for Entering!</h2>
-                  
-                  <p style="color: #57534e; font-size: 16px; margin: 0 0 16px 0;">
-                    Your entry has been successfully submitted for the Wine Spectator x Hestan Culinary Holiday Prize Package Sweepstakes.
-                  </p>
-                  
-                  <div style="background: linear-gradient(135deg, #fef3c7 0%, #fef0e8 100%); border-left: 4px solid #f59e0b; padding: 24px; border-radius: 8px; margin: 24px 0;">
-                    <h3 style="color: #78350f; font-size: 18px; font-weight: 600; margin: 0 0 12px 0;">🎁 Prize Package Includes:</h3>
-                    <ul style="margin: 0; padding-left: 20px;">
-                      <li style="color: #78350f; margin: 6px 0;">Hestan Culinary Small Polished Roaster</li>
-                      <li style="color: #78350f; margin: 6px 0;">Hedley & Bennett Chef Apron</li>
-                      <li style="color: #78350f; margin: 6px 0;">3-Piece Mixing Bowl Set</li>
-                    </ul>
-                    <p style="color: #78350f; font-weight: 600; margin: 12px 0 0 0;">Total Value: $464.90</p>
-                  </div>
-                  
-                  <div style="background: #f0fdf4; border-left: 4px solid #22c55e; padding: 20px; border-radius: 8px; margin: 24px 0;">
-                    <p style="font-size: 14px; color: #14532d; margin: 0;">
-                      <strong style="color: #15803d; font-size: 15px;">Entry Confirmation:</strong><br>
-                      Entry ID: ${entry.id}<br>
-                      Entry Date: ${new Date().toLocaleDateString()}<br>
-                      Winner announced: ~December 19, 2025
-                    </p>
-                  </div>
-                  
-                  <p style="color: #57534e; font-size: 15px; margin: 20px 0;">
-                    <strong>What's Next?</strong><br>
-                    The winner will be randomly selected and notified by email within 5 business days after the sweepstakes ends on December 14, 2025.
-                  </p>
-                  
-                  <hr style="border: 0; border-top: 2px solid #e5e7eb; margin: 30px 0;" />
-                  
-                  <div style="background: linear-gradient(135deg, #fef3c7 0%, #fef0e8 100%); border-left: 4px solid #8B2332; padding: 24px; border-radius: 8px; margin: 24px 0;">
-                    <h3 style="color: #8B2332; font-size: 20px; font-weight: 600; margin: 0 0 12px 0;">🍷 Bonus: Your Complete Recipe Book!</h3>
-                    <p style="color: #78350f; font-size: 15px; margin: 0 0 16px 0;">
-                      As a thank you for entering, download our complete collection of 9 expert wine pairings and Thanksgiving recipes!
-                    </p>
-                    <div style="text-align: center; margin: 20px 0;">
-                      <a href="${downloadUrl}" style="display: inline-block; background: #8B2332; color: #ffffff; padding: 16px 32px; text-decoration: none; border-radius: 8px; font-weight: 600; font-size: 16px; box-shadow: 0 4px 12px rgba(139, 35, 50, 0.3);">📥 Download Full Recipe Book</a>
-                    </div>
-                    <p style="color: #78350f; font-size: 13px; margin: 12px 0 0 0; text-align: center;">
-                      This is your personal download link. It can only be used once and expires in 7 days.
-                    </p>
-                  </div>
-                  
-                  <div style="text-align: center; margin: 30px 0;">
-                    <a href="${origin}/official-rules" style="display: inline-block; background: transparent; color: #8B2332; padding: 12px 28px; text-decoration: none; border-radius: 8px; font-weight: 600; font-size: 15px; border: 2px solid #8B2332;">View Official Rules</a>
-                  </div>
-                </div>
-                
-                <div style="background: #fafaf9; padding: 30px; text-align: center; border-top: 1px solid #e5e7eb;">
-                  <p style="color: #1c1917; font-size: 16px; font-weight: 600; margin: 0 0 4px 0;">Wine Spectator × Hestan Culinary</p>
-                  <p style="color: #78716c; font-size: 14px; margin: 0;">Thank you for participating!</p>
-                </div>
-                
-              </div>
-            </body>
-          </html>
-        `,
+        subject: 'Confirm Your Email - Wine Spectator x Hestan Sweepstakes',
+        react: VerificationEmail({
+          verificationUrl,
+          recipientEmail: validatedData.email,
+        }),
       });
     } catch (emailError) {
       console.error('Failed to send confirmation email:', emailError);
@@ -163,7 +93,7 @@ export async function POST(request: NextRequest) {
     return NextResponse.json(
       { 
         success: true,
-        message: 'Entry submitted successfully! Check your email for confirmation.',
+        message: 'Entry submitted! Please check your email to verify your address and get your sweepstakes confirmation + recipe book download link.',
         entryId: entry.id,
       },
       { status: 200 }

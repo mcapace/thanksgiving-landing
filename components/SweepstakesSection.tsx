@@ -111,7 +111,7 @@ export default function SweepstakesSection() {
 
       if (response.ok) {
         setStatus('success');
-        setMessage('🎉 Success! Your entry has been submitted. Check your email for your confirmation and recipe book download link!');
+        setMessage('Almost there! Check your email to verify your address. Once verified, you'll get your sweepstakes confirmation and recipe book download link!');
         // Reset form
         setFormData({
           firstName: '',
@@ -258,13 +258,17 @@ export default function SweepstakesSection() {
                   <div className="flex items-start gap-4">
                     <CheckCircle className="w-8 h-8 text-green-600 flex-shrink-0 mt-1" />
                     <div>
-                      <h4 className="text-lg font-semibold text-green-900 mb-2">Entry Confirmed!</h4>
+                      <h4 className="text-lg font-semibold text-green-900 mb-2">Check Your Email!</h4>
                       <p className="text-green-800 text-sm leading-relaxed">{message}</p>
                       <p className="text-green-700 text-sm mt-3">
-                        <strong>Good luck in the sweepstakes!</strong> We'll notify the winner by email after the contest ends.
+                        <strong>📧 Next Step:</strong> Click the verification link in your email to:
                       </p>
-                      <p className="text-green-700 text-sm mt-2">
-                        <strong>Bonus:</strong> Your email includes a download link for the complete recipe book with all 9 wine pairings!
+                      <ul className="text-green-700 text-sm mt-2 ml-4 list-disc list-inside">
+                        <li>Confirm your sweepstakes entry</li>
+                        <li>Get your recipe book download link</li>
+                      </ul>
+                      <p className="text-green-700 text-sm mt-3">
+                        <em>The verification link expires in 24 hours.</em>
                       </p>
                     </div>
                   </div>
