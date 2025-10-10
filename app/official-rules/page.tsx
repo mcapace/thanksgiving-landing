@@ -381,7 +381,18 @@ export default function OfficialRulesPage() {
                 </a>.
               </p>
               <p>
-                By entering, you agree that Sponsor and Hestan Culinary may contact you via email with information about their products, services, and promotions. You may opt-out of receiving such communications at any time.
+                <strong>By entering this sweepstakes, you expressly agree to:</strong>
+              </p>
+              <ul className="list-disc list-inside ml-4 space-y-2">
+                <li>Receive newsletters and marketing emails from Wine Spectator (M. Shanken Communications, Inc.)</li>
+                <li>Allow your entry information (name, email, phone, address) to be shared with Hestan Culinary, the sweepstakes sponsor</li>
+                <li>Be contacted by Wine Spectator and Hestan Culinary via email, phone, or mail with information about their products, services, and promotional offers</li>
+              </ul>
+              <p className="mt-3">
+                You may opt-out of receiving marketing communications at any time by following the unsubscribe instructions in any email or by contacting Wine Spectator directly.
+              </p>
+              <p className="text-sm italic">
+                <strong>Note:</strong> Entry into this sweepstakes requires consent to receive marketing communications. This is a mandatory condition of entry.
               </p>
             </div>
           </section>

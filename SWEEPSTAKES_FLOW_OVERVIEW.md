@@ -19,8 +19,11 @@ Users scroll to the sweepstakes section and fill out:
 - **Personal Info:** First name, last name, email, phone
 - **Verification:** Date of birth (must be 21+)
 - **Address:** Street, city, state, ZIP
-- **Consent:** Checkbox to agree to official rules
-- **Marketing Opt-in:** Optional checkbox for marketing emails
+- **Consent:** Checkbox to agree to official rules (required)
+- **Marketing & Data Sharing:** Required checkbox agreeing to:
+  - Receive Wine Spectator newsletters and marketing emails
+  - Share their information with Hestan Culinary (sweepstakes sponsor)
+  - Be contacted by both Wine Spectator and Hestan Culinary
 
 **What happens when they submit:**
 1. Form validates all fields (age 21+, valid email, required fields)
@@ -200,15 +203,22 @@ Access: `thanksgiving.winespectator.com/admin`
 
 Each sweepstakes entry includes:
 - First and Last Name
-- Email Address (verified)
+- Email Address (verified via double opt-in)
 - Phone Number
-- Date of Birth (age verified)
+- Date of Birth (age verified - must be 21+)
 - Full Address (Street, City, State, ZIP)
-- Agreement to Official Rules (boolean)
-- Marketing Email Opt-in (boolean)
+- Agreement to Official Rules (required - boolean)
+- Marketing Consent (required - boolean)
+  - User agrees to receive Wine Spectator marketing emails
+  - User acknowledges data sharing with Hestan Culinary
 - Entry Timestamp
 - Unique Entry ID
 - IP Address (optional)
+
+**Important:** By entering, users explicitly consent to:
+1. Receive newsletters and marketing from Wine Spectator
+2. Have their information shared with Hestan Culinary
+3. Be contacted by both organizations for promotional purposes
 
 ---
 

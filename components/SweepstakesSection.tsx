@@ -478,10 +478,11 @@ export default function SweepstakesSection() {
                         name="agreeToEmails"
                         checked={formData.agreeToEmails}
                         onChange={handleInputChange}
+                        required
                         className="w-5 h-5 text-wine-red border-2 border-stone-300 rounded focus:ring-2 focus:ring-wine-red/50 mt-0.5 cursor-pointer"
                       />
                       <span className="text-sm text-stone-700 group-hover:text-stone-900 transition-colors">
-                        Yes, I'd like to receive wine and culinary inspiration from Wine Spectator (optional)
+                        By entering, I agree to receive newsletters and marketing emails from Wine Spectator and acknowledge that my information will be shared with Hestan Culinary, the sweepstakes sponsor. <span className="text-wine-red">*</span>
                       </span>
                     </label>
                   </div>
@@ -513,11 +514,12 @@ export default function SweepstakesSection() {
                   {/* Legal Text */}
                   <p className="text-xs text-stone-500 text-center leading-relaxed pt-2">
                     NO PURCHASE NECESSARY. Open to legal US residents, 21+. Void where prohibited.
+                    By entering, you agree to receive Wine Spectator marketing emails and acknowledge your information will be shared with Hestan Culinary.
                     See{' '}
                     <Link href="/official-rules" className="text-wine-red hover:underline" target="_blank">
                       Official Rules
                     </Link>{' '}
-                    for complete details, including entry period, prize details, and odds.
+                    for complete details.
                   </p>
                 </form>
               </div>
