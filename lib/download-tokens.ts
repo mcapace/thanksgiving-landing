@@ -44,7 +44,12 @@ export async function verifyDownloadToken(token: string): Promise<DownloadToken 
     // Verify the token
     const { payload } = await jwtVerify(token, JWT_SECRET);
     
-    if (!payload.email || payload.type !== 'recipe-book') {
+    // Validate payload has required fields
+    if (
+      typeof payload.email !== 'string' || 
+      payload.type !== 'recipe-book' ||
+      typeof payload.exp !== 'number'
+    ) {
       console.log('Invalid token payload');
       return null;
     }
@@ -58,7 +63,12 @@ export async function verifyDownloadToken(token: string): Promise<DownloadToken 
       tokensArray.slice(0, 5000).forEach(t => usedTokens.delete(t));
     }
 
-    return payload as DownloadToken;
+    // Construct and return validated token
+    return {
+      email: payload.email,
+      type: payload.type,
+      exp: payload.exp,
+    };
   } catch (error) {
     console.error('Token verification error:', error);
     return null;
