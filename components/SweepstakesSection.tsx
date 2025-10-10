@@ -111,7 +111,7 @@ export default function SweepstakesSection() {
 
       if (response.ok) {
         setStatus('success');
-        setMessage('Almost there! Check your email to verify your address. Once verified, you'll get your sweepstakes confirmation and recipe book download link!');
+        setMessage("Almost there! Check your email to verify your address. Once verified, you'll get your sweepstakes confirmation and recipe book download link!");
         // Reset form
         setFormData({
           firstName: '',
