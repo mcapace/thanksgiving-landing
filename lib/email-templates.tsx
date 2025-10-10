@@ -198,11 +198,13 @@ export function VerificationEmail({
 }
 
 interface WelcomeEmailProps {
-  recipesUrl: string;
+  downloadUrl: string;
+  recipientEmail: string;
 }
 
 export function WelcomeEmail({
-  recipesUrl,
+  downloadUrl,
+  recipientEmail,
 }: WelcomeEmailProps) {
   return (
   <html>
@@ -237,6 +239,14 @@ export function WelcomeEmail({
             margin: 20px 0;
             border-left: 4px solid #d97706;
           }
+          .security-notice {
+            background: #f0fdf4;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 20px 0;
+            border-left: 4px solid #22c55e;
+            font-size: 14px;
+          }
           .cta-button {
             display: inline-block;
             background: #991b1b;
@@ -265,32 +275,43 @@ export function WelcomeEmail({
       <div className="content">
         <h2 style={{ color: '#7c2d12', marginTop: 0 }}>Thank You for Confirming!</h2>
         
-        <p>Your email has been verified successfully. You now have access to all 9 curated wine pairings and recipes for an unforgettable Thanksgiving celebration.</p>
+        <p>Your email has been verified successfully. You now have exclusive access to download the complete Wine Country Thanksgiving recipe collection!</p>
         
         <div className="highlight">
-          <h3 style={{ marginTop: 0, color: '#7c2d12' }}>📚 What's Included:</h3>
+          <h3 style={{ marginTop: 0, color: '#7c2d12' }}>📚 Your Recipe Collection Includes:</h3>
           <ul style={{ marginBottom: 0 }}>
-            <li>9 Expert Wine Pairings</li>
+            <li>9 Expert Wine Pairings from Premium Wineries</li>
             <li>Gourmet Thanksgiving Recipes</li>
-            <li>Downloadable Recipe Cards</li>
+            <li>Professional Recipe Cards (PDF Format)</li>
             <li>Cooking Tips & Techniques</li>
             <li>Wine Tasting Notes</li>
           </ul>
         </div>
         
         <div style={{ textAlign: 'center', margin: '30px 0' }}>
-          <a href={recipesUrl} className="cta-button">View All Recipes Now</a>
+          <a href={downloadUrl} className="cta-button">📥 Download Full Recipe Book</a>
+        </div>
+        
+        <div className="security-notice">
+          <strong>🔒 Secure Download Link</strong><br />
+          This is your personal download link. It can only be used once and expires in 7 days. Please download your recipe book now!
         </div>
         
         <p style={{ fontSize: '14px', color: '#6b7280', marginTop: '30px' }}>
-          <strong>🎁 Bonus:</strong> Don't forget to enter our sweepstakes for a chance to win amazing prizes from Wine Spectator and Hestan Culinary!
+          <strong>🎁 Bonus:</strong> You've also been automatically entered into our sweepstakes for a chance to win a Hestan Culinary Prize Package valued at $464.90!
+        </p>
+        
+        <p style={{ fontSize: '14px', color: '#6b7280' }}>
+          Questions about downloading? Reply to this email and we'll help you out.
         </p>
       </div>
       
       <div className="footer">
         <p><strong>Wine Spectator x Hestan Culinary</strong></p>
         <p>Bringing Wine Country to Your Thanksgiving Table</p>
-        <p style={{ marginTop: '20px' }}>Questions? Reply to this email anytime.</p>
+        <p style={{ marginTop: '20px', fontSize: '12px' }}>
+          This email was sent to: {recipientEmail}
+        </p>
       </div>
     </body>
   </html>

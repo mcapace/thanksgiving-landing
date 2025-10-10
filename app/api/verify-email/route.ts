@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import { resend, EMAIL_CONFIG } from '@/lib/resend';
 import { WelcomeEmail } from '@/lib/email-templates';
 import { verifyToken, markEmailAsVerified } from '@/lib/email-verification';
+import { generateDownloadToken } from '@/lib/download-tokens';
 
 export async function GET(request: NextRequest) {
   try {
@@ -27,18 +28,22 @@ export async function GET(request: NextRequest) {
     // Mark email as verified
     markEmailAsVerified(payload.email);
 
-    // Get origin for recipe URLs
+    // Generate secure download token (one-time use, expires in 7 days)
+    const downloadToken = await generateDownloadToken(payload.email);
+    
+    // Get origin for download URL
     const origin = request.headers.get('origin') || request.nextUrl.origin;
-    const recipesUrl = `${origin}/#recipes`;
+    const downloadUrl = `${origin}/api/download-recipes?token=${encodeURIComponent(downloadToken)}`;
 
-    // Send welcome email with all recipes
+    // Send welcome email with secure download link
     const { error } = await resend.emails.send({
       from: EMAIL_CONFIG.from,
       to: payload.email,
       replyTo: EMAIL_CONFIG.replyTo,
       subject: '🎉 Your Wine Country Thanksgiving Recipes Are Ready!',
       react: WelcomeEmail({
-        recipesUrl,
+        downloadUrl,
+        recipientEmail: payload.email,
       }),
     });
 
