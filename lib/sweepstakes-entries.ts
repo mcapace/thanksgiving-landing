@@ -1,7 +1,13 @@
 // Sweepstakes entry management
-// Using Vercel KV for persistence (Redis-based)
+// Using Upstash Redis for persistence
 
-import { kv } from '@vercel/kv';
+import { Redis } from '@upstash/redis';
+
+// Initialize Upstash Redis client
+const redis = new Redis({
+  url: process.env.UPSTASH_REDIS_REST_URL || '',
+  token: process.env.UPSTASH_REDIS_REST_TOKEN || '',
+});
 
 export interface SweepstakesEntry {
   id: string;
@@ -23,11 +29,11 @@ export interface SweepstakesEntry {
 const ENTRIES_KEY = 'sweepstakes:entries';
 
 /**
- * Load all entries from KV store
+ * Load all entries from Redis
  */
 async function loadEntries(): Promise<SweepstakesEntry[]> {
   try {
-    const entries = await kv.get<Array<Omit<SweepstakesEntry, 'entryDate'> & { entryDate: string }>>(ENTRIES_KEY);
+    const entries = await redis.get<Array<Omit<SweepstakesEntry, 'entryDate'> & { entryDate: string }>>(ENTRIES_KEY);
     
     if (!entries) {
       return [];
@@ -39,19 +45,19 @@ async function loadEntries(): Promise<SweepstakesEntry[]> {
       entryDate: new Date(entry.entryDate)
     }));
   } catch (error) {
-    console.error('Error loading entries from KV:', error);
+    console.error('Error loading entries from Redis:', error);
     return [];
   }
 }
 
 /**
- * Save all entries to KV store
+ * Save all entries to Redis
  */
 async function saveEntries(entries: SweepstakesEntry[]): Promise<void> {
   try {
-    await kv.set(ENTRIES_KEY, entries);
+    await redis.set(ENTRIES_KEY, entries);
   } catch (error) {
-    console.error('Error saving entries to KV:', error);
+    console.error('Error saving entries to Redis:', error);
     throw error;
   }
 }
