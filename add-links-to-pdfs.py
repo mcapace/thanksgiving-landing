@@ -52,6 +52,11 @@ RECIPES = [
         "winery": "The Vice Napa Valley",
         "pdfPath": "public/recipes/Vicev2.pdf",
         "url": "https://www.thevicenapavalley.com/"
+    },
+    {
+        "winery": "Hestan Vineyards",
+        "pdfPath": "public/recipes/Hestanv4.pdf",
+        "url": "https://www.hestanvineyards.com/"
     }
 ]
 
@@ -138,19 +143,12 @@ def main():
             error_count += 1
             continue
         
-        # Create backup directory if it doesn't exist
-        backup_dir = "public/recipes/backup_originals"
-        os.makedirs(backup_dir, exist_ok=True)
-        
-        # Backup original file
-        backup_path = os.path.join(backup_dir, os.path.basename(pdf_path))
-        if not os.path.exists(backup_path):
-            import shutil
-            shutil.copy2(pdf_path, backup_path)
-            print(f"  💾 Backed up original to: {backup_path}")
+        # Create output path with "-fullclick" suffix
+        base_name = os.path.splitext(pdf_path)[0]
+        output_path = f"{base_name}-fullclick.pdf"
         
         # Process PDF
-        if add_link_to_pdf(pdf_path, pdf_path, url, winery):
+        if add_link_to_pdf(pdf_path, output_path, url, winery):
             success_count += 1
         else:
             error_count += 1
@@ -160,9 +158,9 @@ def main():
     print(f"   ✅ Successfully processed: {success_count} PDFs")
     if error_count > 0:
         print(f"   ❌ Errors: {error_count} PDFs")
-    print(f"\n📦 Original files backed up to: public/recipes/backup_originals/")
+    print(f"\n📦 Clickable versions created with '-fullclick' suffix")
     print("\n💡 Test the PDFs by opening them - each page should have a")
-    print("   clickable 'Visit [Winery] Website' button at the bottom!\n")
+    print("   clickable 'Visit Winery →' button in the top right!\n")
 
 if __name__ == "__main__":
     main()

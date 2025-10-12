@@ -67,8 +67,8 @@ export const recipes: Recipe[] = [
     bottlePath: "/images/wines/hestan-cabernet-transparent.png",
     recipePath: "/images/recipes-food/Hestan Recipe.png",
     category: "main",
-    wineType: "Cabernet"
-    // No PDF available
+    wineType: "Cabernet",
+    pdfPath: "/recipes/Hestanv4-fullclick.pdf"
   },
   {
     id: 5,

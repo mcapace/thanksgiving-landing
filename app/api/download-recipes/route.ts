@@ -29,7 +29,7 @@ export async function GET(request: NextRequest) {
     }
 
     // Read the PDF file
-    const pdfPath = join(process.cwd(), 'public', 'recipes', 'thanksgiving-recipes-full.pdf');
+    const pdfPath = join(process.cwd(), 'public', 'recipes', 'WineSpectator_Thanksgiving_RecipeBook_FINAL.pdf');
     const pdfBuffer = await readFile(pdfPath);
 
     // Return the PDF with proper headers (convert Buffer to Uint8Array for Next.js 15)
@@ -37,7 +37,7 @@ export async function GET(request: NextRequest) {
       status: 200,
       headers: {
         'Content-Type': 'application/pdf',
-        'Content-Disposition': 'attachment; filename="Wine-Spectator-Thanksgiving-Recipes.pdf"',
+        'Content-Disposition': 'attachment; filename="WineSpectator-Thanksgiving-RecipeBook.pdf"',
         'Cache-Control': 'no-store, no-cache, must-revalidate',
         'Pragma': 'no-cache',
         'Expires': '0',
