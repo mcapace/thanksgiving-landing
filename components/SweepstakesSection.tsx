@@ -164,8 +164,11 @@ export default function SweepstakesSection() {
             <h2 className="font-serif text-4xl sm:text-5xl lg:text-6xl font-light text-stone-900 mb-4 tracking-tight">
               Enter to Win
             </h2>
-            <p className="text-lg sm:text-xl text-stone-600 max-w-2xl mx-auto">
+            <p className="text-lg sm:text-xl text-stone-600 max-w-2xl mx-auto mb-3">
               Your chance to win a Hestan Culinary Holiday Prize Package valued at <strong className="text-wine-red">$464.90</strong>
+            </p>
+            <p className="text-xl sm:text-2xl font-semibold text-stone-800 max-w-2xl mx-auto mb-4">
+              You'll Receive the Full Recipe & Pairing Collection, too
             </p>
             <div className="mt-6 inline-flex items-center gap-2 px-4 py-2 bg-amber-50 border-2 border-amber-200 rounded-full">
               <Sparkles className="w-5 h-5 text-amber-600" />
@@ -478,11 +481,10 @@ export default function SweepstakesSection() {
                         name="agreeToEmails"
                         checked={formData.agreeToEmails}
                         onChange={handleInputChange}
-                        required
                         className="w-5 h-5 text-wine-red border-2 border-stone-300 rounded focus:ring-2 focus:ring-wine-red/50 mt-0.5 cursor-pointer"
                       />
                       <span className="text-sm text-stone-700 group-hover:text-stone-900 transition-colors">
-                        By entering, I agree to receive newsletters and marketing emails from Wine Spectator and acknowledge that my information will be shared with Hestan Culinary, the sweepstakes sponsor. <span className="text-wine-red">*</span>
+                        I agree to receive newsletters and marketing emails from Wine Spectator (optional)
                       </span>
                     </label>
                   </div>
@@ -514,7 +516,7 @@ export default function SweepstakesSection() {
                   {/* Legal Text */}
                   <p className="text-xs text-stone-500 text-center leading-relaxed pt-2">
                     NO PURCHASE NECESSARY. Open to legal US residents, 21+. Void where prohibited.
-                    By entering, you agree to receive Wine Spectator marketing emails and acknowledge your information will be shared with Hestan Culinary.
+                    Your information will be shared with Hestan Culinary, the sweepstakes sponsor.
                     See{' '}
                     <Link href="/official-rules" className="text-wine-red hover:underline" target="_blank">
                       Official Rules

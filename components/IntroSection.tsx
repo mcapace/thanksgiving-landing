@@ -41,8 +41,8 @@ export default function IntroSection() {
               country straight to your table.
             </p>
             <p className="text-base sm:text-lg text-stone-700 leading-relaxed">
-              Save and share recipes individually, or drop your email below to receive 
-              the complete recipe book and be automatically entered to win a Hestan 
+              Save and share recipes individually, or enter the sweepstakes to receive 
+              the complete recipe book and your chance to win a Hestan 
               Culinary Cookware Set including:
             </p>
           </motion.div>
