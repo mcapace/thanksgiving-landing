@@ -23,7 +23,7 @@ export async function generateDownloadToken(email: string): Promise<string> {
     random: Math.random().toString(36) // Add randomness to prevent token reuse
   })
     .setProtectedHeader({ alg: 'HS256' })
-    .setExpirationTime('7d') // Valid for 7 days
+    .setExpirationTime('365d') // Valid for 1 year
     .setIssuedAt()
     .sign(JWT_SECRET);
 

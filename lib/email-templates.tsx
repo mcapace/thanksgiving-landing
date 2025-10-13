@@ -532,7 +532,7 @@ export function WelcomeEmail({
           
           <div className="security-notice">
             <p><strong>🔒 Secure Download Link</strong><br />
-            This is your personal download link. It can only be used once and expires in 7 days. Please download your recipe book now!</p>
+            This is your personal download link and can only be used once. Please download your recipe book now!</p>
           </div>
           
           <div className="bonus-box">

@@ -110,7 +110,7 @@ function VerificationSuccessContent() {
                 Download Full Recipe Book (PDF)
               </a>
               <p className="text-xs text-stone-500 mt-3 text-center">
-                🔒 This link can only be used once and expires in 7 days
+                🔒 This is your personal download link and can only be used once
               </p>
             </motion.div>
           )}

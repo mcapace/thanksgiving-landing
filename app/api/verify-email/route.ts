@@ -38,7 +38,7 @@ export async function GET(request: NextRequest) {
       );
     }
 
-    // Generate secure download token (one-time use, expires in 7 days)
+    // Generate secure download token (one-time use)
     const downloadToken = await generateDownloadToken(payload.email);
     
     // Get origin for download URL
@@ -108,7 +108,7 @@ export async function GET(request: NextRequest) {
                     <a href="${downloadUrl}" style="display: inline-block; background: #8B2332; color: #ffffff; padding: 16px 32px; text-decoration: none; border-radius: 8px; font-weight: 600; font-size: 16px; box-shadow: 0 4px 12px rgba(139, 35, 50, 0.3);">📥 Download Full Recipe Book</a>
                   </div>
                   <p style="color: #78350f; font-size: 13px; margin: 12px 0 0 0; text-align: center;">
-                    🔒 This is your personal download link. It can only be used once and expires in 7 days.
+                    🔒 This is your personal download link and can only be used once.
                   </p>
                 </div>
                 
