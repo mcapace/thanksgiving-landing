@@ -124,7 +124,7 @@ export const recipes: Recipe[] = [
     recipePath: "/images/recipes-food/St Supery Recipe.jpg",
     category: "side",
     wineType: "Other",
-    pdfPath: "/recipes/StSuperyvNEW.pdf"
+    pdfPath: "/recipes/StSuperyvNEW1.pdf"
   },
   {
     id: 9,
