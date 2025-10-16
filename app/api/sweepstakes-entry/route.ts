@@ -77,7 +77,7 @@ export async function POST(request: NextRequest) {
     await trackEvent({
       type: 'sweepstakes_entry',
       ipAddress,
-      userAgent: request.headers.get('user-agent'),
+      userAgent: request.headers.get('user-agent') || undefined,
       metadata: {
         email: validatedData.email,
         firstName: validatedData.firstName,
