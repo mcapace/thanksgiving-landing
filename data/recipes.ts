@@ -124,7 +124,7 @@ export const recipes: Recipe[] = [
     recipePath: "/images/recipes-food/St Supery Recipe.jpg",
     category: "side",
     wineType: "Other",
-    pdfPath: "/recipes/StSuperyv2.pdf"
+    pdfPath: "/recipes/StSuperyv2-fullclick.pdf"
   },
   {
     id: 9,
@@ -132,7 +132,7 @@ export const recipes: Recipe[] = [
     wineName: "2022 'Torie's Vineyard' Los Carneros Pinot Noir",
     dishName: "Truffle Gemelli with Parmesan & Corn Béchamel",
     description: "Pinot Noir with Truffle Gemelli",
-    url: "https://www.thevicenapavalley.com/",
+    url: "https://www.thevicewine.com/product#/toriespinot",
     logoPath: "/images/logos/the-vice-logo.png",
     bottlePath: "/images/wines/Vice.png",
     recipePath: "/images/recipes-food/The Vice Recipe.jpg",
