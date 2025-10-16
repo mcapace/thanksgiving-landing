@@ -53,21 +53,10 @@ export default function AnalyticsPage() {
   const [data, setData] = useState<AnalyticsData | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
-  const [authToken, setAuthToken] = useState('');
-
   const fetchAnalytics = useCallback(async () => {
-    if (!authToken) {
-      setError('Please enter admin token');
-      return;
-    }
-
     try {
       setLoading(true);
-      const response = await fetch('/api/admin/analytics', {
-        headers: {
-          'Authorization': `Bearer ${authToken}`,
-        },
-      });
+      const response = await fetch('/api/admin/analytics');
 
       if (!response.ok) {
         throw new Error('Failed to fetch analytics');
@@ -81,16 +70,13 @@ export default function AnalyticsPage() {
     } finally {
       setLoading(false);
     }
-  }, [authToken]);
+  }, []);
 
   const exportData = async () => {
-    if (!authToken) return;
-
     try {
       const response = await fetch('/api/admin/analytics', {
         method: 'POST',
         headers: {
-          'Authorization': `Bearer ${authToken}`,
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({ action: 'export' }),
@@ -113,41 +99,9 @@ export default function AnalyticsPage() {
   };
 
   useEffect(() => {
-    if (authToken) {
-      fetchAnalytics();
-    }
-  }, [authToken, fetchAnalytics]);
+    fetchAnalytics();
+  }, [fetchAnalytics]);
 
-  if (!authToken) {
-    return (
-      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
-        <div className="bg-white p-8 rounded-lg shadow-lg max-w-md w-full">
-          <h1 className="text-2xl font-bold text-gray-900 mb-6">Admin Analytics</h1>
-          <div className="space-y-4">
-            <div>
-              <label htmlFor="token" className="block text-sm font-medium text-gray-700 mb-2">
-                Admin Token
-              </label>
-              <input
-                type="password"
-                id="token"
-                value={authToken}
-                onChange={(e) => setAuthToken(e.target.value)}
-                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-                placeholder="Enter admin token"
-              />
-            </div>
-            <button
-              onClick={fetchAnalytics}
-              className="w-full bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-blue-700 transition-colors"
-            >
-              Access Analytics
-            </button>
-          </div>
-        </div>
-      </div>
-    );
-  }
 
   if (loading) {
     return (
