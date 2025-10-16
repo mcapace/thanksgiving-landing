@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { BarChart3, Download, Users, FileText, Mail, TrendingUp, Calendar, ArrowLeft } from 'lucide-react';
 
 interface AnalyticsData {
@@ -55,7 +55,7 @@ export default function AnalyticsPage() {
   const [error, setError] = useState<string | null>(null);
   const [authToken, setAuthToken] = useState('');
 
-  const fetchAnalytics = async () => {
+  const fetchAnalytics = useCallback(async () => {
     if (!authToken) {
       setError('Please enter admin token');
       return;
@@ -81,7 +81,7 @@ export default function AnalyticsPage() {
     } finally {
       setLoading(false);
     }
-  };
+  }, [authToken]);
 
   const exportData = async () => {
     if (!authToken) return;
