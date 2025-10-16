@@ -118,7 +118,7 @@ export const recipes: Recipe[] = [
     wineName: "2023 Dollarhide Sauvignon Blanc",
     dishName: "Potato Pavé",
     description: "Sauvignon Blanc with Potato Pavé",
-    url: "https://www.stsupery.com/thanksgiving-checklist-enjoyment/",
+    url: "https://www.stsupery.com/thanksgiving-meal-checklist-enjoyment/",
     logoPath: "/images/logos/st-supery-logo.png",
     bottlePath: "/images/wines/St Supery Bottle.png",
     recipePath: "/images/recipes-food/St Supery Recipe.jpg",
