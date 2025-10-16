@@ -138,7 +138,7 @@ export const recipes: Recipe[] = [
     recipePath: "/images/recipes-food/The Vice Recipe.jpg",
     category: "side",
     wineType: "Pinot Noir",
-    pdfPath: "/recipes/Vicev2-fullclick.pdf"
+    pdfPath: "/recipes/ViceNEW.pdf"
   }
 ];
 
