@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect } from 'react';
-import { BarChart3, Download, Users, FileText, Mail, TrendingUp, Calendar } from 'lucide-react';
+import { BarChart3, Download, Users, FileText, Mail, TrendingUp, Calendar, ArrowLeft } from 'lucide-react';
 
 interface AnalyticsData {
   summary: {
@@ -178,6 +178,15 @@ export default function AnalyticsPage() {
         {/* Header */}
         <div className="flex justify-between items-center mb-8">
           <div>
+            <div className="flex items-center gap-4 mb-2">
+              <a
+                href="/admin"
+                className="inline-flex items-center gap-2 text-gray-600 hover:text-gray-900 transition-colors"
+              >
+                <ArrowLeft className="w-4 h-4" />
+                Back to Admin
+              </a>
+            </div>
             <h1 className="text-3xl font-bold text-gray-900">Analytics Dashboard</h1>
             <p className="text-gray-600 mt-1">Wine Spectator x Hestan Thanksgiving Landing Page</p>
           </div>

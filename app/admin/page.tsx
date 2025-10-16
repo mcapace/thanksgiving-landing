@@ -141,6 +141,13 @@ export default function AdminPage() {
               <p className="text-stone-600 mt-1">Wine Spectator x Hestan Holiday Sweepstakes</p>
             </div>
             <div className="flex items-center gap-3">
+              <a
+                href="/admin/analytics"
+                className="inline-flex items-center gap-2 bg-blue-600 text-white px-4 py-2 rounded-lg font-medium hover:bg-blue-700 transition-colors"
+              >
+                <Users className="w-4 h-4" />
+                Analytics Dashboard
+              </a>
               <button
                 onClick={handleExportCSV}
                 className="inline-flex items-center gap-2 bg-green-600 text-white px-4 py-2 rounded-lg font-medium hover:bg-green-700 transition-colors"
