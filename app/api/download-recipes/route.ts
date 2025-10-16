@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { verifyDownloadToken } from '@/lib/download-tokens';
+import { trackEvent } from '@/lib/analytics';
 import { readFile } from 'fs/promises';
 import { join } from 'path';
 
@@ -27,6 +28,19 @@ export async function GET(request: NextRequest) {
         { status: 403 }
       );
     }
+
+    // Track the download
+    await trackEvent({
+      type: 'pdf_download',
+      ipAddress: request.headers.get('x-forwarded-for') || 
+                request.headers.get('x-real-ip') || 
+                'unknown',
+      userAgent: request.headers.get('user-agent'),
+      metadata: {
+        pdfType: 'full_recipe_book',
+        email: tokenData.email,
+      },
+    });
 
     // Read the PDF file
     const pdfPath = join(process.cwd(), 'public', 'recipes', 'Thanksgiving_recipebook_FINAL2.pdf');

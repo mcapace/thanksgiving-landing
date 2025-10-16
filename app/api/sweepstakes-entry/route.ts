@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { z } from 'zod';
 import { addEntry, hasEmailEntered } from '@/lib/sweepstakes-entries';
+import { trackEvent } from '@/lib/analytics';
 import { resend, EMAIL_CONFIG } from '@/lib/resend';
 import { generateVerificationToken } from '@/lib/email-verification';
 import { VerificationEmail } from '@/lib/email-templates';
@@ -71,6 +72,18 @@ export async function POST(request: NextRequest) {
     const entry = await addEntry({
       ...validatedData,
       ipAddress,
+    });
+
+    // Track the sweepstakes entry
+    await trackEvent({
+      type: 'sweepstakes_entry',
+      ipAddress,
+      userAgent: request.headers.get('user-agent'),
+      metadata: {
+        email: validatedData.email,
+        firstName: validatedData.firstName,
+        lastName: validatedData.lastName,
+      },
     });
 
     // Generate email verification token

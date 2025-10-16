@@ -17,6 +17,28 @@ export default function RecipeCard({ recipe, index }: RecipeCardProps) {
   const isInView = useInView(ref, { once: true, margin: "-100px" });
   const [showRecipe, setShowRecipe] = useState(false);
 
+  const trackRecipeDownload = async () => {
+    try {
+      await fetch('/api/analytics/track', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          type: 'pdf_download',
+          metadata: {
+            pdfType: 'individual_recipe',
+            recipeId: recipe.id,
+            recipeName: recipe.dishName,
+            winery: recipe.winery,
+          },
+        }),
+      });
+    } catch (error) {
+      console.error('Failed to track recipe download:', error);
+    }
+  };
+
   // Auto-rotate between wine bottle and recipe image every 4 seconds
   useEffect(() => {
     if (!recipe.recipePath) return; // Only rotate if recipe image exists
@@ -151,6 +173,7 @@ export default function RecipeCard({ recipe, index }: RecipeCardProps) {
               href={recipe.pdfPath}
               target="_blank"
               rel="noopener noreferrer"
+              onClick={trackRecipeDownload}
               className="w-full inline-flex items-center justify-center gap-2 bg-red-900 text-white px-4 py-3 rounded-lg hover:bg-red-950 transition-all duration-300 font-semibold text-sm hover:gap-3 shadow-md hover:shadow-lg"
             >
               <Download className="w-4 h-4" />
