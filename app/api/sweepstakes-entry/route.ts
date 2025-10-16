@@ -5,7 +5,6 @@ import { trackEvent } from '@/lib/analytics';
 import { resend, EMAIL_CONFIG } from '@/lib/resend';
 import { generateVerificationToken } from '@/lib/email-verification';
 import { VerificationEmail } from '@/lib/email-templates';
-import { render } from '@react-email/render';
 
 // Validation schema
 const sweepstakesEntrySchema = z.object({

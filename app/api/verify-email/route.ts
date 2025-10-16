@@ -1,6 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { resend, EMAIL_CONFIG } from '@/lib/resend';
-import { WelcomeEmail } from '@/lib/email-templates';
 import { verifyToken, markEmailAsVerified } from '@/lib/email-verification';
 import { generateDownloadToken } from '@/lib/download-tokens';
 import { getEntryByEmail } from '@/lib/sweepstakes-entries';

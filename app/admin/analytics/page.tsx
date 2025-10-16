@@ -39,7 +39,13 @@ interface AnalyticsData {
     id: string;
     type: string;
     timestamp: string;
-    metadata: any;
+    metadata: {
+      email?: string;
+      recipeName?: string;
+      winery?: string;
+      pdfType?: string;
+      recipeId?: number;
+    };
   }>;
 }
 
@@ -110,7 +116,7 @@ export default function AnalyticsPage() {
     if (authToken) {
       fetchAnalytics();
     }
-  }, [authToken]);
+  }, [authToken, fetchAnalytics]);
 
   if (!authToken) {
     return (
