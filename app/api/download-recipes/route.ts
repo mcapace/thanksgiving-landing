@@ -29,7 +29,7 @@ export async function GET(request: NextRequest) {
     }
 
     // Read the PDF file
-    const pdfPath = join(process.cwd(), 'public', 'recipes', 'WineSpectator_Thanksgiving_RecipeBook_FINAL.pdf');
+    const pdfPath = join(process.cwd(), 'public', 'recipes', 'Thanksgiving_recipebook_FINAL2.pdf');
     const pdfBuffer = await readFile(pdfPath);
 
     // Return the PDF with proper headers (convert Buffer to Uint8Array for Next.js 15)
