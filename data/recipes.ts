@@ -26,7 +26,7 @@ export const recipes: Recipe[] = [
     recipePath: "/images/recipes-food/King Estate Recipe.jpg",
     category: "appetizer",
     wineType: "Pinot Noir",
-    pdfPath: "/recipes/KingEstatev1-fullclick.pdf"
+    pdfPath: "/recipes/KingEstatev1.pdf"
   },
   {
     id: 2,
@@ -40,7 +40,7 @@ export const recipes: Recipe[] = [
     recipePath: "/images/recipes-food/Calcareous Recipe.jpg",
     category: "side",
     wineType: "Pinot Noir",
-    pdfPath: "/recipes/Calcareousv2-fullclick.pdf"
+    pdfPath: "/recipes/Calcareousv2.pdf"
   },
   {
     id: 3,
@@ -54,7 +54,7 @@ export const recipes: Recipe[] = [
     recipePath: "/images/recipes-food/Gloria Ferrer Recipe.png",
     category: "side",
     wineType: "Other",
-    pdfPath: "/recipes/GloriaFerrerv1-fullclick.pdf"
+    pdfPath: "/recipes/GloriaFerrerv1.pdf"
   },
   {
     id: 4,
@@ -68,7 +68,7 @@ export const recipes: Recipe[] = [
     recipePath: "/images/recipes-food/Hestan Recipe.png",
     category: "main",
     wineType: "Cabernet",
-    pdfPath: "/recipes/Hestanv4-fullclick.pdf"
+    pdfPath: "/recipes/Hestanv4.pdf"
   },
   {
     id: 5,
@@ -82,7 +82,7 @@ export const recipes: Recipe[] = [
     recipePath: "/images/recipes-food/Marimar Estate Recipe.jpg",
     category: "appetizer",
     wineType: "Pinot Noir",
-    pdfPath: "/recipes/Marimarv2-fullclick.pdf"
+    pdfPath: "/recipes/Marimarv2.pdf"
   },
   {
     id: 6,
@@ -96,7 +96,7 @@ export const recipes: Recipe[] = [
     recipePath: "/images/recipes-food/McIntyre Recipe.png",
     category: "main",
     wineType: "Pinot Gris",
-    pdfPath: "/recipes/McIntyrev3-fullclick.pdf"
+    pdfPath: "/recipes/McIntyrev3.pdf"
   },
   {
     id: 7,
@@ -110,7 +110,7 @@ export const recipes: Recipe[] = [
     recipePath: "/images/recipes-food/Pine Ridge Recipe.jpg",
     category: "side",
     wineType: "Cabernet",
-    pdfPath: "/recipes/PineRidgev2-fullclick.pdf"
+    pdfPath: "/recipes/PineRidgev2.pdf"
   },
   {
     id: 8,
