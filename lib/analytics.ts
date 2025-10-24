@@ -1,4 +1,7 @@
 // Analytics tracking for PDF downloads and sweepstakes entries
+// Using Supabase for persistence
+
+import { supabase } from './supabase';
 
 export interface AnalyticsEvent {
   id: string;
@@ -23,8 +26,40 @@ export interface AnalyticsEvent {
   };
 }
 
-// In-memory store (in production, use a database like Vercel KV, MongoDB, etc.)
-const analyticsEvents: AnalyticsEvent[] = [];
+/**
+ * Load all analytics events from Supabase
+ */
+async function loadAnalyticsEvents(): Promise<AnalyticsEvent[]> {
+  if (!supabase) {
+    console.warn('Supabase not configured - returning empty analytics data');
+    return [];
+  }
+  
+  try {
+    const { data, error } = await supabase
+      .from('analytics_events')
+      .select('*')
+      .order('timestamp', { ascending: false });
+    
+    if (error) {
+      console.error('Error loading analytics events from Supabase:', error);
+      return [];
+    }
+    
+    if (!data) {
+      return [];
+    }
+    
+    // Convert timestamp strings back to Date objects
+    return data.map((event) => ({
+      ...event,
+      timestamp: new Date(event.timestamp)
+    }));
+  } catch (error) {
+    console.error('Error loading analytics events from Supabase:', error);
+    return [];
+  }
+}
 
 export async function trackEvent(event: Omit<AnalyticsEvent, 'id' | 'timestamp'>): Promise<void> {
   const analyticsEvent: AnalyticsEvent = {
@@ -33,10 +68,31 @@ export async function trackEvent(event: Omit<AnalyticsEvent, 'id' | 'timestamp'>
     timestamp: new Date(),
   };
   
-  analyticsEvents.push(analyticsEvent);
+  if (!supabase) {
+    console.warn('Supabase not configured - analytics event not saved:', analyticsEvent);
+    return;
+  }
   
-  // In production, you'd save to a database here
-  console.log('Analytics event:', analyticsEvent);
+  try {
+    const { error } = await supabase
+      .from('analytics_events')
+      .insert([{
+        id: analyticsEvent.id,
+        type: analyticsEvent.type,
+        timestamp: analyticsEvent.timestamp.toISOString(),
+        user_agent: analyticsEvent.userAgent,
+        ip_address: analyticsEvent.ipAddress,
+        metadata: analyticsEvent.metadata
+      }]);
+    
+    if (error) {
+      console.error('Error saving analytics event to Supabase:', error);
+    } else {
+      console.log('Analytics event saved:', analyticsEvent);
+    }
+  } catch (error) {
+    console.error('Error saving analytics event to Supabase:', error);
+  }
 }
 
 export async function getAnalyticsSummary() {
@@ -45,6 +101,8 @@ export async function getAnalyticsSummary() {
   const last7Days = new Date(now.getTime() - 7 * 24 * 60 * 60 * 1000);
   const last30Days = new Date(now.getTime() - 30 * 24 * 60 * 60 * 1000);
 
+  // Load events from Redis instead of in-memory array
+  const analyticsEvents = await loadAnalyticsEvents();
   const recentEvents = analyticsEvents.filter(event => event.timestamp >= last30Days);
 
   // Individual recipe downloads
@@ -124,5 +182,6 @@ export async function getAnalyticsSummary() {
 }
 
 export async function getAllAnalyticsEvents(): Promise<AnalyticsEvent[]> {
-  return analyticsEvents.sort((a, b) => b.timestamp.getTime() - a.timestamp.getTime());
+  const events = await loadAnalyticsEvents();
+  return events.sort((a, b) => b.timestamp.getTime() - a.timestamp.getTime());
 }
