@@ -56,7 +56,9 @@ export default function AnalyticsPage() {
   const fetchAnalytics = useCallback(async () => {
     try {
       setLoading(true);
-      const response = await fetch('/api/admin/analytics');
+      // Get password from session storage (set by admin login)
+      const password = sessionStorage.getItem('adminPassword') || 'admin123';
+      const response = await fetch(`/api/admin/analytics?password=${encodeURIComponent(password)}`);
 
       if (!response.ok) {
         throw new Error('Failed to fetch analytics');
@@ -74,7 +76,8 @@ export default function AnalyticsPage() {
 
   const exportData = async () => {
     try {
-      const response = await fetch('/api/admin/analytics', {
+      const password = sessionStorage.getItem('adminPassword') || 'admin123';
+      const response = await fetch(`/api/admin/analytics?password=${encodeURIComponent(password)}`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

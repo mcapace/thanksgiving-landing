@@ -118,7 +118,6 @@ export default function AdminPage() {
           </form>
 
           <p className="mt-6 text-xs text-center text-stone-500">
-            Default password: <code className="bg-stone-100 px-2 py-1 rounded">winespec2025</code>
             <br />
             (Set ADMIN_PASSWORD in environment variables)
           </p>

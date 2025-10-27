@@ -1,18 +1,11 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { getAnalyticsSummary, getAllAnalyticsEvents } from '@/lib/analytics';
 
-// No auth required for analytics (you can re-enable by uncommenting the auth check below)
+// Password protection for analytics
 function isAuthorized(request: NextRequest): boolean {
-  return true; // Always authorized - no password needed
-  
-  // Uncomment below to re-enable authentication:
-  // const authHeader = request.headers.get('authorization');
-  // const expectedToken = process.env.ADMIN_AUTH_TOKEN || 'admin123';
-  // if (!authHeader || !authHeader.startsWith('Bearer ')) {
-  //   return false;
-  // }
-  // const token = authHeader.substring(7);
-  // return token === expectedToken;
+  const password = request.nextUrl.searchParams.get('password');
+  const expectedPassword = process.env.ADMIN_PASSWORD || 'admin123';
+  return password === expectedPassword;
 }
 
 export async function GET(request: NextRequest) {

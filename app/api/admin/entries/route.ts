@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import { getAllEntries, getEntryCount, exportEntriesToCSV } from '@/lib/sweepstakes-entries';
 
 // Simple password protection (in production, use proper auth)
-const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD || 'winespec2025';
+const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD || 'admin123';
 
 export async function GET(request: NextRequest) {
   // Check for authorization
