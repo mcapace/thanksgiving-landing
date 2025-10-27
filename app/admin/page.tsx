@@ -119,7 +119,7 @@ export default function AdminPage() {
 
           <p className="mt-6 text-xs text-center text-stone-500">
             <br />
-            (Set ADMIN_PASSWORD in environment variables)
+            Contact administrator for access
           </p>
         </div>
       </div>
