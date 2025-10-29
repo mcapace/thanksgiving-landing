@@ -44,10 +44,22 @@ async function loadEntries(): Promise<SweepstakesEntry[]> {
       return [];
     }
     
-    // Convert date strings back to Date objects
+    // Convert date strings back to Date objects and map field names
     return data.map((entry) => ({
-      ...entry,
-      entryDate: new Date(entry.entry_date)
+      id: entry.id,
+      firstName: entry.first_name,
+      lastName: entry.last_name,
+      email: entry.email,
+      phone: entry.phone,
+      dateOfBirth: entry.date_of_birth,
+      address: entry.address,
+      city: entry.city,
+      state: entry.state,
+      zipCode: entry.zip_code,
+      agreeToRules: entry.agree_to_rules,
+      agreeToEmails: entry.agree_to_emails,
+      entryDate: new Date(entry.entry_date),
+      ipAddress: entry.ip_address
     }));
   } catch (error) {
     console.error('Error loading entries from Supabase:', error);
