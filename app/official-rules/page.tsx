@@ -467,7 +467,7 @@ export default function OfficialRulesPage() {
               <div className="bg-stone-50 border border-stone-200 rounded-lg p-4 my-3">
                 <p>
                   <strong>Wine Spectator Sweepstakes</strong><br />
-                  Email: <a href="mailto:info@winespectator.com" className="text-wine-red hover:underline">info@winespectator.com</a><br />
+                  Email: <a href="mailto:wsonline@mshanken.com" className="text-wine-red hover:underline">wsonline@mshanken.com</a><br />
                   Subject Line: "Thanksgiving Sweepstakes Question"
                 </p>
               </div>
