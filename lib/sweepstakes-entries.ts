@@ -1,13 +1,7 @@
 // Sweepstakes entry management
-// Using Upstash Redis for persistence
+// Using Supabase for persistence
 
-import { Redis } from '@upstash/redis';
-
-// Initialize Upstash Redis client
-const redis = new Redis({
-  url: process.env.KV_REST_API_URL || '',
-  token: process.env.KV_REST_API_TOKEN || '',
-});
+import { supabase } from './supabase';
 
 export interface SweepstakesEntry {
   id: string;
@@ -26,47 +20,49 @@ export interface SweepstakesEntry {
   ipAddress?: string;
 }
 
-const ENTRIES_KEY = 'sweepstakes:entries';
-
 /**
- * Load all entries from Redis
+ * Load all entries from Supabase
  */
 async function loadEntries(): Promise<SweepstakesEntry[]> {
+  if (!supabase) {
+    console.warn('Supabase not configured - returning empty entries');
+    return [];
+  }
+  
   try {
-    const entries = await redis.get<Array<Omit<SweepstakesEntry, 'entryDate'> & { entryDate: string }>>(ENTRIES_KEY);
+    const { data, error } = await supabase
+      .from('sweepstakes_entries')
+      .select('*')
+      .order('entry_date', { ascending: false });
     
-    if (!entries) {
+    if (error) {
+      console.error('Error loading entries from Supabase:', error);
+      return [];
+    }
+    
+    if (!data) {
       return [];
     }
     
     // Convert date strings back to Date objects
-    return entries.map((entry) => ({
+    return data.map((entry) => ({
       ...entry,
-      entryDate: new Date(entry.entryDate)
+      entryDate: new Date(entry.entry_date)
     }));
   } catch (error) {
-    console.error('Error loading entries from Redis:', error);
+    console.error('Error loading entries from Supabase:', error);
     return [];
   }
 }
 
-/**
- * Save all entries to Redis
- */
-async function saveEntries(entries: SweepstakesEntry[]): Promise<void> {
-  try {
-    await redis.set(ENTRIES_KEY, entries);
-  } catch (error) {
-    console.error('Error saving entries to Redis:', error);
-    throw error;
-  }
-}
 
 /**
  * Add a new sweepstakes entry
  */
 export async function addEntry(entry: Omit<SweepstakesEntry, 'id' | 'entryDate'>): Promise<SweepstakesEntry> {
-  const entries = await loadEntries();
+  if (!supabase) {
+    throw new Error('Supabase not configured');
+  }
   
   const newEntry: SweepstakesEntry = {
     ...entry,
@@ -74,18 +70,44 @@ export async function addEntry(entry: Omit<SweepstakesEntry, 'id' | 'entryDate'>
     entryDate: new Date(),
   };
   
-  entries.push(newEntry);
-  await saveEntries(entries);
-  
-  // Log entry
-  console.log('New sweepstakes entry:', {
-    id: newEntry.id,
-    email: newEntry.email,
-    name: `${newEntry.firstName} ${newEntry.lastName}`,
-    date: newEntry.entryDate,
-  });
-  
-  return newEntry;
+  try {
+    const { error } = await supabase
+      .from('sweepstakes_entries')
+      .insert([{
+        id: newEntry.id,
+        first_name: newEntry.firstName,
+        last_name: newEntry.lastName,
+        email: newEntry.email,
+        phone: newEntry.phone,
+        date_of_birth: newEntry.dateOfBirth,
+        address: newEntry.address,
+        city: newEntry.city,
+        state: newEntry.state,
+        zip_code: newEntry.zipCode,
+        agree_to_rules: newEntry.agreeToRules,
+        agree_to_emails: newEntry.agreeToEmails,
+        entry_date: newEntry.entryDate.toISOString(),
+        ip_address: newEntry.ipAddress
+      }]);
+    
+    if (error) {
+      console.error('Error saving entry to Supabase:', error);
+      throw error;
+    }
+    
+    // Log entry
+    console.log('New sweepstakes entry:', {
+      id: newEntry.id,
+      email: newEntry.email,
+      name: `${newEntry.firstName} ${newEntry.lastName}`,
+      date: newEntry.entryDate,
+    });
+    
+    return newEntry;
+  } catch (error) {
+    console.error('Error adding sweepstakes entry:', error);
+    throw error;
+  }
 }
 
 /**
